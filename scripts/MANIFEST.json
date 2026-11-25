@@ -1,5 +1,5 @@
 {
- "written": "2026-11-25 19:49 UTC",
+ "written": "2026-11-25 20:24 UTC",
  "files": {
   "scripts/argaam_fetch.py": "1e382115989f8260b23fae24554c963ce8ef3fba4608a6344defa5682d9a187c",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
@@ -18,7 +18,7 @@
   "scripts/fill_commentary.py": "f27b657d4dbc5c4996a41a66d906fd1544562025b6534e3e5135d1b67f72fa28",
   "scripts/find_inputs.py": "0ede2dc5acff528ec1fb4f81ad3349a13ed5c971c19c1c91c1b95d5eef27458e",
   "scripts/fix_cal_ar_names.py": "e99f80de1a5975d30fedc2582031aadca6fa366567cdf7c2f27b452f4cfcbe8d",
-  "scripts/gates.py": "16678fadcf8cbefff9acfd3a7b271e2e71dda56a6a09d911e060dff0b9444e71",
+  "scripts/gates.py": "d617b94d97fe07c26b8f4da3d4cf69bc16ae58724d7f7df4d1d99561b1b6ba50",
   "scripts/global_calc.py": "8f61e725e24774962ff889434d00b7ff04d3b2bfac918d9411fc9c2aff07821b",
   "scripts/insert_ar_news.py": "f520a2a6e0530c5d4c3cbff139b4a8b041734ff203edee206824a2aa3b7be683",
   "scripts/legacy_build_dmw_ar_v1.py": "1fed0161bea079f2eea23aaa91d2c15eb62b15a3defa3f68db752c30c298812b",
@@ -52,8 +52,8 @@
   "orchestrator/prompts/S1.md": "2ac69e2662b460d306979d3d14a7f67d3abbf99185bad2022cca5ea397ab9ab5",
   "orchestrator/prompts/S2.md": "0476546970f67fe28a917d5c1c301a397fa852d590ff9a360dc95eadb4bfc041",
   "orchestrator/prompts/S3.md": "bc697bb1f0ada3fa6d046871de862eeea4d54f07648173669c06fa8393a29aea",
-  "orchestrator/prompts/S4.md": "918334934534bb483cec9d9a5516124fec7374fd4310b930b2ae2ccc792d9dc4",
-  "orchestrator/prompts/S5.md": "e0cd91eb59f25349c92890377d466ddcec7c122f4e0f7018d29823dc6974ac23",
+  "orchestrator/prompts/S4.md": "fcc2b1585f886f4a13d676c83d5cb2b203145c5997f067fe223475b0e1a65fa5",
+  "orchestrator/prompts/S5.md": "4e58a0de971072558e37916f8233971bd4398a453466910cac78418010bd7912",
   "orchestrator/prompts/S6.md": "7f424a99237d10ace55e228f85c17b34809029c4c1e5ceedc26aff245d55ddb8",
   "orchestrator/prompts/_common.md": "b8588bc5d2a1a0eae2fe8fd8026d6a0a97c227909ea9570eaaa28c7479de5d9b",
   "orchestrator/prompts/_replay.md": "1f419d55065de3918d6d325c5133db9ab3c389bcf710604731c8e1d214c2d505"

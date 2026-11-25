@@ -17,7 +17,7 @@ Gate kinds (plan doc, "Approval gates and pings", signed off 25 Nov 2026):
              (default answer go_proposed, by "run").
   conflict   two inputs disagree. No default: the deck keeps a TK placeholder until answered,
              and S5 lists it again.
-  late_news  a top-3 late item, 10:00 to 10:10. Default at 10:10: hold to the next edition.
+  late_news  unused since 26 Nov 2026 (late items now rank normally, S4); kept for a manual hold.
 Pings with no answer: alert (input late, stage failed, run down) and done.
 
 Command line (what a stage session calls; times are PKT clock times):
