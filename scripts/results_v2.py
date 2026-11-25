@@ -22,7 +22,12 @@ NCOL = 9
 # logical (EN) widths in inches; sum = 7.70, the s2.flow width
 # Saad, 25 Nov 2026: names ran long, so Consensus and Variance give up width to Company.
 # Narrowest that still fits: "Consensus" 7 pt bold = 0.48 in, "Variance" = 0.39 in, plus margins.
-WIDTHS = (2.17, 0.60, 0.95, 0.72, 0.72, 0.72, 0.62, 0.60, 0.60)
+# Saad, 25 Nov 2026 (second pass): Change YoY gives 0.12 in to Consensus, so the two groups
+# do not run together; a dashed divider (v1 style) separates them.
+WIDTHS = (2.17, 0.60, 0.95, 0.72, 0.72, 0.64, 0.58, 0.72, 0.60)
+HEAD_RULE = "groups"           # thin line between the two header rows: "full", "groups" (under the
+                             # spanned group headers only) or "" (none)
+DIVIDER_AFTER = 6            # logical column: the dashed line sits between Change YoY % and Consensus
 NAME_FONT = {"en": "segoeui.ttf", "ar": "anbApercu-Regular.otf"}   # the data cells' fonts
 ROW_IN = 0.15
 TITLE = {"en": "Results Announcements", "ar": "إعلانات النتائج"}
@@ -216,6 +221,12 @@ def make_frame(flow, lang, rows, quarter, with_title, with_source, notes, names_
             out.append(tr)
     h1, h2 = heads(lang, quarter)
     out.append(_row(pr.head, h1, lang, numk, pr, "head"))
+    # group headers (Net Profit, Change YoY) centred over both of their columns: right-aligned
+    # they read as the label of the % column only (Saad, 25 Nov 2026)
+    for tc in out[-1].findall(f"{{{A}}}tc"):
+        if tc.get("gridSpan"):
+            for ppr in tc.iter(f"{{{A}}}pPr"):
+                ppr.set("algn", "ctr")
     if with_title and TITLE_STYLE == "rule":
         # PowerPoint draws a shared border from the lower cell's lnT when it has one (noFill
         # here), so the navy rule showed under the first column only: repeat it as lnT below
@@ -226,6 +237,23 @@ def make_frame(flow, lang, rows, quarter, with_title, with_source, notes, names_
             if old is not None:
                 old.addprevious(new); tcpr.remove(old)
     out.append(_row(pr.head, h2, lang, numk, pr, "head"))
+    if HEAD_RULE:
+        # thin rule between the header rows (Saad, 25 Nov 2026): 0.5 pt, background 1 at 75%
+        def thin(tag):
+            ln = _dash_line(tag); ln.set("w", "6350")
+            ln.find(f"{{{A}}}prstDash").set("val", "solid")
+            return ln
+        top, bot = out[-2].findall(f"{{{A}}}tc"), out[-1].findall(f"{{{A}}}tc")
+        cover, k = [], 0
+        for tc in top:                      # physical columns under a spanned group header
+            span = int(tc.get("gridSpan", 1)) if not tc.get("hMerge") else 1
+            if tc.get("gridSpan"):
+                cover += list(range(k, k + span))
+            k += 1
+        for i in range(NCOL):
+            if HEAD_RULE == "full" or i in cover:
+                _set_line(top[i], "lnB", thin("lnB"))
+                _set_line(bot[i], "lnT", thin("lnT"))
     for x in rows:
         name = names_for(x)
         v = [name, x["code"], x["bbg"], PR.f1(x["cur"]), PR.f1(x["pri"]), PR.f1(x["chg"]), PR.f1(x["pct"]),
@@ -242,6 +270,7 @@ def make_frame(flow, lang, rows, quarter, with_title, with_source, notes, names_
                 np_.findall(f"{{{A}}}r")[0].find(f"{{{A}}}t").text = n
                 txb.append(np_)
         out.append(tr)
+    _dividers(out, lang, skip_first=len(lead) + (1 if with_title else 0), skip_last=(1 if with_source else 0))
     out += tail
     for tr in out:
         tbl.append(tr)
@@ -250,6 +279,44 @@ def make_frame(flow, lang, rows, quarter, with_title, with_source, notes, names_
     xfrm.find(f"{{{A}}}ext").set("cy", str(h))
     nv = fr.find(".//{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr")
     return fr, h
+
+
+def _dash_line(tag):
+    """The v1 Results divider: 0.75 pt dashed, background 1 at 75% (light grey)."""
+    ln = etree.Element(f"{{{A}}}{tag}", w="9525", cap="flat", cmpd="sng", algn="ctr")
+    sf = etree.SubElement(ln, f"{{{A}}}solidFill")
+    sc = etree.SubElement(sf, f"{{{A}}}schemeClr", val="bg1")
+    etree.SubElement(sc, f"{{{A}}}lumMod", val="75000")
+    etree.SubElement(ln, f"{{{A}}}prstDash", val="dash")
+    etree.SubElement(ln, f"{{{A}}}round")
+    etree.SubElement(ln, f"{{{A}}}headEnd", type="none", w="med", len="med")
+    etree.SubElement(ln, f"{{{A}}}tailEnd", type="none", w="med", len="med")
+    return ln
+
+
+def _set_line(tc, tag, ln):
+    pr = tc.find(f"{{{A}}}tcPr")
+    old = pr.find(f"{{{A}}}{tag}")
+    if old is not None:
+        old.addprevious(ln); pr.remove(old)
+    else:
+        order = ["lnL", "lnR", "lnT", "lnB"]
+        nxt = [pr.find(f"{{{A}}}{t}") for t in order[order.index(tag) + 1:]]
+        nxt = [x for x in nxt if x is not None]
+        (nxt[0].addprevious(ln) if nxt else pr.insert(0, ln))
+
+
+def _dividers(rows, lang, skip_first, skip_last):
+    """Dashed divider between logical DIVIDER_AFTER and the next column, on the header and data rows."""
+    left_l, right_l = DIVIDER_AFTER, DIVIDER_AFTER + 1
+    if lang == "ar":                       # physical order is mirrored
+        left_p, right_p = NCOL - 1 - right_l, NCOL - 1 - left_l
+    else:
+        left_p, right_p = left_l, right_l
+    for tr in rows[skip_first:len(rows) - skip_last if skip_last else None]:
+        tcs = tr.findall(f"{{{A}}}tc")
+        _set_line(tcs[left_p], "lnR", _dash_line("lnR"))
+        _set_line(tcs[right_p], "lnL", _dash_line("lnL"))
 
 
 def height_in(n_rows, with_title, with_source, n_notes):
