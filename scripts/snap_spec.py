@@ -124,7 +124,7 @@ def snap(prs, lang, logf=None, fix=True, spec=None):
                     setattr(sh, f, Emu(want))
     # headline-card DoD boxes: house gap and top (user, 5 Nov 2026), both cards, both decks
     if prs.slides:
-        import build_dmw as bd
+        import legacy_build_dmw_v1 as bd
         pairs = bd.card_pairs(prs.slides[0])
         for side, (g, t) in bd.dod_gaps(pairs).items():
             if abs(g - bd.DOD_GAP_IN) > 0.005 or abs(t - bd.DOD_TOP_IN) > 0.005:

@@ -2,6 +2,8 @@
 name: task-07-deck-build
 description: Task 7 of the ANB DMW cycle. Builds the ANB Daily Market Watch EN and AR decks (slides 1 to 3 numbers, tables, charts and calendars) from DMW - Data.xlsx, the Graphs decks and the calendar file, starting from the fixed templates. Use for "build the DMW", "deck build", "data is in", "Task 7".
 ---
+
+> **Template v2 (25 Nov 2026):** the commands below are the v1 ones. For v2 decks use the run order and flags in `docs/v2-pipeline.md`; the v1 scripts remain as `scripts/legacy_*` for v1 decks only.
 # Task 7: DMW deck build (from about 9:00, when the data lands)
 
 Numbers, tables, calendars and charts only. Commentary is Task 8. Late data: deadline 9:30

@@ -12,8 +12,8 @@ import argparse, copy, json, re, sys
 from datetime import datetime
 from lxml import etree
 from pptx import Presentation
-import build_dmw as en
-import build_dmw_ar as ar
+import legacy_build_dmw_v1 as en   # v1 decks; v2 port pending
+import legacy_build_dmw_ar_v1 as ar
 A = en.A
 
 

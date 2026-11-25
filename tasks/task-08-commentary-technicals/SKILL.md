@@ -3,6 +3,8 @@ name: task-08-commentary-technicals
 description: Task 8 of the ANB DMW cycle. Fills the EN and AR DMW commentary boxes (Markets, Economic, Corporate) from the ANB Rough doc under the house spacing rule, and pastes the Technicals into slides 4 and 5. Runs straight after Task 7; Technicals land about 9:30. On the user's Pasting weeks Claude sets the sequence itself and owns the decks' correctness. The Arabic deck is always filled by Claude; a teammate may paste the English. Use for "sequence is final", "fill commentary", "English pasting", "Arabic pasting", "paste the technicals", "Task 8".
 ---
 
+> **Template v2 (25 Nov 2026):** the commands below are the v1 ones. For v2 decks use the run order and flags in `docs/v2-pipeline.md`; the v1 scripts remain as `scripts/legacy_*` for v1 decks only.
+
 # Task 8: Commentary fill and Technicals (straight after Task 7)
 
 Target: both decks filled within minutes of Task 7 on the user's Pasting weeks, or about 2 minutes

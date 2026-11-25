@@ -22,8 +22,46 @@ def clean(t):
     t = re.sub(r'[ \t]{2,}', ' ', t)
     return t.strip()
 
+V2_HEADS = {'markets performance & news': 'Markets Performance/News',
+            'major economic/sector news': 'Major Economic/Sector News',
+            'major corporate news': 'Major Corporate News'}
+
+
+def read_deck_v2(prs):
+    """Template v2 (25 Nov 2026): news are cells of s1.news and s2.flow under their header rows;
+    the Results tables are s1.results / s2.results; the Event Calendar is a block of s2.flow."""
+    news = {h: [] for h in HEAD_MAP.values()}
+    tables, checks = [], []
+    cal_rows = []
+    for si, s in enumerate(prs.slides, 1):
+        if si > 3: break
+        for sh in sorted([x for x in s.shapes if x.has_table], key=lambda x: x.top):
+            rows = [[c.text for c in r.cells] for r in sh.table.rows]
+            if sh.name in ('s1.news', 's2.flow'):
+                # results days: Results has its own band (s1.news row 8, s2.results row 0);
+                # s2.flow keeps its Corporate band
+                sec = 'Major Corporate News' if sh.name == 's2.flow' else None
+                for ri, r in enumerate(sh.table.rows):
+                    t = clean(r.cells[0].text)
+                    if t.lower() in V2_HEADS:
+                        sec = V2_HEADS[t.lower()]; continue
+                    if t.lower() in ('event calendar', 'economic calendar'):
+                        sec = t.lower(); continue
+                    if sec in news and t:
+                        news[sec] += [clean(p.text) for p in r.cells[0].text_frame.paragraphs if clean(p.text)]
+                    elif sec == 'event calendar':
+                        cal_rows.append([c.text for c in r.cells])
+            elif sh.name in ('s1.results', 's2.results'):
+                tables.append(rows)
+    # the calendar in the v1 table shape, so calendar_from_tables reads it unchanged
+    tables.append([['EVENT CALENDAR'], ['Date', 'Company', 'Event']] + cal_rows)
+    return news, tables, checks
+
+
 def read_deck(path):
     prs = Presentation(path)
+    if any(sh.name == 's1.news' for sh in prs.slides[0].shapes):
+        return read_deck_v2(prs)
     news = {h: [] for h in HEAD_MAP.values()}
     tables = []
     checks = []
@@ -267,7 +305,7 @@ def results_from_tables(tables, names, checks, cov=None):
     cov = cov or {}
     out = []
     for t in tables:
-        hi = next((i for i, r in enumerate(t[:4]) if len(r) > 3 and 'tasi code' in r[1].lower()), None)
+        hi = next((i for i, r in enumerate(t[:8]) if len(r) > 3 and 'tasi code' in r[1].lower()), None)
         if hi is None: continue
         period = period_label(t[hi][3])
         foot = {}

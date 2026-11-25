@@ -3,6 +3,8 @@ name: task-10-tadawul-news-results
 description: Task 10 of the ANB DMW cycle. Sweeps late Tadawul filings into the DMW decks up to the 10:30 Karachi cut-off, and on results days builds the Results Announcements table from DMW - Results.xlsx checked against Tadawul and places it with place_results.py. Use for "Tadawul news", "late news", "morning news cut-off", "results table", "Task 10".
 ---
 
+> **Template v2 (25 Nov 2026):** the commands below are the v1 ones. For v2 decks use the run order and flags in `docs/v2-pipeline.md`; the v1 scripts remain as `scripts/legacy_*` for v1 decks only.
+
 # Task 10: Tadawul news and Results (9:45 to 10:30)
 
 SHARED = `../../shared/` relative to this skill's base directory. Read

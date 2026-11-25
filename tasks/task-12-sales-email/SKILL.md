@@ -3,6 +3,8 @@ name: task-12-sales-email
 description: Task 12 of the ANB DMW cycle. Builds the Sales Email document "EMAIL MB YYYYMMDD.docx" from the final EN DMW deck (markets, economic and corporate news with results sentences first, corporate calendar without EGMs) after Task 11 (usually 10:17 to 10:30 Karachi). Use for "sales email", "EMAIL MB", "MB email", "Task 12".
 ---
 
+> **Template v2 (25 Nov 2026):** the commands below are the v1 ones. For v2 decks use the run order and flags in `docs/v2-pipeline.md`; the v1 scripts remain as `scripts/legacy_*` for v1 decks only.
+
 # Task 12: Sales Email / EMAIL MB (after Task 11, usually 10:17 to 10:30)
 
 > Times are usual windows, not deadlines (per-task cut-offs dropped 4 Nov 2026; late-input deadlines in Task 0).
