@@ -114,6 +114,117 @@ def leftover_placeholders(prs, lang):
     return out
 
 
+class Results:
+    """Results day: rows from DMW - Results.xlsx (v1 rules) and the v2 table (results_v2.py)."""
+    def __init__(self, a):
+        import openpyxl
+        import place_results as PR
+        import results_v2 as RV
+        from build_dmw import text_width_in
+        self.RV = RV
+        if not a.quarter:
+            sys.exit("--quarter is needed with --results (e.g. 3Q26).")
+        rows = PR.sort_rows(PR.read_rows(a.results, a.quarter), PR.covered_set(a.universe))
+        skip = {x.strip().upper() for x in a.skip.split(";") if x.strip()}
+        self.rows = [x for x in rows if not ({x["name"].rstrip("*").upper(), x["code"], x["bbg"].upper()} & skip)]
+        others = sorted({x["period"] for x in self.rows if x["other"]})
+        self.notes = {"en": [PR.period_note(p, "EN") for p in others], "ar": [PR.period_note(p, "AR") for p in others]}
+        self.quarter = a.quarter
+        self.names = {}
+        if a.mapping:
+            ws = openpyxl.load_workbook(a.mapping, read_only=True)["mapping"]
+            it = ws.iter_rows(values_only=True)
+            hdr = [str(c).strip() if c else "" for c in next(it)]
+            ix = {h: i for i, h in enumerate(hdr)}
+            for r in it:
+                if r[ix["Code"]] is not None:
+                    self.names[str(r[ix["Code"]]).strip()] = {
+                        "en": [str(r[ix[k]]).strip() for k in ("Long Name - English", "Short Name - English") if r[ix[k]]],
+                        "ar": [str(r[ix[k]]).strip() for k in ("Long Name - Arabic", "Short Name - Arabic") if r[ix[k]]]}
+        room = RV.WIDTHS[0] - 2 * 0.02 - 0.01
+
+        def chooser(lang):
+            def f(x):
+                star = "*" if x["other"] else ""
+                cands = self.names.get(x["code"], {}).get(lang) or ([x["name"].rstrip("*")] if lang == "en" else [])
+                if not cands:
+                    note("FLAG", f"Results: no Arabic name in Mapping.xlsx for {x['code']} {x['name']}; the English name used.")
+                    cands = [x["name"].rstrip("*")]
+                for n in cands:
+                    w = text_width_in(n + star, 7.0, rtl=(lang == "ar"))
+                    if w is not None and w <= room:
+                        return n + star
+                note("FLAG", f"Results {lang.upper()}: '{cands[-1]}' wraps in the name column ({room:.2f} in).")
+                return cands[-1] + star
+            return f
+        self.name_for = {"en": chooser("en"), "ar": chooser("ar")}
+        note("OK", f"Results: {len(self.rows)} rows from {os.path.basename(a.results)} ({a.quarter}); "
+                   f"{len(others)} other-period footnote(s).")
+
+    def h(self, k, last, lang):
+        return self.RV.height_in(k, True, last, len(self.notes[lang]) if last else 0)
+
+
+def lead_rows(prs):
+    t = shape(prs.slides[1], "s2.flow").table
+    trs = t._tbl.findall(f"{{{N.A}}}tr")
+    return trs[0:2], trs[3:4]          # Corporate header + gap; the gap row under the news
+
+
+def with_results(prs, lang, L, res, n1, has_news):
+    """Slide bottoms once the Results table is in: n1 rows on slide 1, the rest on slide 2."""
+    n = len(res.rows)
+    b1 = L["b1"] + res.h(n1, n1 == n, lang) if n1 else L["b1"]
+    b2 = L["b2"]
+    if n1 < n:
+        lead, tail = lead_rows(prs)
+        lead_h = sum(int(tr.get("h")) for tr in lead) / E
+        tail_h = sum(int(tr.get("h")) for tr in tail) / E
+        b2 = L["b2"] - (lead_h if has_news else 0) + lead_h + res.h(n - n1, True, lang) + tail_h
+    return b1, b2
+
+
+def place_results(prs, lang, res, n1):
+    """Insert the Results tables: under the slide 1 Corporate header and at the top of slide 2."""
+    from pptx.oxml.ns import qn
+    n = len(res.rows)
+    RV = res.RV
+    s1, s2 = shape(prs.slides[0], "s1.news"), shape(prs.slides[1], "s2.flow")
+    # slide 1: the empty Corporate cell row goes; the table sits under the header and gap rows
+    tbl = s1.table._tbl
+    tbl.remove(tbl.findall(f"{{{N.A}}}tr")[NEWS_ROWS["co"]])
+    s1.height = sum(r.height for r in s1.table.rows)
+    if n1:
+        fr, h = RV.make_frame(s2, lang, res.rows[:n1], res.quarter, True, n1 == n,
+                              res.notes[lang] if n1 == n else [], res.name_for[lang])
+        _place(fr, s1, s1.left, s1.top + s1.height, "s1.results", 9001)
+    if n1 < n:
+        lead, tail = lead_rows(prs)
+        has_news = "Corporate" in s2.table.cell(0, 0).text or "الشركات" in s2.table.cell(0, 0).text
+        fr, h = RV.make_frame(s2, lang, res.rows[n1:], res.quarter, True, True, res.notes[lang], res.name_for[lang],
+                              lead=lead, tail=tail)
+        top = s2.top
+        _place(fr, s2, s2.left, top, "s2.results", 9002)
+        ftbl = s2.table._tbl
+        trs = ftbl.findall(f"{{{N.A}}}tr")
+        if has_news:
+            for tr in trs[0:2]:
+                ftbl.remove(tr)
+        s2.top = top + h
+        s2.height = sum(r.height for r in s2.table.rows)
+        if not has_news:   # the gap before the Event Calendar is the tail row's job; keep the flow as is
+            pass
+
+
+def _place(fr, anchor, left, top, name, sid):
+    P = "http://schemas.openxmlformats.org/presentationml/2006/main"
+    nv = fr.find(f".//{{{P}}}cNvPr")
+    nv.set("name", name); nv.set("id", str(sid))
+    off = fr.find(f".//{{{P}}}xfrm/{{{N.A}}}off")
+    off.set("x", str(left)); off.set("y", str(top))
+    anchor._element.addnext(fr)
+
+
 def checks(news):
     items = [("markets", i, news["markets"]["en"][i], news["markets"]["ar"][i]) for i in range(2)]
     items += [("economic", i, x["en"], x["ar"]) for i, x in enumerate(news["economic"])]
@@ -140,6 +251,11 @@ def main():
     ap.add_argument("--results-day", action="store_true",
                     help="leave the slide 1 Corporate cell for the Results table")
     ap.add_argument("--limit", type=float, default=PAGE_BOTTOM)
+    ap.add_argument("--results", help="DMW - Results.xlsx (results day: v2 Results table, implies --results-day)")
+    ap.add_argument("--quarter", help="reporting quarter, e.g. 3Q26 (with --results)")
+    ap.add_argument("--universe", help="ANB coverage universe workbook (covered companies first)")
+    ap.add_argument("--mapping", help="Mapping.xlsx for the Results company names (with --results)")
+    ap.add_argument("--skip", default="", help="Results rows left out (';'-separated names or codes)")
     a = ap.parse_args()
     news = json.load(open(a.news, encoding="utf-8"))
     for lang in ("en", "ar"):
@@ -150,6 +266,10 @@ def main():
     checks(news)
 
     decks = {"en": Presentation(a.en), "ar": Presentation(a.ar)}
+    res = None
+    if a.results:
+        a.results_day = True
+        res = Results(a)
     corp = list(news["corporate"])
     k1 = 0 if a.results_day else min(1, len(corp))
     s1_items, rest = corp[:k1], corp[k1:]
@@ -183,12 +303,27 @@ def main():
         note("PING", "Slide 1 still ends below the limit with the short Economic texts: "
              + ", ".join(f"{k.upper()} {L[k]['b1']:.2f} in" for k in L))
 
+    # results day: the most Results rows on slide 1 that fit in BOTH decks, the rest on slide 2
+    n1 = 0
+    if res:
+        n = len(res.rows)
+        n1 = max([k for k in range(n + 1)
+                  if all(with_results(decks[g], g, L[g], res, k, bool(rest))[0] <= a.limit for g in L)] or [0])
+        if n1 == 0 and n:
+            note("FLAG", "Results: no row fits on slide 1; the whole table goes to slide 2.")
+        for g in L:
+            L[g]["b1"], L[g]["b2"] = with_results(decks[g], g, L[g], res, n1, bool(rest))
+        note("OK", f"Results: {n1} row(s) on slide 1, {n - n1} on slide 2.")
+
     # slide 2: drop lowest-ranked Corporate items until both decks fit
     while rest and any(L[lang]["b2"] > a.limit for lang in L):
         gone = rest.pop()
         note("FLAG", f"Slide 2 full: Corporate item left out of both decks: {gone['en'][:70]}")
         C = {lang: content_for(lang, news, ec_short, s1_items, rest) for lang in ("en", "ar")}
         L = {lang: plan(decks[lang], lang, C[lang]) for lang in ("en", "ar")}
+        if res:
+            for g in L:
+                L[g]["b1"], L[g]["b2"] = with_results(decks[g], g, L[g], res, n1, bool(rest))
     if any(L[lang]["b2"] > a.limit for lang in L):
         note("PING", "Slide 2 calendars alone end below the limit: "
              + ", ".join(f"{k.upper()} {L[k]['b2']:.2f} in" for k in L))
@@ -196,6 +331,8 @@ def main():
     os.makedirs(a.outdir, exist_ok=True)
     for lang in ("en", "ar"):
         apply(decks[lang], lang, C[lang], L[lang])
+        if res:
+            place_results(decks[lang], lang, res, n1)
         left = leftover_placeholders(decks[lang], lang)
         for x in left:
             if "Results" not in x:

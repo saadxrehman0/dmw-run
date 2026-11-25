@@ -3,6 +3,8 @@ name: task-11-final-checks-pdfs
 description: Task 11 of the ANB DMW cycle. Runs the pre-PDF check on the team's saved EN and AR DMW decks (EN/AR figure parity, calendar wording, slide 1 spacing, layout drift against the template spec), refreshes calendar numbers changed in the morning, and exports the PDFs with PowerPoint on the user's PC or Mac usually 10:10 to 10:20 Karachi, after the last deck change. Use for "final check", "pre-PDF check", "check the decks", "PDFs", "Task 11".
 ---
 
+> **Template v2 (25 Nov 2026):** the commands below are the v1 ones. For v2 decks use the run order and flags in `docs/v2-pipeline.md`; the v1 scripts remain as `scripts/legacy_*` for v1 decks only.
+
 # Task 11: Final checks and PDFs (after the last deck change, usually 10:10 to 10:20)
 
 > Times are usual windows, not deadlines (per-task cut-offs dropped 4 Nov 2026; late-input deadlines in Task 0).

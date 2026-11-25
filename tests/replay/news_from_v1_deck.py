@@ -17,6 +17,25 @@ def paras(sh):
     return [p.text.strip() for p in [x for x in sh.text_frame.paragraphs] if p.text.strip()]
 
 
+def pair(en, ar):
+    """Match each EN item to its AR item: the published AR decks do not always keep the EN order
+    (11 Nov 2026). Score = shared tickers x10 + shared numbers; ties keep the position."""
+    from news_text import numbers, tickers
+    left, out = list(range(len(ar))), []
+    for i, e in enumerate(en):
+        te, ne = set(tickers(e)), set(numbers(e, "en"))
+        best = max(left, key=lambda j: (10 * len(te & set(tickers(ar[j]))) + len(ne & set(numbers(ar[j], "ar"))),
+                                        -abs(j - i)), default=None)
+        if best is None:
+            print(f"WARN no AR item left for: {e[:60]}", file=sys.stderr)
+            continue
+        left.remove(best)
+        out.append({"en": e, "ar": ar[best]})
+    for j in left:
+        print(f"WARN AR item with no EN match: {ar[j][:60]}", file=sys.stderr)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--en", required=True); ap.add_argument("--ar", required=True); ap.add_argument("--out", required=True)
@@ -29,10 +48,9 @@ def main():
     for k in ("mk", "ec", "co"):
         if len(got["en"][k]) != len(got["ar"][k]):
             print(f"WARN {k}: EN has {len(got['en'][k])} paragraphs, AR {len(got['ar'][k])}", file=sys.stderr)
-    n = lambda k: min(len(got["en"][k]), len(got["ar"][k]))
     news = {"markets": {"en": got["en"]["mk"][:2], "ar": got["ar"]["mk"][:2]},
-            "economic": [{"en": got["en"]["ec"][i], "ar": got["ar"]["ec"][i]} for i in range(n("ec"))],
-            "corporate": [{"en": got["en"]["co"][i], "ar": got["ar"]["co"][i]} for i in range(n("co"))],
+            "economic": pair(got["en"]["ec"], got["ar"]["ec"]),
+            "corporate": pair(got["en"]["co"], got["ar"]["co"]),
             "_published_s1_corporate": got["en"]["s1co"]}
     json.dump(news, open(a.out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"markets {len(news['markets']['en'])}, economic {len(news['economic'])}, corporate {len(news['corporate'])} "
