@@ -447,11 +447,14 @@ def fill_calendars(slide, lang, events, econ, names, tr=None, ar_cal=(None, None
         cc = M.col(t, 1)
         room = cell_room_in(t, r, cc)
         if rec:
-            name = names.choose(lang, rec, comp, t.cell(r, cc), room, f"Event calendar '{comp}'")
+            # Tadawul trading name, as on slide 3 and in the Results table (Saad, 25 Nov 2026)
+            name = names.choose(lang, rec, comp, t.cell(r, cc), room, f"Event calendar '{comp}'", short_only=True)
         else:
             name = comp
             if wraps(comp, t.cell(r, cc), room, lang):
                 log("FLAG", f"Event calendar: company '{comp}' wraps and has no Mapping.xlsx match for a short name.")
+            log("FLAG", f"Event calendar: '{comp}' not matched in Mapping.xlsx; the calendar file's name used, "
+                        "not the Tadawul trading name.")
         put(t.cell(r, M.col(t, 0)), d)
         put_label(t.cell(r, cc), name, lang)
         put_label(t.cell(r, M.col(t, 2, 3)), ev, lang)
