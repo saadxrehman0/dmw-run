@@ -1,12 +1,12 @@
 {
- "written": "2026-11-25 21:52 UTC",
+ "written": "2026-11-25 21:54 UTC",
  "files": {
   "scripts/argaam_fetch.py": "dfdc90370120350834e87d5991b09a34de922f4d0984f880d64907a589d94f02",
   "scripts/build_cal.py": "c1441a6aefde4ffc70112796751216cf725595940c86f488bfdb947bfefaa8cd",
   "scripts/build_dmu.py": "9182c233982d60badc71f68497bb43c03798cfb8a141f496b4be58b24b9e6ebd",
   "scripts/build_dmw.py": "4d0f993ef6adb4f2a2be9d9ee7c6b9c7df590b3a53e2e796631622705ef90eda",
   "scripts/build_dmw_ar.py": "7e61cc66e37eb94f90f34557d7e39cf076cb52a220d56fe8301743b65b08a013",
-  "scripts/build_email_mb.py": "517ee23128efaeec405bc332e49019faa004ba77074f8f183f072cc1bd018fe7",
+  "scripts/build_email_mb.py": "f426a66ec8c1a1a81c216a225f31b8c7288da237e62dddfff399c945b6e8d39c",
   "scripts/check_ar_text.py": "11fa160f44a0588266665bc7a6e4f5c55e202f46c48b16ffce0b951f3dcb00bd",
   "scripts/check_dmu.py": "8fc21b2a0efd7d284f03a36b54f64e35f758005b03a22b5853206ec8803c4c33",
   "scripts/check_final.py": "9fbee146ed9a98f4d1ba0445cc7302b1c3db0a4714bf98188c6da3f68b8cabad",
@@ -54,7 +54,7 @@
   "orchestrator/prompts/S2.md": "0476546970f67fe28a917d5c1c301a397fa852d590ff9a360dc95eadb4bfc041",
   "orchestrator/prompts/S3.md": "bc697bb1f0ada3fa6d046871de862eeea4d54f07648173669c06fa8393a29aea",
   "orchestrator/prompts/S4.md": "bedb44e9c26fed84ff78e328eb811609d67e3c27d50b190080d216f9f359b2a3",
-  "orchestrator/prompts/S5.md": "8061a8c92eb825921ced3f6cc73f8edafffaae17d0d0e034a5cb92af1c12a910",
+  "orchestrator/prompts/S5.md": "26e1a01d4a80cd7f599c085acf466b5896ddfd860c463ef4762521b26528b126",
   "orchestrator/prompts/S6.md": "7f424a99237d10ace55e228f85c17b34809029c4c1e5ceedc26aff245d55ddb8",
   "orchestrator/prompts/_common.md": "b8588bc5d2a1a0eae2fe8fd8026d6a0a97c227909ea9570eaaa28c7479de5d9b",
   "orchestrator/prompts/_replay.md": "ae5c985df97b910e3cfe18dfd3e5aa859787f968825fc40fd3ae4a415465cece"

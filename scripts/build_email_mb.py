@@ -414,6 +414,12 @@ def build(day_dir, template, names_xlsx, out, dmu=None, deck_name='ANB Daily Mar
     for h in EMAIL_HEADS[:3]:
         if not sections[h]: checks.append(f'Section empty: {h}')
     if not cal: checks.append('No event calendar rows left after dropping EGMs: Corporate Calendar section omitted')
+    # a TK or a bracketed note left in a deck bullet would go to clients as written (23 Nov replay)
+    for h, items in sections.items():
+        for it in items:
+            t = it if isinstance(it, str) else ' '.join(map(str, it)) if isinstance(it, (list, tuple)) else str(it)
+            if re.search(r'(?<![A-Za-z])TK(?![A-Za-z])', t) or re.search(r'\[[^\]]{12,}\]', t):
+                checks.append(f'FLAG {h}: unfinished text (TK or a bracketed note): {t[:80]}')
     write_email(template, sections, out)
     return sections, checks
 
