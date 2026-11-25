@@ -30,7 +30,17 @@ dropped at 10:09).
 
 1. Work out the edition date (Sunday's run → Monday's folder; Thursday's → Sunday's) and which days
    each block covers (empty-day rules, 1-star skip rule).
-2. **Event rows:** follow the source order in `calendar.md` ("Event calendar: sources and
+2. **Fetch with `cal_fetch.py` first (26 Nov 2026).** One call reads the Saudi Exchange dividends,
+   general assembly and corporate actions tabs (Main and Nomu), the assembly announcements and the
+   investing.com US and KSA calendar in a visible Chrome (Mac) or Edge (Windows) window, applies the
+   rules below and writes `rows.json` for step 5 plus `cal.json` (`sources` = source log lines,
+   `review` = what is left to settle, `dropped` = routine assemblies left out):
+   `python SHARED/scripts/cal_fetch.py --edition <YYYY-MM-DD> --out cal.json --rows rows.json
+   --names state/Mapping.xlsx --prev-cal "<previous Manual File-Calendar.xlsx>"`
+   (`--after` defaults to the previous trading day; `--from-raw` rebuilds without a browser). It does
+   not read Argaam: earnings calls, listing and index events and GASTAT/SAMA releases are still added
+   by hand, as below. The steps below are what the script does, and the manual route if it fails.
+   **Event rows:** follow the source order in `calendar.md` ("Event calendar: sources and
    inclusion"): Saudi Exchange Dividends Calendar for dividends; its General Assembly meetings
    Calendar for assemblies (`Extraordinary - Corporate Actions` type; plain extraordinary meetings
    get an agenda check); its Corporate Actions tab as a cross-check for bonus, capital and rights

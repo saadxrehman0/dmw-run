@@ -169,6 +169,12 @@ investing.com shows. The 21 Oct 2026 file carried `-8.6M` / `-0.3M` on the EIA r
 removed them. In the DMU events calendar these rows are written without figures:
 `21-Oct-26: US Weekly EIA Report on Crude Oil Inventories` (as the 20 Oct DMU wrote the API row).
 
+**Dates by the releasing country's own day (26 Nov 2026, `cal_fetch.py`).** investing.com lists
+times in PKT, so a US release after 2:00 PM New York time (FOMC minutes, Treasury auctions, the API
+report) shows on the next PKT day. `cal_fetch.py` dates US rows by their US Eastern date and KSA rows
+by Riyadh date, which matches the API rule below (dated Tuesday). Claude's default; Saad has not
+ruled on it yet.
+
 The release **date** follows Bloomberg when the sources disagree (see "Which dates each block
 covers").
 
