@@ -1,5 +1,5 @@
 {
- "written": "2026-11-25 21:00 UTC",
+ "written": "2026-11-25 21:13 UTC",
  "files": {
   "scripts/argaam_fetch.py": "1e382115989f8260b23fae24554c963ce8ef3fba4608a6344defa5682d9a187c",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
@@ -33,7 +33,7 @@
   "scripts/news_doc.py": "0c6e892922dcae83b80c8ec1233d81cc96e09d763092fad8e8ad62bf89318c9a",
   "scripts/news_text.py": "465809839cd43b7ce2f02df05ef41bfec42061fa6aa7d4a17e7a5f51e059ccbc",
   "scripts/pick_card.py": "baffe4115db52ddfe74796349a1421d12d81796c699e5b012bc56bf4d41af148",
-  "scripts/place_results.py": "4d3a1fc02c5889d60a99b2a06f5f413da02947a3c6028513c2744f918c400155",
+  "scripts/place_results.py": "9438b4005f24b340698137898a21cc2932ce62fd7fcc150fa661c1d75ee6ac44",
   "scripts/read_news_doc.py": "a91c81695bf08d923a8df95312a5174639031c2a763760750f247a486e52ca1e",
   "scripts/refresh_mapping.py": "5f075fc84b33eb1621e9bd5a1cc69034dde72818cc2e723e9c92136df673b701",
   "scripts/results_v2.py": "ee0559f259c183d9d445a5bb257662e6e0e0f6c6e480070db2637357a54f55b8",

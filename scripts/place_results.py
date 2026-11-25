@@ -65,9 +65,10 @@ def f1(v):
 
 
 def read_rows(path, quarter):
-    ws = openpyxl.load_workbook(path, data_only=True)["Results"]
+    wb = openpyxl.load_workbook(path, data_only=True)
+    ws = wb["Results"]
     rows = []
-    for r in ws.iter_rows(min_row=6, values_only=True):
+    for r in _with_formulas(path, wb, ws.iter_rows(min_row=6, values_only=True)):
         if not (r[1] and num(r[2]) and isinstance(r[3], str) and r[3].strip() not in ("", "-") and num(r[4])):
             continue
         cur, pri, cons = r[4], r[5], r[8]
@@ -80,6 +81,32 @@ def read_rows(path, quarter):
                          chg=chg, pct=pct, cons=cons, var=var))
     return rows
 
+
+
+def _with_formulas(path, wb, it):
+    """Rows of the Results sheet with the formula cells filled in where the workbook has no cached
+    values (a workbook last saved by openpyxl, as the unattended S4 saves it, reads as None there;
+    4 Nov replay, 26 Nov 2026). C and D are XLOOKUPs of B into TASI CODE (C -> D code, C -> I
+    Bloomberg); H and J are the YoY and consensus % (only whether they are numbers matters here)."""
+    rows = [list(r) for r in it]
+    if all(r[2] is not None for r in rows if r[1]):
+        yield from rows
+        return
+    code = {}
+    if "TASI CODE" in wb.sheetnames:
+        for c in wb["TASI CODE"].iter_rows(min_row=1, values_only=True):
+            if len(c) > 8 and c[2]:
+                code.setdefault(str(c[2]).strip().upper(), (c[3], c[8]))
+    for r in rows:
+        r += [None] * (10 - len(r))
+        if r[1] and r[2] is None:
+            r[2], r[3] = code.get(str(r[1]).strip().upper(), ("-", "-"))
+        e, f, i = r[4], r[5], r[8]
+        if r[7] is None and num(e) and num(f):
+            r[7] = "-" if e * f < 0 or not f else (e - f) / f * 100
+        if r[9] is None and num(e):
+            r[9] = "-" if not num(i) or e * i < 0 or not i else (e - i) / i * 100
+        yield r
 
 def covered_set(path):
     if not path:
