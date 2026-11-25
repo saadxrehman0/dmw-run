@@ -51,7 +51,7 @@ async ({ids, maxBody}) => {
             special: /argaam special/i.test(head)};
   };
   const out = [];
-  for (let i = 0; i < ids.length; i += 25) out.push(...await Promise.all(ids.slice(i, i + 25).map(one)));
+  for (let i = 0; i < ids.length; i += 10) out.push(...await Promise.all(ids.slice(i, i + 10).map(one)));
   return out;
 }
 """
@@ -74,7 +74,14 @@ class Argaam:
         from playwright.sync_api import sync_playwright
         self._p = sync_playwright().start()
         self.b = self._p.chromium.launch(channel=channel, headless=headless)
-        self.pg = self.b.new_page()
+        self._open()
+
+    def _open(self):
+        """A fresh context and tab on Argaam (also used to recover once Argaam throttles a session)."""
+        if getattr(self, "ctx", None):
+            self.ctx.close()
+        self.ctx = self.b.new_context()
+        self.pg = self.ctx.new_page()
         self.pg.goto("https://www.argaam.com/en", timeout=90000, wait_until="domcontentloaded")
         self.pg.wait_for_timeout(4000)
         # The home page reloads itself every few minutes, which kills a long in-page fetch
@@ -103,10 +110,12 @@ class Argaam:
         # 25 Nov 2026: a 350-ID window lost its evening items, which a fresh session read fine).
         # Retry the empty ones after a pause; a real missing ID ("Page Not Found") is final.
         todo = ids
-        for wait in (0, 5000, 15000, 30000):
+        for wait in (0, 5000, 20000, "fresh", 5000):
             if not todo:
                 break
-            if wait:
+            if wait == "fresh":      # a fresh session read the same IDs fine (25 Nov 2026)
+                self._open()
+            elif wait:
                 self.pg.wait_for_timeout(wait)
             for r in self._eval(PAGE_JS, {"ids": todo, "maxBody": max_body}):
                 got[r["id"]] = r
