@@ -1,5 +1,5 @@
 {
- "written": "2026-11-25 15:02 UTC",
+ "written": "2026-11-25 15:05 UTC",
  "files": {
   "scripts/argaam_fetch.py": "cd6df10a0c8305f498fcfdcaee98e23bff8025be92a602128df03df48446bd97",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
@@ -37,7 +37,7 @@
   "scripts/refresh_mapping.py": "5f075fc84b33eb1621e9bd5a1cc69034dde72818cc2e723e9c92136df673b701",
   "scripts/results_v2.py": "ee0559f259c183d9d445a5bb257662e6e0e0f6c6e480070db2637357a54f55b8",
   "scripts/rough_map.py": "26ca6c5b7b17ddb9a202c206d2d478bc4480b853805eee9bb5e3d911289cb04f",
-  "scripts/run_edition.py": "75325ac7243f086e38664a7e6af6a085bd8e9d5965b9e232769aa9b5487647b1",
+  "scripts/run_edition.py": "cac3edd71b324a0b50e537ce2a173eaeb850d861a174a1817a78e4be3fa20f43",
   "scripts/snap_spec.py": "753e3a25d0917a974a00ee505adc44e78f3d84f22d12385fe2b8e926b98030d1",
   "scripts/stub_stage.py": "f911670894b5315e69f01e1f77d19e217c190ff2cb32f41419d99d021658d821",
   "scripts/triage.py": "c5259c72b4f36fd16d2c1dad0815fb1ba682c1c359ee8acde5d4d23d8cf8ac46",

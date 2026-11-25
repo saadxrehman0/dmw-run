@@ -245,3 +245,20 @@ def test_allowed_tools_cover_powershell_and_the_python_path():
 
 def test_previous_edition_skips_the_weekend(tmp_path):
     assert run_edition.previous_edition(date(2026, 11, 22), str(tmp_path / "none.json")) == date(2026, 11, 19)
+
+
+def test_deny_list_policy_gives_the_shell_and_blocks_deletes():
+    allow, deny = run_edition.stage_tools(["Read", "Bash(python *)", "WebSearch"], r"C:\Python315\python.exe", "deny_list")
+    assert allow == ["Read", "WebSearch", "PowerShell", "Bash"]
+    assert "PowerShell(Remove-Item *)" in deny and "Bash(git push *)" in deny and "PowerShell(pip *)" in deny
+    allow2, deny2 = run_edition.stage_tools(["Bash(python *)"], "python", "allow_list")
+    assert deny2 == [] and "PowerShell(python *)" in allow2
+
+
+def test_rerun_resets_failed_and_blocked(tmp_path):
+    r = run(tmp_path)
+    r.st["stages"]["S3"].update(status="failed", attempts=2)
+    r.st["stages"]["S5"].update(status="blocked")
+    r.rerun(["S3"])
+    assert r.st["stages"]["S3"]["status"] == "waiting" and r.st["stages"]["S3"]["attempts"] == 0
+    assert r.st["stages"]["S5"]["status"] == "waiting" and r.st["stages"]["S2"]["status"] == "done"

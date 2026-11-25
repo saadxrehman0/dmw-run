@@ -49,6 +49,7 @@ DEFAULTS = {
     "tick_seconds": 15,
     "alert_email": None,      # Saad's address, set only in config.local.json on the runner
     "mail_after_min": 5,      # email a card or alert the relay has not posted after this long
+    "shell_policy": "deny_list",  # or "allow_list" (see DENY)
 }
 
 
@@ -219,6 +220,33 @@ def kill_tree(pid):
         pass
 
 
+# Shell policy "deny_list" (default): the stage may run any shell command except these. Allow-lists
+# of command prefixes kept refusing harmless python calls written another way (S3 failed twice in
+# the 24 Nov replay pilot, 25 Nov 2026). "allow_list" keeps the old per-stage lists only.
+DENY = ["Remove-Item", "rm", "del", "erase", "rd", "rmdir", "Move-Item", "mv", "move", "Rename-Item",
+        "ren", "Clear-Content", "Set-ItemProperty", "Remove-ItemProperty", "Set-ExecutionPolicy", "reg",
+        "pip", "python -m pip", "py -m pip", "winget", "choco", "npm", "Install-Module", "Install-Package",
+        "git push", "git reset", "Stop-Computer", "Restart-Computer", "shutdown", "Format-Volume",
+        "Stop-Process", "taskkill", "schtasks", "Register-ScheduledTask", "Unregister-ScheduledTask",
+        "Invoke-WebRequest", "iwr", "curl", "wget", "Start-BitsTransfer", "Send-MailMessage"]
+
+
+def disallowed_tools(python):
+    out = []
+    for c in DENY + [f"{python} -m pip", f"& {python} -m pip"]:
+        for sh in ("PowerShell", "Bash"):
+            out += [f"{sh}({c})", f"{sh}({c} *)"]
+    # Desktop Commander and other local shells would sidestep the deny list
+    return out + ["mcp__plugin_desktop-commander_desktop-commander", "mcp__desktop-commander"]
+
+
+def stage_tools(tools, python, policy):
+    if policy == "allow_list":
+        return allowed_tools(tools, python), []
+    keep = [t for t in tools if not t.startswith("Bash(")]
+    return keep + ["PowerShell", "Bash"], disallowed_tools(python)
+
+
 def allowed_tools(tools, python):
     """stages.json lists Bash rules. On Windows, Claude Code's shell tool is PowerShell (no Git
     Bash on the runner; replay pilot, 25 Nov 2026), and the prompts call python by its full path
@@ -247,8 +275,11 @@ def command(stage, ctx, cfg, stub, replay=False):
     parts = ["_common.md"] + (["_replay.md"] if replay else []) + [f"{stage['id']}.md"]
     prompt = fill("\n\n".join(open(os.path.join(pdir, f), encoding="utf-8").read() for f in parts), ctx)
     exe = shutil.which(cfg["claude"]) or cfg["claude"]
+    allow, deny = stage_tools(stage["tools"], cfg["python"], cfg.get("shell_policy", "deny_list"))
     argv = [exe, "-p", "--output-format", "json", "--permission-mode", "dontAsk",
-            "--allowedTools", ",".join(allowed_tools(stage["tools"], cfg["python"])), "--add-dir", ctx["RUN"]]
+            "--allowedTools", ",".join(allow), "--add-dir", ctx["RUN"]]
+    if deny:
+        argv += ["--disallowedTools", ",".join(deny)]
     if os.path.isdir(ctx["DAY"]):
         argv += ["--add-dir", ctx["DAY"]]
     if cfg.get("model"):
@@ -280,6 +311,19 @@ class Runner:
         self.procs = {}       # stage id -> (Popen, started monotonic, log file)
         self.last_ready = {}  # stage id -> monotonic of the last ready check
         self._resume()
+
+    def rerun(self, ids):
+        """Put these stages, and any failed or blocked stage, back to waiting with fresh attempts."""
+        for sid, s in self.st["stages"].items():
+            if sid in ids or s["status"] in ("failed", "blocked"):
+                s.update(status="waiting", attempts=0, round=0, next_at=None, note="rerun", exit=None)
+                try:
+                    os.remove(self.result_path(sid))
+                except FileNotFoundError:
+                    pass
+        self.st["alerts"] = [k for k in self.st["alerts"] if not any(i in k for i in ids)]
+        self.st["ended"] = None
+        save(self.run, self.st)
 
     # A restart finds stages marked running whose process belongs to the old orchestrator: count
     # that attempt as failed (kill it if it is still there) and let the retry rule decide.
@@ -555,6 +599,8 @@ def main(argv=None):
     ap.add_argument("--speed", type=float, default=1.0)
     ap.add_argument("--max-minutes", type=float)
     ap.add_argument("--replay", action="store_true", help="replay a past edition (see the module doc)")
+    ap.add_argument("--rerun", help="stage ids to run again in an existing run folder, e.g. S3,S5 "
+                                    "(their failed or blocked dependents go back to waiting too)")
     a = ap.parse_args(argv)
     cfg = load_config(a.config)
     ed = date.fromisoformat(a.edition) if a.edition else datetime.now(PKT).date()
@@ -567,6 +613,8 @@ def main(argv=None):
         ap.error("--replay needs --edition")
     clock = Clock(ed, a.clock or ("08:55" if a.replay else None), a.speed)
     r = Runner(ed, cfg, spec, clock, stub=a.stub, replay=a.replay)
+    if a.rerun:
+        r.rerun(a.rerun.split(","))
     print(f"run {ed} mode={r.st['mode']} RUN={r.run} DAY={r.day}{' (stub stages)' if a.stub else ''}")
     return r.loop(a.max_minutes)
 
