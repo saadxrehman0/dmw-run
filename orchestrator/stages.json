@@ -21,7 +21,7 @@
    "tools": ["Read", "Write", "Glob", "Grep", "Bash(python *)", "Bash(python3 *)", "Bash(py *)",
              "mcp__claude_ai_Claude_Docs"]},
   {"id": "S4", "name": "Results and late news", "start": "09:00", "needs": {"S0": "finished"},
-   "repeat": {"at": ["09:00", "09:30", "10:05"]}, "timeout_min": 9,
+   "repeat": {"at": ["09:00", "09:30", "10:10"]}, "timeout_min": 9,
    "tools": ["Read", "Write", "Glob", "Grep", "Bash(python *)", "Bash(python3 *)", "Bash(py *)",
              "WebFetch"]},
   {"id": "S5", "name": "Finals (checks, PDFs, EMAIL MB, reviewer)", "start": "10:10",

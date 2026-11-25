@@ -1,5 +1,5 @@
 {
- "written": "2026-11-25 19:27 UTC",
+ "written": "2026-11-25 19:35 UTC",
  "files": {
   "scripts/argaam_fetch.py": "2471ffc9249f5dc84af984b531d0e357df7d53207279e5b074f3b4d1cfa56e34",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
@@ -47,12 +47,12 @@
   "scripts/export_pdf.ps1": "3879fa1dcc1e8c2a572e5ecda87df3593cb84ace9a2bf0077f40855372352a5f",
   "browser/argaam_news.js": "9d61902c1f2b203fb33357fb251d82e2338d8e706acf5c7a3a6d9fa5bd304ab3",
   "browser/sx_names.js": "f6478c843afbb355b6875e878cc3420dd651fec109093ad4427bfff951aa1fb8",
-  "orchestrator/stages.json": "baa52015d0181978d17d60f9e5d3526e20a2f608732db352277f18f0afe23105",
+  "orchestrator/stages.json": "753df48603b6f2ac3df2616786af6c4673432e9fe603d0e55fd91d04c442ca85",
   "orchestrator/prompts/S0.md": "261839c130a0a9dbfff3979bcb9751fae28469c98dcf7767d1975179506c1c73",
   "orchestrator/prompts/S1.md": "2ac69e2662b460d306979d3d14a7f67d3abbf99185bad2022cca5ea397ab9ab5",
   "orchestrator/prompts/S2.md": "0476546970f67fe28a917d5c1c301a397fa852d590ff9a360dc95eadb4bfc041",
   "orchestrator/prompts/S3.md": "bc697bb1f0ada3fa6d046871de862eeea4d54f07648173669c06fa8393a29aea",
-  "orchestrator/prompts/S4.md": "cb09b30f27b90f566f8564b70a08dbcad093489c6e5dd820cff2c033488bb64c",
+  "orchestrator/prompts/S4.md": "1fbf14a4c9b3a06aed23daacb4578277ecfc86410e20e0fab3db0b1f7468a234",
   "orchestrator/prompts/S5.md": "e0cd91eb59f25349c92890377d466ddcec7c122f4e0f7018d29823dc6974ac23",
   "orchestrator/prompts/S6.md": "7f424a99237d10ace55e228f85c17b34809029c4c1e5ceedc26aff245d55ddb8",
   "orchestrator/prompts/_common.md": "b8588bc5d2a1a0eae2fe8fd8026d6a0a97c227909ea9570eaaa28c7479de5d9b",
