@@ -270,7 +270,9 @@ class Runner:
         else:
             self.run = os.path.join(cfg["runs_root"], ed.isoformat())
             self.day = day_folder(cfg["day_root"], ed)
-        for d in ("logs", "stages"):
+        # news/results/practice too: a stage may not be allowed to make folders (S1 lost 3 minutes
+        # to that in the 24 Nov replay pilot, 25 Nov 2026)
+        for d in ("logs", "stages", "news", "results", "practice"):
             os.makedirs(os.path.join(self.run, d), exist_ok=True)
         mode = "practice" if replay else read_mode(cfg["mode_file"])
         self.st = _read(os.path.join(self.run, "run_state.json")) or \

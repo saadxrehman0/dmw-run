@@ -18,6 +18,8 @@ candidates.json (written by the S1 news sweep, items in proposed rank order):
    "corporate": [{"id": "C1", "headline", "tier", "why", "en", "ar", "source", "url"}],
    "left_out":  [{"id": "X1", "headline", "source", "reason"}]}
 Include items start as In, Maybe as Out: that is the pick the run goes with at 9:25.
+Maybe items may leave "ar" empty (S1 time audit, 25 Nov 2026): read_news_doc.py lists a Maybe item
+picked In without Arabic as PENDING (exit 2), and S3 drafts it.
 """
 import argparse, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -46,7 +48,8 @@ def validate(c):
             if iid in ids:
                 errs.append(f"duplicate id {iid}")
             ids.add(iid)
-            need = ("headline",) if sec == "left_out" else ("headline", "en", "ar")
+            need = ("headline",) if sec == "left_out" else \
+                ("headline", "en") + (("ar",) if it.get("tier", "Include") == "Include" else ())
             errs += [f"{iid}: {k} missing" for k in need if not it.get(k)]
     for i, it in enumerate(c.get("economic", [])[:2]):
         if not (it.get("short_en") and it.get("short_ar")):

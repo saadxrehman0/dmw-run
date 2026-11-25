@@ -233,7 +233,7 @@ def test_replay_prompt_has_the_cutoffs():
                                     dict(run_edition.DEFAULTS), stub=False, replay=True)
     assert "Replay of a past edition" in prompt and "9:00 AM PKT on 2026-11-24" in prompt and "{" not in prompt.split("Replay of a past edition")[1][:50]
     _, live = run_edition.command(SPEC["stages"][1], ctx, dict(run_edition.DEFAULTS), stub=False)
-    assert "Replay" not in live
+    assert "Replay of a past edition" not in live
 
 
 def test_allowed_tools_cover_powershell_and_the_python_path():

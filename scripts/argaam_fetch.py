@@ -134,7 +134,8 @@ class Argaam:
                 seen.add((r["h"], r["pub_pkt"]))
                 keep.append(r)
         return {"window_pkt": [f"{start_pkt:%Y-%m-%d %H:%M}", f"{end_pkt:%Y-%m-%d %H:%M}"],
-                "ids": [a, b], "checked": b - a, "count": len(keep),
+                "ids": [a, b], "checked": b - a,
+                "maxId": max([int(r["id"]) for r in keep], default=a), "count": len(keep),
                 "items": sorted(keep, key=lambda r: r["pub_pkt"])}
 
 
