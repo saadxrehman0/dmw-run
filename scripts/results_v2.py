@@ -10,7 +10,7 @@ Rows, sorting and figures come from place_results.py (v1 logic, unchanged): DMW 
 recomputed change, YoY % and variance, ANB-covered first, other periods last and starred.
 Company names follow the v2 rule: Mapping long name if it fits its cell on one line, else short.
 """
-import copy, re
+import copy, os, re
 from lxml import etree
 
 import build_dmw as B
@@ -27,6 +27,7 @@ NCOL = 9
 WIDTHS = (2.17, 0.60, 0.95, 0.72, 0.72, 0.64, 0.58, 0.72, 0.60)
 HEAD_RULE = "groups"           # thin line between the two header rows: "full", "groups" (under the
                              # spanned group headers only) or "" (none)
+HEAD_RULE_STYLE = os.environ.get("DMW_HEAD_RULE_STYLE", "row")   # "row" (the data-row line), "white", "navy"
 DIVIDER_AFTER = 6            # logical column: the dashed line sits between Change YoY % and Consensus
 NAME_FONT = {"en": "segoeui.ttf", "ar": "anbApercu-Regular.otf"}   # the data cells' fonts
 ROW_IN = 0.15
@@ -238,10 +239,21 @@ def make_frame(flow, lang, rows, quarter, with_title, with_source, notes, names_
                 old.addprevious(new); tcpr.remove(old)
     out.append(_row(pr.head, h2, lang, numk, pr, "head"))
     if HEAD_RULE:
-        # thin rule between the header rows (Saad, 25 Nov 2026): 0.5 pt, background 1 at 75%
+        # thin rule between the header rows, under the group headers (Saad, 25 Nov 2026)
+        # the same line as between the data rows (Saad, 25 Nov 2026): the data row's own lnB
+        row_line = pr.data.find(f".//{{{A}}}tcPr/{{{A}}}lnB")
+        navy = pr.title.find(f".//{{{A}}}tcPr/{{{A}}}solidFill/{{{A}}}srgbClr")
+        navy = navy.get("val") if navy is not None else "002060"
         def thin(tag):
-            ln = _dash_line(tag); ln.set("w", "6350")
-            ln.find(f"{{{A}}}prstDash").set("val", "solid")
+            ln = copy.deepcopy(row_line); ln.tag = f"{{{A}}}{tag}"
+            if HEAD_RULE_STYLE in ("white", "navy"):
+                c = ln.find(f".//{{{A}}}srgbClr")
+                if c is None:
+                    sf = ln.find(f"{{{A}}}solidFill")
+                    for x in list(sf): sf.remove(x)
+                    c = etree.SubElement(sf, f"{{{A}}}srgbClr")
+                c.set("val", "FFFFFF" if HEAD_RULE_STYLE == "white" else navy)
+                ln.set("w", "12700" if HEAD_RULE_STYLE == "white" else "6350")
             return ln
         top, bot = out[-2].findall(f"{{{A}}}tc"), out[-1].findall(f"{{{A}}}tc")
         cover, k = [], 0
