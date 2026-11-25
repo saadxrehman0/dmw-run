@@ -38,8 +38,8 @@ def read_deck_v2(prs):
         for sh in sorted([x for x in s.shapes if x.has_table], key=lambda x: x.top):
             rows = [[c.text for c in r.cells] for r in sh.table.rows]
             if sh.name in ('s1.news', 's2.flow'):
-                # on results days s2.flow starts with the Corporate news cell: its header row
-                # moved to the top of s2.results
+                # results days: Results has its own band (s1.news row 8, s2.results row 0);
+                # s2.flow keeps its Corporate band
                 sec = 'Major Corporate News' if sh.name == 's2.flow' else None
                 for ri, r in enumerate(sh.table.rows):
                     t = clean(r.cells[0].text)

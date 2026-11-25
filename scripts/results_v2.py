@@ -1,8 +1,10 @@
 """Results Announcements table in the Template v2 style (Saad, 25 Nov 2026).
 
-On results days the table goes under "Major Corporate News" on slide 1, in place of that day's
-Corporate bullet, and the rows that do not fit continue at the top of slide 2, under the same
-header, before the Corporate news; the calendars move down. fill_commentary.py --results drives it.
+On results days the table is its own section (Saad, 25 Nov 2026, evening): on slide 1 the
+"Major Corporate News" band becomes a "Results Announcements" band with the table under it (that
+day's Corporate news all goes to slide 2), and the rows that do not fit continue at the top of
+slide 2 under a "Results Announcements (cont.)" band, before the Corporate news band; the calendars
+move down. Same navy band as the Event and Economic Calendars. fill_commentary.py --results drives it.
 
 The v2 master has no Results frame, so the table is made from the master's own Economic Calendar
 rows (title, header, data and source rows of s2.flow): same fonts, sizes, fills and borders.
@@ -35,7 +37,10 @@ TITLE = {"en": "Results Announcements", "ar": "إعلانات النتائج"}
 # Saad, 25 Nov 2026: a second navy bar right under "Major Corporate News" reads as a new section.
 # The Results title is a light sub-header instead: the column-header style (light fill, bold,
 # dark text) at 8 pt, so the table sits inside the Corporate section.
-TITLE_STYLE = "rule"         # "sub" (light sub-header) or "bar" (navy section bar)
+# Saad, 25 Nov 2026 (evening): Results gets its own navy section band, like the calendars, so
+# the in-table title is off ("band"). The older styles stay for mock-ups.
+TITLE_STYLE = "band"         # "band" (own section band, no in-table title), "rule", "sub" or "bar"
+CONT = {"en": " (cont.)", "ar": " (تابع)"}
 TITLE_PT = 8.0
 SOURCE = {"en": "Source: Tadawul, Bloomberg", "ar": "المصدر: تداول، بلومبرغ"}
 AR_Q = {"1": "الأول", "2": "الثاني", "3": "الثالث", "4": "الرابع"}
@@ -165,6 +170,16 @@ def _row(proto_tr, cells, lang, kinds, protos, key, h_in=ROW_IN):
     return tr
 
 
+def set_row_text(tr, text):
+    """Put text in the first run of a full-width row (a section band); other runs emptied."""
+    ts = list(tr.iter(f"{{{A}}}t"))
+    if ts:
+        ts[0].text = text
+        for t in ts[1:]:
+            t.text = ""
+    return tr
+
+
 def band_row(proto_tr, lang, h_emu):
     """A full-width row (section header, gap) rebuilt for 9 columns from a s2.flow row."""
     class P: cell = {("x", "text"): proto_tr.findall(f"{{{A}}}tc")[0]}
@@ -192,6 +207,7 @@ def make_frame(flow, lang, rows, quarter, with_title, with_source, notes, names_
         etree.SubElement(grid, f"{{{A}}}gridCol").set("w", str(int(round(w * E))))
     numk = {c: "num" for c in range(3, NCOL)}
     out = list(lead)
+    with_title = with_title and TITLE_STYLE != "band"
     if with_title:
         if TITLE_STYLE == "bar":
             out.append(_row(pr.title, [(0, NCOL, TITLE[lang])], lang, {}, pr, "title", 0.20))
@@ -332,4 +348,5 @@ def _dividers(rows, lang, skip_first, skip_last):
 
 
 def height_in(n_rows, with_title, with_source, n_notes):
+    with_title = with_title and TITLE_STYLE != "band"
     return (0.20 if with_title else 0) + ROW_IN * (2 + n_rows) + (ROW_IN * (1 + n_notes) if with_source else 0)

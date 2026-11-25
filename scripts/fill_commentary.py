@@ -14,8 +14,8 @@ NEWS.json (written by the run from the edition's Claude Doc; see read_news_doc.p
 
 v2 rules (Template v2, approved 25 Nov 2026):
   - s1.news: Markets (Global then TASI), Economic items, and ONE Corporate bullet (the top-ranked
-    item). On a results day (--results-day) the slide 1 Corporate cell is left empty for the
-    Results table (place_results.py) and every Corporate item goes to slide 2.
+    item). On a results day (--results-day) the slide 1 Corporate band becomes the "Results
+    Announcements" band over the Results table and every Corporate item goes to slide 2.
   - s2.flow: at most 7 Corporate items at the top; the calendars follow in the same table, so they
     move down with the news. Items past 7 are left out of both decks and reported.
   - Nothing may end below 10.60 in on either slide (PAGE_BOTTOM).
@@ -165,10 +165,28 @@ class Results:
         return self.RV.height_in(k, True, last, len(self.notes[lang]) if last else 0)
 
 
-def lead_rows(prs):
-    t = shape(prs.slides[1], "s2.flow").table
-    trs = t._tbl.findall(f"{{{N.A}}}tr")
-    return trs[0:2], trs[3:4]          # Corporate header + gap; the gap row under the news
+_S2 = {}
+
+
+def s2_protos(prs):
+    """Copies of s2.flow rows 0-3 (Corporate band, gap, text, gap) as built, taken before apply()
+    can remove them on a day with no slide 2 Corporate news."""
+    import copy
+    if id(prs) not in _S2:
+        trs = shape(prs.slides[1], "s2.flow").table._tbl.findall(f"{{{N.A}}}tr")
+        _S2[id(prs)] = [copy.deepcopy(tr) for tr in trs[0:4]]
+    return _S2[id(prs)]
+
+
+def lead_rows(prs, lang=None, res=None, cont=True):
+    """Copies of the s2.flow band + gap rows (the Results band on slide 2) and the gap under the news.
+    The s2.flow Corporate band stays where it is: Results is its own section (25 Nov 2026)."""
+    import copy
+    trs = s2_protos(prs)
+    lead = [copy.deepcopy(tr) for tr in trs[0:2]]
+    if res is not None:
+        res.RV.set_row_text(lead[0], res.RV.TITLE[lang] + (res.RV.CONT[lang] if cont else ""))
+    return lead, trs[3:4]
 
 
 def with_results(prs, lang, L, res, n1, has_news):
@@ -180,7 +198,7 @@ def with_results(prs, lang, L, res, n1, has_news):
         lead, tail = lead_rows(prs)
         lead_h = sum(int(tr.get("h")) for tr in lead) / E
         tail_h = sum(int(tr.get("h")) for tr in tail) / E
-        b2 = L["b2"] - (lead_h if has_news else 0) + lead_h + res.h(n - n1, True, lang) + tail_h
+        b2 = L["b2"] + lead_h + res.h(n - n1, True, lang) + tail_h
     return b1, b2
 
 
@@ -190,30 +208,25 @@ def place_results(prs, lang, res, n1):
     n = len(res.rows)
     RV = res.RV
     s1, s2 = shape(prs.slides[0], "s1.news"), shape(prs.slides[1], "s2.flow")
-    # slide 1: the empty Corporate cell row goes; the table sits under the header and gap rows
+    # slide 1: the empty Corporate cell row goes; the table sits under the header and gap rows,
+    # and the header band reads "Results Announcements" (its own section, 25 Nov 2026)
     tbl = s1.table._tbl
-    tbl.remove(tbl.findall(f"{{{N.A}}}tr")[NEWS_ROWS["co"]])
+    trs1 = tbl.findall(f"{{{N.A}}}tr")
+    tbl.remove(trs1[NEWS_ROWS["co"]])
+    if n1:
+        RV.set_row_text(trs1[NEWS_ROWS["co"] - 2], RV.TITLE[lang])
     s1.height = sum(r.height for r in s1.table.rows)
     if n1:
         fr, h = RV.make_frame(s2, lang, res.rows[:n1], res.quarter, True, n1 == n,
                               res.notes[lang] if n1 == n else [], res.name_for[lang])
         _place(fr, s1, s1.left, s1.top + s1.height, "s1.results", 9001)
     if n1 < n:
-        lead, tail = lead_rows(prs)
-        has_news = "Corporate" in s2.table.cell(0, 0).text or "الشركات" in s2.table.cell(0, 0).text
+        lead, tail = lead_rows(prs, lang, res, cont=n1 > 0)
         fr, h = RV.make_frame(s2, lang, res.rows[n1:], res.quarter, True, True, res.notes[lang], res.name_for[lang],
                               lead=lead, tail=tail)
         top = s2.top
         _place(fr, s2, s2.left, top, "s2.results", 9002)
-        ftbl = s2.table._tbl
-        trs = ftbl.findall(f"{{{N.A}}}tr")
-        if has_news:
-            for tr in trs[0:2]:
-                ftbl.remove(tr)
         s2.top = top + h
-        s2.height = sum(r.height for r in s2.table.rows)
-        if not has_news:   # the gap before the Event Calendar is the tail row's job; keep the flow as is
-            pass
 
 
 def _place(fr, anchor, left, top, name, sid):
@@ -330,6 +343,7 @@ def main():
 
     os.makedirs(a.outdir, exist_ok=True)
     for lang in ("en", "ar"):
+        s2_protos(decks[lang])
         apply(decks[lang], lang, C[lang], L[lang])
         if res:
             place_results(decks[lang], lang, res, n1)
