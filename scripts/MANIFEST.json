@@ -1,10 +1,10 @@
 {
- "written": "2026-11-25 20:39 UTC",
+ "written": "2026-11-25 20:41 UTC",
  "files": {
   "scripts/argaam_fetch.py": "1e382115989f8260b23fae24554c963ce8ef3fba4608a6344defa5682d9a187c",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
   "scripts/build_dmu.py": "9182c233982d60badc71f68497bb43c03798cfb8a141f496b4be58b24b9e6ebd",
-  "scripts/build_dmw.py": "59c939baaa477ff0bf88c1bd89a6b2aa8c2fa4131a64340a9de81253ffee72d4",
+  "scripts/build_dmw.py": "4d0f993ef6adb4f2a2be9d9ee7c6b9c7df590b3a53e2e796631622705ef90eda",
   "scripts/build_dmw_ar.py": "7e61cc66e37eb94f90f34557d7e39cf076cb52a220d56fe8301743b65b08a013",
   "scripts/build_email_mb.py": "d87d917835726e17cff0c2e1d7049c47bdbb26c5ef5a581f19456a50c48bd48e",
   "scripts/check_ar_text.py": "1a50fc0b138319c0c8dc2dfdad99d76d7aa410ee77c73979e969a2941b71acfc",

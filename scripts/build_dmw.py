@@ -38,7 +38,10 @@ REPO = HERE.parent
 TEMPLATES = {"en": REPO / "templates" / "DMW Template v2 - EN.pptx",
              "ar": REPO / "templates" / "DMW Template v2 - AR.pptx"}
 FONT_DIRS = [REPO / "fonts", HERE / "fonts", Path.home() / ".fonts",
-             Path("C:/Windows/Fonts"), Path.home() / "AppData/Local/Microsoft/Windows/Fonts"]
+             Path("C:/Windows/Fonts"), Path.home() / "AppData/Local/Microsoft/Windows/Fonts",
+             # Mac: user, system and Office's own fonts (4 Nov replay on the Mac, 26 Nov 2026)
+             Path.home() / "Library/Fonts", Path("/Library/Fonts"), Path("/System/Library/Fonts"),
+             Path("/Applications/Microsoft PowerPoint.app/Contents/Resources/DFonts")]
 INDEX_MAX_CHARS = 6        # "446.2%" fits an Index Performance cell; 7 characters do not (v2 rule)
 NAME_SAFETY_IN = 0.01      # slack kept inside a cell before a name counts as wrapping
 
