@@ -144,6 +144,22 @@ class Argaam:
                 hi = mid
         return lo
 
+    def _widen(self, a, b, start_ast, end_ast, top, step=50, limit=12):
+        def inside(ids):
+            for r in self.articles(ids, max_body=0):
+                if r.get("pub_ast") and start_ast <= datetime.strptime(r["pub_ast"], "%Y-%m-%d %H:%M") < end_ast:
+                    return True
+            return False
+        for _ in range(limit):
+            if b >= top + 1 or not inside(range(b, min(b + step, top + 1))):
+                break
+            b += step
+        for _ in range(limit):
+            if a <= step or not inside(range(a - step, a)):
+                break
+            a -= step
+        return a, min(b + step, top + 1)
+
     def range(self, start_pkt, end_pkt, max_body=1500):
         start_ast, end_ast = start_pkt - PKT_MINUS_AST, end_pkt - PKT_MINUS_AST
         top = self.latest_id() or 0
@@ -151,6 +167,10 @@ class Argaam:
             raise RuntimeError("no article IDs in the Argaam feed")
         a = self.first_id_at_or_after(start_ast, top)
         b = self.first_id_at_or_after(end_ast, top) + 30
+        # Publish times are not strictly monotonic in ID, so the binary search can stop short
+        # (Mac test 25 Nov 2026: the 24 Nov window ended at 18:31 and lost 8 evening items).
+        # Widen each edge in steps of 50 IDs until a step holds nothing inside the window.
+        a, b = self._widen(a, b, start_ast, end_ast, top)
         rows = [r for r in self.articles(range(a, b), max_body) if r.get("pub_ast")]
         keep, seen = [], set()
         for r in rows:   # the same story can sit under two IDs (news and disclosures)
