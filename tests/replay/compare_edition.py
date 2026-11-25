@@ -66,7 +66,9 @@ def deck_news(path):
 
 
 def run_news(run):
-    p = newest([os.path.join(run, "news", "NEWS.json"), os.path.join(run, "practice", "**", "NEWS.json")])
+    # NEWS.late.json is NEWS.json plus S4's late items, and is what S5 put in the decks
+    p = newest([os.path.join(run, "news", "NEWS.late.json")]) or \
+        newest([os.path.join(run, "news", "NEWS.json"), os.path.join(run, "practice", "**", "NEWS.json")])
     if not p:
         return None, None
     j = json.load(open(p, encoding="utf-8"))
@@ -101,7 +103,8 @@ def is_results(sh):
     if "result" in sh.name.lower():
         return True
     rows = [[c.text.strip() for c in r.cells] for r in list(sh.table.rows)[:2]]
-    return "result" in " ".join(" ".join(r) for r in rows).lower()
+    head = " ".join(" ".join(r) for r in rows)
+    return "result" in head.lower() or "النتائج" in head   # AR: "إعلانات النتائج"
 
 
 def results_rows(path):
