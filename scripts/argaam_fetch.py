@@ -76,13 +76,27 @@ class Argaam:
         self.pg = self.b.new_page()
         self.pg.goto("https://www.argaam.com/en", timeout=90000, wait_until="domcontentloaded")
         self.pg.wait_for_timeout(4000)
+        # The home page reloads itself every few minutes, which kills a long in-page fetch
+        # ("Execution context was destroyed", Mac test 25 Nov 2026). Park the tab on the RSS feed
+        # (same origin, no scripts) before running fetches there.
+        self.pg.goto("https://www.argaam.com/en/rss/ho-main-news?sectionid=1524", timeout=90000,
+                     wait_until="domcontentloaded")
+
+    def _eval(self, js, arg=None):
+        for attempt in range(3):
+            try:
+                return self.pg.evaluate(js, arg)
+            except Exception as e:  # noqa: BLE001
+                if "context was destroyed" not in str(e) or attempt == 2:
+                    raise
+                self.pg.wait_for_load_state("domcontentloaded")
 
     def close(self):
         self.b.close()
         self._p.stop()
 
     def articles(self, ids, max_body=1500):
-        rows = self.pg.evaluate(PAGE_JS, {"ids": [int(i) for i in ids], "maxBody": max_body})
+        rows = self._eval(PAGE_JS, {"ids": [int(i) for i in ids], "maxBody": max_body})
         for r in rows:
             t = parse_pub(r.get("pub"))
             if t:
@@ -91,13 +105,13 @@ class Argaam:
         return rows
 
     def latest_id(self):
-        return self.pg.evaluate(FEED_RSS_JS)
+        return self._eval(FEED_RSS_JS)
 
     def feed(self, since_id=0, text=()):
         js = open(os.path.join(REPO, "browser", "argaam_news.js"), encoding="utf-8").read()
         js = js[: js.rfind("await argaamNews(CFG)")]   # define window.argaamNews only
-        self.pg.evaluate("async () => {" + js + "}")
-        return self.pg.evaluate("cfg => window.argaamNews(cfg)", {"sinceId": since_id, "text": list(text)})
+        self._eval("async () => {" + js + "}")
+        return self._eval("cfg => window.argaamNews(cfg)", {"sinceId": since_id, "text": list(text)})
 
     # ---- ID walk for a time window
     def _time_at(self, i, step=1, tries=12):
