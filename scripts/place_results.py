@@ -96,7 +96,11 @@ def _with_formulas(path, wb, it):
     if "TASI CODE" in wb.sheetnames:
         for c in wb["TASI CODE"].iter_rows(min_row=1, values_only=True):
             if len(c) > 8 and c[2]:
-                code.setdefault(str(c[2]).strip().upper(), (c[3], c[8]))
+                # I is typed text, or =SUBSTITUTE(H, " Equity", "") on new rows (I255-I256 in Nov
+                # 2026), which reads as None once openpyxl saved the file: FLYNAS was dropped
+                # silently on the 5 Nov replay (26 Nov 2026)
+                bbg = c[8] if c[8] is not None else (str(c[7]).replace(" Equity", "") if c[7] else None)
+                code.setdefault(str(c[2]).strip().upper(), (c[3], bbg))
     for r in rows:
         r += [None] * (10 - len(r))
         if r[1] and r[2] is None:

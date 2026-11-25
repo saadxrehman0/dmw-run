@@ -157,21 +157,38 @@ class Argaam:
         """Binary search on article IDs for the first one published at or after when_ast."""
         # widen until lo is before the window, doubling the step: a fixed 800-ID step took ~15 min
         # to reach a 3-week-old window on the replays (5 Nov replay, 26 Nov 2026)
+        # A probe that reads nothing (t None) says nothing about the window: never take it as
+        # "before the window". On the 5 Nov replay one unreadable probe put the window three
+        # weeks early and the fetch returned 0 items twice (26 Nov 2026).
         step, lo = 400, hi - 400
-        while True:
-            t, _ = self._time_at(lo)
-            if t is None or t < when_ast or lo < 1000:
+        while lo >= 1000:
+            t = self._time_near(lo)
+            if t is not None and t < when_ast:
                 break
-            hi, step = lo, step * 2
+            if t is not None:
+                hi = lo
+            step *= 2
             lo = max(lo - step, 999)
         while hi - lo > 15:
             mid = (lo + hi) // 2
-            t, _ = self._time_at(mid)
-            if t is None or t < when_ast:
+            t = self._time_near(mid, floor=lo)
+            if t is None:
+                raise RuntimeError(f"Argaam: no readable article near ID {mid}; window not found")
+            if t < when_ast:
                 lo = mid
             else:
                 hi = mid
         return lo
+
+    def _time_near(self, i, floor=0):
+        """_time_at(i), or failing that the time a little below i (still above floor)."""
+        for j in (i, i - 150, i - 300):
+            if j <= floor:
+                break
+            t, _ = self._time_at(j)
+            if t is not None:
+                return t
+        return None
 
     def _widen(self, a, b, start_ast, end_ast, top, step=50, limit=12):
         def inside(ids):
