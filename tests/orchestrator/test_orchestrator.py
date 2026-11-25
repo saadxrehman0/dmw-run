@@ -109,7 +109,7 @@ def test_full_run_with_the_runs_own_pick(tmp_path):
     gate = json.load(open(os.path.join(r.run, "gates", "pick.json"), encoding="utf-8"))
     assert at("09:00") <= datetime.fromisoformat(gate["opened"]) < at("09:08")  # stage on the run's clock
     assert datetime.fromisoformat(st["S3"]["started"]) >= at("09:25")
-    assert st["S4"]["round"] >= 5          # rounds every 10 min from 9:00 until 10:10
+    assert st["S4"]["round"] == 2          # rounds at 9:00, 9:30 and 10:05 (Saad, 25 Nov 2026)
     assert datetime.fromisoformat(st["S5"]["started"]) >= at("10:10")
     assert datetime.fromisoformat(st["S6"]["started"]) >= at("10:20")
     names = outbox(r)

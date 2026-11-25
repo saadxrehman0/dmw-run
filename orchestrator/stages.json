@@ -1,5 +1,5 @@
 {
- "_doc": "Stages of one edition run (plan doc, 'The pipeline, stage by stage', signed off 25 Nov 2026). Times are PKT. needs: stage -> 'done' (must succeed) or 'finished' (done, failed or blocked). gate: a gate id that must be answered (by Saad or by the run's default). ready: a command that exits 0 once the stage's input is in; late: an alert if not ready by then. repeat: run in rounds every N minutes until 'until'. cutoff: alert if the stage is not done by then. tools: what the headless session may use (permission mode dontAsk).",
+ "_doc": "Stages of one edition run (plan doc, 'The pipeline, stage by stage', signed off 25 Nov 2026). Times are PKT. needs: stage -> 'done' (must succeed) or 'finished' (done, failed or blocked). gate: a gate id that must be answered (by Saad or by the run's default). ready: a command that exits 0 once the stage's input is in; late: an alert if not ready by then. repeat: run in rounds at the times in 'at' (or every N minutes until 'until'). cutoff: alert if the stage is not done by then. tools: what the headless session may use (permission mode dontAsk).",
  "hard_stop": "12:30",
  "heartbeat_minutes": 5,
  "max_attempts": 2,
@@ -21,7 +21,7 @@
    "tools": ["Read", "Write", "Glob", "Grep", "Bash(python *)", "Bash(python3 *)", "Bash(py *)",
              "mcp__claude_ai_Claude_Docs"]},
   {"id": "S4", "name": "Results and late news", "start": "09:00", "needs": {"S0": "finished"},
-   "repeat": {"every_min": 10, "until": "10:10"}, "timeout_min": 9,
+   "repeat": {"at": ["09:00", "09:30", "10:05"]}, "timeout_min": 9,
    "tools": ["Read", "Write", "Glob", "Grep", "Bash(python *)", "Bash(python3 *)", "Bash(py *)",
              "WebFetch"]},
   {"id": "S5", "name": "Finals (checks, PDFs, EMAIL MB, reviewer)", "start": "10:10",

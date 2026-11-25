@@ -498,6 +498,13 @@ class Runner:
         if not rep:
             s["status"] = "done"
             return
+        if rep.get("at"):   # fixed round times (Saad, 25 Nov 2026: 3 rounds, not 7)
+            later = [self.clock.at(t, self.ed) for t in rep["at"] if self.clock.at(t, self.ed) > now]
+            if later:
+                s.update(status="next_round", round=s["round"] + 1, next_at=gates.now_iso(min(later)))
+            else:
+                s["status"] = "done"
+            return
         nxt = now + timedelta(minutes=rep["every_min"])
         if nxt < self.clock.at(rep["until"], self.ed):
             s.update(status="next_round", round=s["round"] + 1, next_at=gates.now_iso(nxt))
