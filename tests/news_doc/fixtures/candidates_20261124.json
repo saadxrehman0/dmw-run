@@ -1,0 +1,177 @@
+{
+ "edition": "2026-11-24",
+ "markets": {
+  "global": {
+   "en": "U.S. stocks rose on Monday, as the return of Jensen Huang to Nvidia triggered a rally in tech and AI companies. The Nasdaq rose 6.5%, followed by the S&P 500 and Dow Jones, which increased 4.7% and 3.0%, respectively. Asian stocks increased on Tuesday morning, with Nikkei 225 and MSCI Asia Pacific up 3.8% each, followed by the CSI 300, which increased 0.6%. (Reuters)",
+   "ar": "ارتفعت الأسهم الأمريكية خلال تعاملات الإثنين، بعدما أدت عودة جنسن هوانغ إلى شركة إنفيديا إلى موجة صعود في أسهم شركات التكنولوجيا والذكاء الاصطناعي. وصعد مؤشر ناسداك بنسبة 6.5%، تلاه مؤشرا S&P 500 وداو جونز بارتفاع نسبته 4.7% و3.0% على التوالي. كما ارتفعت الأسهم الآسيوية صباح الثلاثاء، حيث صعد مؤشرا نيكي 225 وMSCI آسيا والمحيط الهادئ بنسبة 3.8% لكل منهما، تلاهما مؤشر CSI 300 بارتفاع نسبته 0.6%. (رويترز)"
+  },
+  "tasi": {
+   "en": "TASI fell 0.2% (-23.2 points) to close at 9,937.26. Trading value increased 45.1% compared with the previous session. The Consumer Discretionary Distribution & Retail sector was the top laggard, declining 4.6%. Among the top laggards, Saudi Printing and Packaging Co. (SPPC AB) fell 8.4%, followed by Saudi Darb Investment Co. (ABDICO AB) and Jarir Marketing Co. (JARIR AB), which declined 8.3% and 8.0%, respectively. (Tadawul)",
+   "ar": "تراجع مؤشر السوق الرئيسية (تاسي) بنسبة 0.2% (-23.2 نقطة) ليغلق عند 9,937.26 نقطة. وارتفعت قيمة التداول بنسبة 45.1% مقارنة بالجلسة السابقة. وكان قطاع توزيع وتجزئة السلع الاستهلاكية الكمالية الأكثر تراجعًا، منخفضًا بنسبة 4.6%. ومن بين الأسهم الأكثر تراجعًا، انخفض سهم الشركة السعودية للطباعة والتغليف (SPPC AB) بنسبة 8.4%، يليه سهما شركة درب الاستثمار السعودية (ABDICO AB) وشركة جرير للتسويق (JARIR AB)، اللذان تراجعا بنسبة 8.3% و8.0% على التوالي. (تداول)"
+  }
+ },
+ "economic": [
+  {
+   "id": "E1",
+   "headline": "GASTAT construction cost index, Oct: +2.3% YoY",
+   "tier": "Include",
+   "why": "Official data (GASTAT), leads",
+   "en": "Saudi Arabia’s construction cost index (CCI) rose 2.3% YoY to 104.1 points in October 2026, compared with 101.7 points a year earlier, according to GASTAT. The index, based on 2023 as the base year, measures changes in the costs of construction materials and services over time. Residential construction costs rose 2.2% YoY in October, while non-residential costs increased 2.7%. (Argaam)",
+   "ar": "ارتفع مؤشر تكاليف البناء في المملكة العربية السعودية بنسبة 2.3% على أساس سنوي إلى 104.1 نقطة في أكتوبر 2026، مقارنة بـ 101.7 نقطة قبل عام، وفقاً للهيئة العامة للإحصاء. ويقيس المؤشر، الذي يعتمد عام 2023 سنة أساس، التغيرات في تكاليف مواد وخدمات البناء بمرور الوقت. وارتفعت تكاليف البناء السكني بنسبة 2.2% على أساس سنوي في أكتوبر، بينما زادت تكاليف البناء غير السكني بنسبة 2.7%. (أرقام)",
+   "source": "Argaam",
+   "url": "",
+   "short_en": "Saudi Arabia’s construction cost index (CCI) rose 2.3% YoY to 104.1 points in October 2026, according to GASTAT. Residential costs rose 2.2% YoY and non-residential costs 2.7%. (Argaam)",
+   "short_ar": "ارتفع مؤشر تكاليف البناء في المملكة العربية السعودية بنسبة 2.3% على أساس سنوي إلى 104.1 نقطة في أكتوبر 2026، وفقاً للهيئة العامة للإحصاء. وارتفعت تكاليف البناء السكني بنسبة 2.2% وغير السكني بنسبة 2.7%. (أرقام)"
+  },
+  {
+   "id": "E2",
+   "headline": "Certificates of origin, Oct: 55,965",
+   "tier": "Include",
+   "why": "Ministry sector statistic",
+   "en": "Saudi Arabia’s Ministry of Industry and Mineral Resources issued 55,965 certificates of origin in October to facilitate export procedures across domestic sectors. While edging down from September’s yearly high of roughly 58,000, October's tally remained well above the 2026 monthly average of around 49,300, having rebounded from a May low of 43,077, bringing cumulative issuance for the first 10 months of the year to approximately 492,650. (Arab News)",
+   "ar": "أصدرت وزارة الصناعة والثروة المعدنية في المملكة العربية السعودية 55,965 شهادة منشأ خلال شهر أكتوبر 2026، وذلك لتيسير إجراءات التصدير ودعم القطاعات المحلية. وعلى الرغم من تراجعها الطفيف عن أعلى مستوى سنوي سُجّل في شهر سبتمبر والبالغ نحو 58,000 شهادة، ظل إجمالي شهادات أكتوبر أعلى بكثير من المتوسط الشهري لعام 2026 البالغ نحو 49,300 شهادة، بعد أن تعافى من أدنى مستوى له في شهر مايو عند 43,077 شهادة؛ ليرتفع بذلك إجمالي الشهادات التراكمية الصادرة خلال الأشهر العشرة الأولى من العام إلى نحو 492,650 شهادة. (عرب نيوز)",
+   "source": "Arab News",
+   "url": "",
+   "short_en": "Saudi Arabia’s Ministry of Industry and Mineral Resources issued 55,965 certificates of origin in October, down from September’s yearly high of about 58,000 but above the 2026 monthly average of about 49,300. (Arab News)",
+   "short_ar": "أصدرت وزارة الصناعة والثروة المعدنية في المملكة العربية السعودية 55,965 شهادة منشأ خلال شهر أكتوبر 2026، بتراجع طفيف عن أعلى مستوى سنوي سُجّل في سبتمبر عند نحو 58,000 شهادة، لكنها ظلت أعلى من المتوسط الشهري لعام 2026 البالغ نحو 49,300 شهادة. (عرب نيوز)"
+  }
+ ],
+ "corporate": [
+  {
+   "id": "C1",
+   "headline": "Foreign ownership, week to 19 Nov",
+   "tier": "Include",
+   "why": "Weekly ownership item opens Corporate",
+   "en": "Non-institutional foreign ownership of Saudi-listed stocks, excluding Saudi Arabian Oil Co. (ARAMCO AB), eased to 11.01% of total market capitalization in the week ended Nov. 19, from 11.04% a week earlier, with a market value of about SAR 319.58 bn. Total foreign ownership including strategic partners slipped to 12.63% (SAR 366.69 bn) from 12.65%, while GCC investors' holdings edged up to 2.42% (SAR 70.28 bn) from 2.41%. (Argaam)",
+   "ar": "تراجعت ملكية الأجانب غير المؤسساتية في الأسهم السعودية المدرجة، باستثناء شركة الزيت العربية السعودية (ARAMCO AB)، إلى 11.01% من إجمالي القيمة السوقية خلال الأسبوع المنتهي في 19 نوفمبر، مقارنة بـ 11.04% في الأسبوع السابق، بقيمة سوقية تبلغ نحو 319.58 مليار ريال. كما انخفض إجمالي ملكية الأجانب بما فيها الشركاء الاستراتيجيون إلى 12.63% (366.69 مليار ريال) من 12.65%، في حين ارتفعت ملكية المستثمرين الخليجيين بشكل طفيف إلى 2.42% (70.28 مليار ريال) من 2.41%. (أرقام)",
+   "source": "Argaam",
+   "url": ""
+  },
+  {
+   "id": "C2",
+   "headline": "Naseej: SAR 46.7 mn Oman contract",
+   "tier": "Include",
+   "why": "Contract with value",
+   "en": "Naseej for Technology Co. (NASEEJTE AB) signed a contract with SAH-SML Joint Venture Co LLC for the Sayyid Tarik Bin Taimur Cultural Complex Project in the Sultanate of Oman. The contract is valued at SAR 46.7 mn (including VAT) and has a duration of 22 months. The positive financial impact is expected from the signing date in November 2026. (Tadawul)",
+   "ar": "أعلنت شركة نسيج للتقنية (NASEEJTE AB) عن توقيع عقد مع شركة المشروع المشترك SAH-SML ذ.م.م لصالح مشروع مجمع السيد طارق بن تيمور الثقافي في سلطنة عُمان. وتبلغ قيمة العقد 46.7 مليون ريال سعودي (شاملة ضريبة القيمة المضافة)، وتمتد مدته إلى 22 شهراً، متوقعةً أن ينعكس أثره المالي الإيجابي اعتباراً من تاريخ توقيعه في شهر نوفمبر 2026. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C3",
+   "headline": "Jarir: DMTT about 11% of profit from 2027",
+   "tier": "Include",
+   "why": "Large-cap impact disclosure",
+   "en": "Jarir Marketing Co. (JARIR AB) expects the Domestic Minimum Top-up Tax (DMTT) to have a material impact on the group's net profit from 2027. Based on an illustrative net profit of about SAR 1.2 bn, close to its 12-month profit through Sept-26, the company estimated the additional tax at about SAR 130 mn, or roughly 11% of profit, noting this is not a 2027 earnings forecast. Jarir expects to start recognizing the tax expense in its 1Q27 interim financial statements. (Argaam)",
+   "ar": "تتوقع شركة جرير للتسويق (JARIR AB) أن يكون لضريبة الحد الأدنى المحلية الإضافية تأثير جوهري على صافي أرباح المجموعة اعتباراً من عام 2027. واستناداً إلى صافي ربح افتراضي يبلغ نحو 1.2 مليار ريال سعودي، وهو مستوى قريب من أرباح الشركة خلال الاثني عشر شهراً المنتهية في سبتمبر 2026، قدرت الشركة الأثر الإضافي للضريبة بنحو 130 مليون ريال، ما يعادل حوالي 11% من صافي الأرباح، مع الإشارة إلى أن هذه الأرقام لا تمثل توقعات للأرباح لعام 2027. ومن المتوقع أن تبدأ الشركة في إثبات مصروف الضريبة ضمن قوائمها المالية الأولية للربع الأول من عام 2027. (أرقام)",
+   "source": "Argaam",
+   "url": ""
+  },
+  {
+   "id": "C4",
+   "headline": "NADEC CEO on red meat and feed stocks",
+   "tier": "Include",
+   "why": "Management commentary",
+   "en": "National Agricultural Development Co. (NADEC AB) CEO Solaiman Altwaijri said traditional butchers may face challenges as NADEC and Almarai expand in red meat, with the company targeting 500,000 sheep and goats by 2030. NADEC has raised its feed stocks to cover a full year, from two to four months previously, to reduce supply chain risks. A year's supply costs about SAR 800 mn at the current herd size and could rise to SAR 1.1 bn if its proposed acquisition of NADA's dairy herd is completed. Higher feed, shipping and risk-related costs added about SAR 107.1 mn to NADEC's costs in 9M26, including SAR 56 mn in 3Q26. (Argaam)",
+   "ar": "قال الرئيس التنفيذي للشركة الوطنية للتنمية الزراعية \"نادك\" (NADEC AB)، سليمان التويجري، إن محلات الجزارة التقليدية قد تواجه تحديات مع توسع نادك والمراعي في قطاع اللحوم الحمراء، مشيراً إلى أن الشركة تستهدف الوصول إلى 500 ألف رأس من الأغنام والماعز بحلول عام 2030. ورفعت نادك مخزونها من الأعلاف ليغطي عاماً كاملاً، مقارنة بشهرين إلى أربعة أشهر سابقاً، للحد من مخاطر سلاسل الإمداد. وتبلغ تكلفة إمدادات عام واحد نحو 800 مليون ريال بحجم القطيع الحالي، وقد ترتفع إلى 1.1 مليار ريال في حال إتمام الاستحواذ المقترح على قطيع أبقار الألبان التابع لشركة ندى. وأضافت تكاليف الأعلاف والشحن والمخاطر المرتفعة نحو 107.1 مليون ريال إلى تكاليف نادك خلال الأشهر التسعة الأولى من عام 2026، منها 56 مليون ريال في الربع الثالث. (أرقام)",
+   "source": "Argaam",
+   "url": ""
+  },
+  {
+   "id": "C5",
+   "headline": "SFICO shrimp project timeline",
+   "tier": "Include",
+   "why": "Project update with timing",
+   "en": "Saudi Fisheries Co. (SFICO AB) expects to complete preparations for production at Al-Haridha National Aquaculture Co.'s shrimp farming project in 2Q27, with operations scheduled to begin in 3Q27, as it secures the remaining licenses. The agricultural land lease was transferred from the Ministry of Environment, Water and Agriculture to Al-Haridha for 30 years, at an annual rent of SAR 7,500. The financial impact is expected in 4Q26 upon completion of regulatory procedures. Completing the transaction is among the measures to address accumulated losses of SAR 24.8 mn, or 37.03% of capital, as of Sept. 30, 2026. (Argaam)",
+   "ar": "تتوقع الشركة السعودية للأسماك (SFICO AB) الانتهاء من التجهيزات لبدء الإنتاج في مشروع استزراع الروبيان التابع لشركة الحريضة الوطنية للاستزراع المائي خلال الربع الثاني من عام 2027، على أن يبدأ التشغيل في الربع الثالث من عام 2027، وذلك في ظل استكمالها للتراخيص المتبقية. وقد نُقل عقد إيجار الأرض الزراعية من وزارة البيئة والمياه والزراعة إلى شركة الحريضة لمدة 30 سنة، بإيجار سنوي قدره 7,500 ريال. ومن المتوقع أن يظهر الأثر المالي في الربع الرابع من عام 2026 بعد استكمال الإجراءات النظامية. ويأتي إتمام الصفقة ضمن الإجراءات المتخذة لمعالجة الخسائر المتراكمة البالغة 24.8 مليون ريال، أو ما يمثل 37.03% من رأس المال، كما في 30 سبتمبر 2026. (أرقام)",
+   "source": "Argaam",
+   "url": ""
+  },
+  {
+   "id": "C6",
+   "headline": "Nahdi: tariff impact 0.5% of revenue",
+   "tier": "Include",
+   "why": "Impact disclosure",
+   "en": "Nahdi Medical Co. (NAHDI AB) announced the expected financial impact of the adjustment to electricity and water service tariffs, effective from January 1, 2027. The Company has conducted a preliminary assessment of the expected financial impact of these adjustments on its operations. Based on preliminary estimates, the implementation of the revised tariffs is expected to increase the total annual operating costs of the Company and its subsidiaries by approximately 0.5% of total revenue. Financial impact of these adjustments is expected to be reflected starting from 1Q27. (Tadawul)",
+   "ar": "أعلنت شركة النهدي الطبية (NAHDI AB) عن الأثر المالي المتوقع لتعديل تعريفات خدمات الكهرباء والمياه، والذي يدخل حيز التنفيذ اعتباراً من الأول من يناير 2027. وأوضحت الشركة أنها أجرت تقييماً أولياً للأثر المالي المتوقع لهذه التعديلات على عملياتها التشغيلية، حيث تُشير التقديرات الأولية إلى أن تطبيق التعريفات المعدلة سيؤدي إلى زيادة إجمالي التكاليف التشغيلية السنوية للشركة وشركاتها التابعة بنحو 0.5% من إجمالي الإيرادات، متوقعةً أن يبدأ انعكاس هذا الأثر المالي اعتباراً من الربع الأول من عام 2027. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C7",
+   "headline": "Riyadh Cables: DMTT impact",
+   "tier": "Include",
+   "why": "Impact disclosure, no figure",
+   "en": "Riyadh Cables Group Co. (RIYADHCA AB) announced the impact of the implementation of the domestic minimum tax law in KSA. The actual financial impact will depend on the final form of the law, the financial results of in-scope entities, and the Group’s effective tax rate in Saudi Arabia, taking into account existing Zakat and taxes and any exemptions or adjustments provided for under the law. (Tadawul)",
+   "ar": "أعلنت شركة مجموعة كابلات الرياض (RIYADHCA AB) عن الأثر المالي لتطبيق نظام الضريبة التكميلية المحلية بحد أدنى في المملكة العربية السعودية. وأوضحت المجموعة أن الأثر المالي الفعلي سيعتمد على الصيغة النهائية للنظام، والنتائج المالية للكيانات المشمولة بنطاق التطبيق، ومعدل الضريبة الفعلي للمجموعة في المملكة العربية السعودية، مع الأخذ في الاعتبار الزكاة والضرائب القائمة وأي إعفاءات أو تسويات منصوص عليها بموجب النظام. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C8",
+   "headline": "Zain KSA: DMTT about 2% of profit",
+   "tier": "Include",
+   "why": "Impact disclosure",
+   "en": "Mobile Telecommunication Company Saudi Arabia (ZAINKSA AB) announced the expected financial impact of the introduction of the domestic minimum top-up tax in the Kingdom of Saudi Arabia. Zain KSA expects the tax to have an immaterial impact on the Group’s net profit for 2027, with the additional tax expense estimated at approximately 2% of the expected net profit, resulting in a top-up tax rate of circa 5%. (Tadawul)",
+   "ar": "أعلنت شركة الاتصالات المتنقلة السعودية (ZAINKSA AB) عن الأثر المالي المتوقع لتطبيق نظام الضريبة التكميلية المحلية بحد أدنى في المملكة العربية السعودية، متوقعةً أن يكون للضريبة أثر غير جوهري على صافي ربح المجموعة لعام 2027؛ حيث يُقدّر مصروف الضريبة الإضافي بنحو 2% من صافي الربح المتوقع، مما ينتج عنه نسبة ضريبة تكميلية تقارب 5%. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C9",
+   "headline": "Meyar: non-binding MoU with Najran Cement",
+   "tier": "Maybe",
+   "why": "MoU without a value (rule 20)",
+   "en": "Meyar Co. (MEYAR AB) announced the signing of a non-binding MoU with Najran Cement Co. (NAJRAN AB) for the latter to acquire all the shares of Meyar Al-asasat Ready Mix Concrete Company, which is affiliated with it. The memorandum is valid for a period of six months from the date of signing and may be renewed only by mutual agreement of the parties. (Tadawul)",
+   "ar": "أعلنت شركة معيار (MEYAR AB) عن توقيع مذكرة تفاهم غير ملزمة مع شركة أسمنت نجران (NAJRAN AB)، تقوم بموجبها الأخيرة بالاستحواذ على كامل حصص شركة معيار الأساسات للخرسانة الجاهزة التابعة لها. وتسري المذكرة لمدة ستة أشهر من تاريخ توقيعها، ولا يجوز تجديدها إلا بموافقة الطرفين المتبادلة. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C10",
+   "headline": "Arab Sea: fair value model, +SAR 15 mn",
+   "tier": "Maybe",
+   "why": "Accounting change, small",
+   "en": "Arab Sea Information System Co. (ARABSEA AB) board approved the adoption of a fair value model to measure its properties and investments. The company expects the new accounting policy to have a positive impact on its net assets, with an estimated increase of SAR 15 mn, noting that the actual impact will be determined upon completion of the valuation procedures and preparation of its 2026 annual financial statements. (Argaam)",
+   "ar": "وافق مجلس إدارة شركة بحر العرب لأنظمة المعلومات (ARABSEA AB) على البدء في استخدام نموذج القيمة العادلة لقياس قيمة العقارات والاستثمارات. وتتوقع الشركة أن يكون للسياسة المحاسبية الجديدة أثر مالي إيجابي على صافي أصولها، بزيادة تقديرية تبلغ نحو 15 مليون ريال، مشيرةً إلى أن الأثر المالي الفعلي سيتحدد عند استكمال إجراءات التقييم وإعداد القوائم المالية السنوية لعام 2026. (أرقام)",
+   "source": "Argaam",
+   "url": ""
+  },
+  {
+   "id": "C11",
+   "headline": "SHL: SAR 250 mn facility renewed",
+   "tier": "Include",
+   "why": "Credit facility, bottom filler",
+   "en": "SHL Finance Co. (SHL AB) renewed a five-year Shariah-compliant credit facility worth SAR 250 mn with Bank AlJazira, secured by a promissory note and receivables provided to the bank as collateral. The company stated the facility will be used to expand its sales volume through new loan originations, in line with its strategy. (Argaam)",
+   "ar": "جددت شركة سهل للتمويل (SHL AB) اتفاقية تسهيلات ائتمانية متوافقة مع أحكام الشريعة الإسلامية بقيمة 250 مليون ريال مع بنك الجزيرة لمدة خمس سنوات، بضمان سند لأمر إضافة إلى ذمم مدينة مقدمة للبنك كضمان. وأوضحت الشركة أن التسهيلات ستُستخدم في التوسع وزيادة حجم مبيعاتها من خلال القروض الجديدة الممنوحة لعملائها، بما يتماشى مع استراتيجيتها. (أرقام)",
+   "source": "Argaam",
+   "url": ""
+  }
+ ],
+ "left_out": [
+  {
+   "id": "X1",
+   "headline": "A listed company declares a cash dividend",
+   "source": "Tadawul",
+   "reason": "Dividend declaration (rule 9)"
+  },
+  {
+   "id": "X2",
+   "headline": "A board appoints a new CEO",
+   "source": "Tadawul",
+   "reason": "Appointment (rule 8)"
+  },
+  {
+   "id": "X3",
+   "headline": "A company sets its 3Q26 results date",
+   "source": "Tadawul",
+   "reason": "Results-date notice (rule 13)"
+  },
+  {
+   "id": "X4",
+   "headline": "Weekly negotiated deals screen",
+   "source": "Argaam",
+   "reason": "Market report (rule 2)"
+  }
+ ]
+}
