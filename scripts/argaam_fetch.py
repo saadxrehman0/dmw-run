@@ -35,11 +35,13 @@ async ({ids, maxBody}) => {
   const clean = s => (s || '').replace(/[‎‏]/g, '').replace(/\s+/g, ' ').trim();
   const one = async id => {
     let h;
-    try { h = await (await fetch('/en/article/articledetail/id/' + id, {credentials: 'include'})).text(); }
+    let h, st;
+    try { const r = await fetch('/en/article/articledetail/id/' + id, {credentials: 'include'}); st = r.status; h = await r.text(); }
     catch (e) { return {id, err: String(e)}; }
     const d = new DOMParser().parseFromString(h, 'text/html');
     const h1 = clean(d.querySelector('h1')?.textContent);
-    if (!h1 || h1 === 'Page Not Found') return {id, missing: true};
+    if (h1 === 'Page Not Found' || st === 404) return {id, missing: true};
+    if (!h1) return {id, err: 'empty page ' + st + ' (throttled?)'};
     const pub = (h.match(/(\d{1,2}\/\d{1,2}\/\d{4} \d{1,2}:\d{2}:\d{2} [AP]M)/) || [])[1] || null;
     const art = d.querySelector('div.ck-editor.article');
     const head = clean((d.querySelector('h1')?.closest('section, article, div')?.textContent) || '').slice(0, 600);
@@ -96,7 +98,23 @@ class Argaam:
         self._p.stop()
 
     def articles(self, ids, max_body=1500):
-        rows = self._eval(PAGE_JS, {"ids": [int(i) for i in ids], "maxBody": max_body})
+        ids = [int(i) for i in ids]
+        got = {}
+        # Argaam starts answering with empty pages after a few hundred quick fetches (Mac test,
+        # 25 Nov 2026: a 350-ID window lost its evening items, which a fresh session read fine).
+        # Retry the empty ones after a pause; a real missing ID ("Page Not Found") is final.
+        todo = ids
+        for wait in (0, 5000, 15000, 30000):
+            if not todo:
+                break
+            if wait:
+                self.pg.wait_for_timeout(wait)
+            for r in self._eval(PAGE_JS, {"ids": todo, "maxBody": max_body}):
+                got[r["id"]] = r
+            todo = [i for i in todo if got[i].get("err")]
+        if todo:
+            print(f"argaam: {len(todo)} IDs still unreadable after retries: {todo[:10]}", file=sys.stderr)
+        rows = [got[i] for i in ids]
         for r in rows:
             t = parse_pub(r.get("pub"))
             if t:
