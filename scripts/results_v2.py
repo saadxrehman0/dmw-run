@@ -23,6 +23,11 @@ NCOL = 9
 WIDTHS = (1.50, 0.60, 0.95, 0.72, 0.72, 0.72, 0.62, 0.92, 0.95)
 ROW_IN = 0.15
 TITLE = {"en": "Results Announcements", "ar": "إعلانات النتائج"}
+# Saad, 25 Nov 2026: a second navy bar right under "Major Corporate News" reads as a new section.
+# The Results title is a light sub-header instead: the column-header style (light fill, bold,
+# dark text) at 8 pt, so the table sits inside the Corporate section.
+TITLE_STYLE = "rule"         # "sub" (light sub-header) or "bar" (navy section bar)
+TITLE_PT = 8.0
 SOURCE = {"en": "Source: Tadawul, Bloomberg", "ar": "المصدر: تداول، بلومبرغ"}
 AR_Q = {"1": "الأول", "2": "الثاني", "3": "الثالث", "4": "الرابع"}
 
@@ -179,7 +184,31 @@ def make_frame(flow, lang, rows, quarter, with_title, with_source, notes, names_
     numk = {c: "num" for c in range(3, NCOL)}
     out = list(lead)
     if with_title:
-        out.append(_row(pr.title, [(0, NCOL, TITLE[lang])], lang, {}, pr, "title", 0.20))
+        if TITLE_STYLE == "bar":
+            out.append(_row(pr.title, [(0, NCOL, TITLE[lang])], lang, {}, pr, "title", 0.20))
+        elif TITLE_STYLE == "rule":
+            # white row, bold navy text, a navy rule under it (the v1 Results look)
+            tr = _row(pr.data, [(0, NCOL, TITLE[lang])], lang, {}, pr, "data", 0.20)
+            navy = pr.title.find(f".//{{{A}}}tcPr/{{{A}}}solidFill/{{{A}}}srgbClr")
+            navy = navy.get("val") if navy is not None else "002060"
+            for rpr in tr.iter(f"{{{A}}}rPr"):
+                rpr.set("sz", str(int(TITLE_PT * 100))); rpr.set("b", "1")
+                for f in rpr.findall(f"{{{A}}}solidFill"):
+                    rpr.remove(f)
+                sf = etree.Element(f"{{{A}}}solidFill"); etree.SubElement(sf, f"{{{A}}}srgbClr").set("val", navy)
+                rpr.insert(0, sf)
+            for tcpr in tr.iter(f"{{{A}}}tcPr"):
+                lnb = tcpr.find(f"{{{A}}}lnB")
+                if lnb is not None:
+                    lnb.set("w", "12700")
+                    for f in lnb.findall(f"{{{A}}}solidFill"):
+                        f.find(f"{{{A}}}srgbClr").set("val", navy)
+            out.append(tr)
+        else:
+            tr = _row(pr.head, [(0, NCOL, TITLE[lang])], lang, {}, pr, "head", 0.20)
+            for rpr in tr.iter(f"{{{A}}}rPr"):
+                rpr.set("sz", str(int(TITLE_PT * 100))); rpr.set("b", "1")
+            out.append(tr)
     h1, h2 = heads(lang, quarter)
     out.append(_row(pr.head, h1, lang, numk, pr, "head"))
     out.append(_row(pr.head, h2, lang, numk, pr, "head"))
