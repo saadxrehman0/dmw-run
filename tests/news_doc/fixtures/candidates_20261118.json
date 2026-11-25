@@ -1,0 +1,122 @@
+{
+ "edition": "2026-11-18",
+ "markets": {
+  "global": {
+   "en": "US ​stocks extended their tech-driven slide on Tuesday as investors braced for Nvidia's earnings, expected just after the bell. The Dow Jones plunged 1.6%, followed by S&P 500 declining 1.0% and Nasdaq by 0.7%. Asian stocks opened lower on Wednesday morning after ​Nvidia posted a better-than-expected sales forecast, as investor confidence remained fragile over the company's future leadership and potential impacts ‌on its regional supply chain. The Hang Seng declined by 1.1%, followed by CSI 300 which decreased by 0.5% and MSCI Asia Pacific dropping 0.1%. (reuters)",
+   "ar": "واصلت الأسهم الأمريكية تراجعها يوم الثلاثاء، بضغط من أسهم شركات التكنولوجيا، مع ترقب المستثمرين إعلان نتائج أعمال شركة إنفيديا عقب إغلاق الجلسة. وهبط مؤشر داو جونز بنسبة 1.6%، تلاه مؤشر  S&P 500 بانخفاض نسبته 1.0%، ثم مؤشر ناسداك بتراجع نسبته 0.7%. وفي آسيا، تخلت الأسهم عن مكاسبها المبكرة صباح الأربعاء، رغم إعلان إنفيديا توقعات للمبيعات فاقت التقديرات، في ظل استمرار هشاشة ثقة المستثمرين بشأن القيادة المستقبلية للشركة والتداعيات المحتملة على سلسلة التوريد الإقليمية التابعة لها. وتراجع مؤشر هانغ سنغ بنسبة 1.1%، تلاه مؤشر  CSI 300 بانخفاض نسبته 0.5%، ثم مؤشر  MSCI آسيا والمحيط الهادئ بنسبة 0.1%. (رويترز)"
+  },
+  "tasi": {
+   "en": "TASI fell 0.1% (-11.2 points) to close at 10,253.20. Trading value decreased 3.0% compared with the previous session. The Energy and Consumer Durables & Apparel sector were the top laggard, decreasing 1.3% each. Among the top laggards, Saudi Enaya Cooperative Insurance Co. (ENAYA AB) dropped 6.5%, followed by Sinad Holding Co. (ATTMCO AB) declining 4.1%, and Amana Cooperative Insurance Co. (AMANA AB), which lost 3.9%. (Tadawul)",
+   "ar": "أغلق مؤشر السوق الرئيسية تاسي (TASI) منخفضاً بنسبة 0.1% (-11.2 نقطة) ليصل إلى 10,253.20 نقطة، فيما تراجعت قيمة التداولات بنسبة 3.0% مقارنة بالجلسة السابقة. وتصدر قطاعا الطاقة والسلع طويلة الأجل قائمة القطاعات المتراجعة بانخفاض نسبته 1.3% لكل منهما، فيما جاءت شركة عناية السعودية للتأمين التعاوني (ENAYA AB) في مقدمة الأسهم المتراجعة بهبوط نسبته 6.5%، تلتها شركة سيناد القابضة (ATTMCO AB) بنسبة 4.1%، وشركة أمانة للتأمين التعاوني (AMANA AB) بنسبة 3.9%. (تداول)"
+  }
+ },
+ "economic": [
+  {
+   "id": "E1",
+   "headline": "Assets of public investment funds in",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "Assets of public investment funds in Saudi Arabia rose 19.0% YoY to a record high of SAR 245.5 bn in 2Q26, from SAR 206.2 bn a year earlier, according to the Saudi Central Bank (SAMA). Local fund assets rose 14.0% to SAR 203.3 bn, or 83.0% of the total, while foreign fund assets jumped 50.0% to about SAR 42.2 bn. (Argaam)",
+   "ar": "ارتفعت أصول صناديق الاستثمار العامة في المملكة العربية السعودية بنسبة 19.0% على أساس سنوي إلى مستوى قياسي بلغ 245.5 مليار ريال في الربع الثاني 2026، مقارنة مع 206.2 مليار ريال قبل عام، وفقاً للبنك المركزي السعودي (ساما). وارتفعت أصول الصناديق المحلية بنسبة 14.0% إلى 203.3 مليار ريال، أو 83.0% من الإجمالي، فيما قفزت أصول الصناديق الأجنبية بنسبة 50.0% إلى نحو 42.2 مليار ريال. (أرقام)",
+   "source": "Argaam",
+   "url": "",
+   "short_en": "Assets of public investment funds in Saudi Arabia rose 19.0% YoY to a record high of SAR 245.5 bn in 2Q26, from SAR 206.2 bn a year earlier, according to the Saudi Central Bank (SAMA). Local fund assets rose 14.0% to SAR 203.3 bn, or 83.0% of the total, while foreign fund assets jumped 50.0% to about SAR 42.2 bn. (Argaam)",
+   "short_ar": "ارتفعت أصول صناديق الاستثمار العامة في المملكة العربية السعودية بنسبة 19.0% على أساس سنوي إلى مستوى قياسي بلغ 245.5 مليار ريال في الربع الثاني 2026، مقارنة مع 206.2 مليار ريال قبل عام، وفقاً للبنك المركزي السعودي (ساما). وارتفعت أصول الصناديق المحلية بنسبة 14.0% إلى 203.3 مليار ريال، أو 83.0% من الإجمالي، فيما قفزت أصول الصناديق الأجنبية بنسبة 50.0% إلى نحو 42.2 مليار ريال. (أرقام)"
+  },
+  {
+   "id": "E2",
+   "headline": "The Royal Commission for AlUla (RCU)",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "The Royal Commission for AlUla (RCU) has invested more than SAR 10.0 bn in the governorate’s core infrastructure and aims to attract investments worth SAR 41.0 bn by 2030, spokesperson Abdulrahman Al-Tarairi told Al Arabiya. The commission has put the AlUla Airport development project out to tender, including a second terminal, an expanded air cargo area and a runway extension. (Argaam)",
+   "ar": "قال المتحدث الرسمي باسم الهيئة الملكية لمحافظة العلا عبد الرحمن الطريري لقناة العربية إن استثمارات الهيئة في البنية التحتية الأساسية للمحافظة تجاوزت 10.0 مليار ريال، فيما تستهدف استقطاب استثمارات بقيمة 41.0 مليار ريال بحلول عام 2030. وطرحت الهيئة مشروع تطوير مطار العلا للمنافسة، والذي يشمل إنشاء صالة ثانية وتوسعة منطقة الشحن الجوي وتمديد المدرج. (أرقام)",
+   "source": "Argaam",
+   "url": "",
+   "short_en": "The Royal Commission for AlUla (RCU) has invested more than SAR 10.0 bn in the governorate’s core infrastructure and aims to attract investments worth SAR 41.0 bn by 2030, spokesperson Abdulrahman Al-Tarairi told Al Arabiya. The commission has put the AlUla Airport development project out to tender, including a second terminal, an expanded air cargo area and a runway extension. (Argaam)",
+   "short_ar": "قال المتحدث الرسمي باسم الهيئة الملكية لمحافظة العلا عبد الرحمن الطريري لقناة العربية إن استثمارات الهيئة في البنية التحتية الأساسية للمحافظة تجاوزت 10.0 مليار ريال، فيما تستهدف استقطاب استثمارات بقيمة 41.0 مليار ريال بحلول عام 2030. وطرحت الهيئة مشروع تطوير مطار العلا للمنافسة، والذي يشمل إنشاء صالة ثانية وتوسعة منطقة الشحن الجوي وتمديد المدرج. (أرقام)"
+  }
+ ],
+ "corporate": [
+  {
+   "id": "C1",
+   "headline": "SIBC: The Saudi Investment Bank (SIBC AB)",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "The Saudi Investment Bank (SIBC AB) completed the sale of its entire 50.0% stake in American Express Saudi Arabia to American Express (Middle East) for SAR 1,430.1 mn (USD 381.4 mn), after all condition's precedent were satisfied. The bank will announce the final amount of the deferred purchase consideration, reflecting its share of the company’s distributable profits, once determined. (Tadawul)",
+   "ar": "أتم البنك السعودي للإستثمار (SIBC AB) بيع كامل حصته البالغة 50.0% في شركة أمريكان إكسبريس السعودية إلى شركة أمريكان إكسبريس (الشرق الأوسط) بقيمة 1,430.1 مليون ريال (381.4 مليون دولار أمريكي)، بعد استيفاء جميع الشروط المسبقة. وسيعلن البنك عن القيمة النهائية لمقابل الشراء المؤجل، الذي يعكس حصة البنك من الأرباح القابلة للتوزيع للشركة، فور تحديدها. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C2",
+   "headline": "MASAR: Umm Al Qura for Development and",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "Umm Al Qura for Development and Construction Co. (MASAR AB) signed sale agreements for two land plots in Zone 3 of Masar Destination with Buyot Al-Khomasiah Co., the special purpose vehicle (SPV) of a real estate fund managed by BLME Capital, for SAR 216.9 mn, to develop two residential towers. The plots’ total book value is SAR 96.2 mn. The transaction is expected to positively impact liquidity and financial results. (Tadawul)",
+   "ar": "وقعت شركة أم القرى للتنمية والإعمار (MASAR AB) اتفاقيتي بيع لقطعتي أرض في المنطقة الثالثة ضمن وجهة مسار مع شركة بيوت الخماسية، الشركة ذات الغرض الخاص لصندوق عقاري مدار من قبل بي ال ام اي المالية، بقيمة 216.9 مليون ريال، بغرض تطوير برجين سكنيين. وتبلغ القيمة الدفترية الإجمالية لقطعتي الأرض 96.2 مليون ريال. ومن المتوقع أن يكون للصفقة أثر إيجابي على السيولة والنتائج المالية. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C3",
+   "headline": "GAS: GAS Arabian Services Co. (GAS AB)",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "GAS Arabian Services Co. (GAS AB) announced a contract sign-off with Saudi Power Procurement Company for establishment of a Sales Gas Delivery System to Ghazlan 1. The contract is valued at more than 20% of the company’s total revenues for 2025 (excluding VAT) and has a duration of 20 months. The financial impact will appear from 2027-2028. (Tadawul)",
+   "ar": "أعلنت شركة الغاز العربية للخدمات (GAS AB) عن توقيع عقد مع الشركة السعودية لشراء الطاقة لإنشاء نظام إمداد غاز البيع لمحطة غزلان 1. وتتجاوز قيمة العقد 20% من إجمالي إيرادات الشركة لعام 2025 (باستثناء ضريبة القيمة المضافة)، وتبلغ مدته 20 شهراً، على أن يظهر الأثر المالي للعقد خلال الفترة من عام 2027 إلى 2028. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C4",
+   "headline": "Cherry Trading Co. (Cherry AB) signed",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "Cherry Trading Co. (Cherry AB) signed a vehicle leasing project with the Ministry of Culture. The project is valued at SAR 67.0 mn and has a duration of 36 months. Financial impact is expected from 2027-2029. (Tadawul)",
+   "ar": "أعلنت شركة شيري للتجارة (CHERRY AB) عن توقيع عقد مشروع لتأجير المركبات مع وزارة الثقافة. وتبلغ قيمة المشروع 67.0 مليون ريال سعودي، وتمتد مدته إلى 36 شهراً، على أن يبدأ ظهور الأثر المالي للعقد خلال الفترة من عام 2027 إلى 2029. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C5",
+   "headline": "ALKHLEEJ: Alkhaleej Training and Education Co. (ALKHLEEJ",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "Alkhaleej Training and Education Co. (ALKHLEEJ AB) signed a contract with Princess Nourah bint Abdulrahman University worth SAR 24.2 mn (including VAT) to operate the university’s English Language Institute for the 1448 AH academic year. The contract duration is 12 months, with financial impact expected from 4Q26. (Tadawul)",
+   "ar": "وقعت شركة الخليج للتدريب والتعليم (ALKHLEEJ AB) عقداً مع جامعة الأميرة نورة بنت عبدالرحمن بقيمة 24.2 مليون ريال (شاملة ضريبة القيمة المضافة) لتشغيل معهد اللغة الإنجليزية بالجامعة للعام الأكاديمي 1448هـ. وتبلغ مدة العقد 12 شهراً، ومن المتوقع أن ينعكس الأثر المالي اعتباراً من الربع الرابع 2026. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C6",
+   "headline": "APICO: Arabian Plastic Industrial Co. (APICO AB)",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "Arabian Plastic Industrial Co. (APICO AB) completed the acquisition of an existing factory site in Jeddah’s Third Industrial City for SAR 28.0 mn, financed through bank facilities. The site covers a total area of 44,638 sqm and forms part of the company’s capacity expansion plans. The financial impact is expected in 2H27. (Tadawul)",
+   "ar": "أتمت شركة صناعة البلاستيك العربية (APICO AB) الاستحواذ على موقع مصنع قائم في المدينة الصناعية الثالثة بجدة بقيمة 28.0 مليون ريال، تم تمويله عبر تسهيلات بنكية. وتبلغ المساحة الإجمالية للموقع 44,638 متراً مربعاً، ويأتي ضمن خطط الشركة لزيادة طاقتها الإنتاجية. ومن المتوقع أن يظهر الأثر المالي في النصف الثاني 2027. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  },
+  {
+   "id": "C7",
+   "headline": "The Public Investment Fund (PIF) cut",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "The Public Investment Fund (PIF) cut its US equity holdings to SAR 108.8 (USD 29.0) bn in 3Q26, from SAR 142.5 (USD 37.9) bn in the previous quarter, according to a US Securities and Exchange Commission (SEC) filing. The fund maintained its holdings in four firms: Claritev, Lucid Group, SpaceX and Uber. (Argaam)",
+   "ar": "خفض صندوق الاستثمارات العامة حيازاته من الأسهم الأمريكية إلى 108.75 مليار ريال (29.0 مليار دولار أمريكي) في الربع الثالث 2026، مقارنة مع 142.13 مليار ريال (37.9 مليار دولار أمريكي) في الربع السابق، وفقاً لإفصاح مقدم إلى هيئة الأوراق المالية والبورصات الأمريكية. وأبقى الصندوق على حيازاته في أربع شركات هي كلاريتيف ولوسيد جروب وسبيس إكس وأوبر. (أرقام)",
+   "source": "Argaam",
+   "url": ""
+  },
+  {
+   "id": "C8",
+   "headline": "SHL: SHL Finance Co. (SHL AB) renewed",
+   "tier": "Include",
+   "why": "Published that day",
+   "en": "SHL Finance Co. (SHL AB) renewed a Sharia-compliant credit facility agreement with Al Rajhi Bank (RJHI AB) worth SAR 300.0 mn for five years. The facility will be used to expand the company’s sales volume through new loans to customers. (Tadawul)",
+   "ar": "جددت شركة سهل للتمويل (SHL AB) اتفاقية تسهيلات ائتمانية متوافقة مع أحكام الشريعة الإسلامية مع مصرف الراجحي (RJHI AB) بقيمة 300.0 مليون ريال لمدة خمس سنوات. وستستخدم التسهيلات لزيادة حجم مبيعات الشركة من خلال قروض جديدة للعملاء. (تداول)",
+   "source": "Tadawul",
+   "url": ""
+  }
+ ],
+ "left_out": []
+}

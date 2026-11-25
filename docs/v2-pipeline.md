@@ -24,9 +24,26 @@ fresh build. Step 3 exit code 1 means a FLAG to read before the PDFs.
  "economic":  [{"en": "...", "ar": "...", "short_en": "(optional)", "short_ar": "(optional)"}],
  "corporate": [{"en": "...", "ar": "..."}]}
 ```
-Corporate items are in rank order. The run writes this file from the edition's Claude Doc (the
-doc reader is the next step of the plan). `tests/replay/news_from_v1_deck.py` writes it from a
-published v1 edition for replays.
+Corporate items are in rank order. The run writes this file from the edition's news Doc with
+`read_news_doc.py` (below). `tests/replay/news_from_v1_deck.py` writes it from a published v1
+edition for replays.
+
+## The news Doc and the pick (build step 3, 25 Nov 2026)
+
+One Claude Doc per edition replaces ANB Rough. Layout, approved by Saad on 25 Nov 2026: Pick tables
+(Rank, Item, Pick In/Out dropdown, Run says, Why), then Markets (Global, TASI), Economic and
+Corporate items (EN, then AR, then the source link; Economic items also carry a short EN and AR
+version), then a Left out table. Details in `rules/news-doc.md`.
+
+| Step | Command |
+|---|---|
+| Write the Doc (S1, by about 9:08) | `write_news_doc.py --cand candidates.json --batch doc_calls.json --md doc_preview.md`, then send the two Claude Docs calls in `doc_calls.json` |
+| Post the pick card | export the Doc (Claude Docs `export`, format `markdown`), then `pick_card.py card --doc DOC.md --url <Doc link> --out card.json` |
+| Wait for the pick | `pick_card.py state --now HH:MM [--answered] [--reminded]` prints wait, remind (9:18) or go (an answer, or 9:25) |
+| Read the pick (S3) | export again, then `read_news_doc.py --doc DOC.md --out NEWS.json --info pick.json` (exit 2: Left out items switched to In need drafting first) |
+| Refill on Saad's edits until 10:00 | export, `read_news_doc.py`, `fill_commentary.py` again |
+
+Tests: `python3 -m pytest tests/news_doc -q`.
 
 ## v2 layout rules the scripts enforce
 
