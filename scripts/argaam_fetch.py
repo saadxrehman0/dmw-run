@@ -34,7 +34,6 @@ PAGE_JS = r"""
 async ({ids, maxBody}) => {
   const clean = s => (s || '').replace(/[‎‏]/g, '').replace(/\s+/g, ' ').trim();
   const one = async id => {
-    let h;
     let h, st;
     try { const r = await fetch('/en/article/articledetail/id/' + id, {credentials: 'include'}); st = r.status; h = await r.text(); }
     catch (e) { return {id, err: String(e)}; }

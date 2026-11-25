@@ -1,7 +1,7 @@
 {
- "written": "2026-11-25 19:25 UTC",
+ "written": "2026-11-25 19:27 UTC",
  "files": {
-  "scripts/argaam_fetch.py": "f765f72d75ae7ec4c8b732f56c2800381e0e95b228b2e74d30c5511f0d60a7f5",
+  "scripts/argaam_fetch.py": "2471ffc9249f5dc84af984b531d0e357df7d53207279e5b074f3b4d1cfa56e34",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
   "scripts/build_dmu.py": "9182c233982d60badc71f68497bb43c03798cfb8a141f496b4be58b24b9e6ebd",
   "scripts/build_dmw.py": "59c939baaa477ff0bf88c1bd89a6b2aa8c2fa4131a64340a9de81253ffee72d4",
