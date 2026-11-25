@@ -1,15 +1,15 @@
 {
- "written": "2026-11-25 21:33 UTC",
+ "written": "2026-11-25 21:36 UTC",
  "files": {
   "scripts/argaam_fetch.py": "2ed1b77d58358bddee092f7419a04623f0b2c0a767605e414283f57d05a95b75",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
   "scripts/build_dmu.py": "9182c233982d60badc71f68497bb43c03798cfb8a141f496b4be58b24b9e6ebd",
   "scripts/build_dmw.py": "4d0f993ef6adb4f2a2be9d9ee7c6b9c7df590b3a53e2e796631622705ef90eda",
   "scripts/build_dmw_ar.py": "7e61cc66e37eb94f90f34557d7e39cf076cb52a220d56fe8301743b65b08a013",
-  "scripts/build_email_mb.py": "600d592106f32d4623bf46c464aa3b19126abb4e911d7e3739eb7e82a6cd67d6",
+  "scripts/build_email_mb.py": "517ee23128efaeec405bc332e49019faa004ba77074f8f183f072cc1bd018fe7",
   "scripts/check_ar_text.py": "1a50fc0b138319c0c8dc2dfdad99d76d7aa410ee77c73979e969a2941b71acfc",
   "scripts/check_dmu.py": "8fc21b2a0efd7d284f03a36b54f64e35f758005b03a22b5853206ec8803c4c33",
-  "scripts/check_final.py": "d18bd0f048ac2872de3412a1512e3949b7e9177d4812bd37f7d8bedaf2ce70b6",
+  "scripts/check_final.py": "9fbee146ed9a98f4d1ba0445cc7302b1c3db0a4714bf98188c6da3f68b8cabad",
   "scripts/check_mapping.py": "bae46b642eb35457cd85f6b2dca24144bc174cf9b6f8f124e0f9760d8cb02a4a",
   "scripts/compare_ar.py": "9d2f6830da202a6af7a7dc7a30f9324cddd2428d85b8713d53e77332562c14e1",
   "scripts/dmw_common.py": "e1355041a8df867d4795c6d4ee2c3ad97fa786892fbd439efa82785319aa144f",

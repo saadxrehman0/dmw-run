@@ -47,6 +47,10 @@ def read_deck_v2(prs):
                         sec = V2_HEADS[t.lower()]; continue
                     if t.lower() in ('event calendar', 'economic calendar'):
                         sec = t.lower(); continue
+                    # results days: the Results header (s1.news row 8) ends the Economic band; it
+                    # was read as an Economic bullet (5 Nov replay, 26 Nov 2026)
+                    if t.lower() in ('results announcements', 'result announcements', 'results'):
+                        sec = None; continue
                     if sec in news and t:
                         news[sec] += [clean(p.text) for p in r.cells[0].text_frame.paragraphs if clean(p.text)]
                     elif sec == 'event calendar':
