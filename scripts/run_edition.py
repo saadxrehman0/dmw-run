@@ -108,6 +108,13 @@ def edition_day(ed, holidays_file):
     return None
 
 
+def previous_edition(ed, holidays_file):
+    d = ed - timedelta(days=1)
+    while edition_day(d, holidays_file):
+        d -= timedelta(days=1)
+    return d
+
+
 def read_mode(path):
     m = (_read(path) or {}).get("mode", "practice")
     return m if m in ("practice", "live") else "practice"
@@ -139,6 +146,9 @@ def prepare_replay_day(src, dst):
         for n in ("ANB Daily Market Watch - EN.pptx", "ANB Daily Market Watch - AR.pptx"):
             if os.path.isfile(os.path.join(prev, n)):
                 paths.append((os.path.join(prev, n), os.path.join("prev", n)))
+    res = previous_day(src, need="DMW - Results.xlsx")   # S4 starts its workbook from the last one
+    if res:
+        paths.append((os.path.join(res, "DMW - Results.xlsx"), os.path.join("prev", "DMW - Results.xlsx")))
     copied = []
     for p in paths:
         p, rel = p if isinstance(p, tuple) else (p, os.path.basename(p) if p else None)
@@ -151,8 +161,9 @@ def prepare_replay_day(src, dst):
     return copied
 
 
-def previous_day(src):
-    """The latest YYYYMMDD day folder before src, in src's month folder or the month before."""
+def previous_day(src, need="ANB Daily Market Watch - EN.pptx"):
+    """The latest YYYYMMDD day folder before src holding `need`, in src's month folder or the
+    month before."""
     name = os.path.basename(os.path.normpath(src))
     month = os.path.dirname(os.path.normpath(src))
     cands = []
@@ -160,7 +171,7 @@ def previous_day(src):
         if m and os.path.isdir(m):
             cands += [os.path.join(m, d) for d in os.listdir(m)
                       if len(d) == 8 and d.isdigit() and d < name and
-                      os.path.isfile(os.path.join(m, d, "ANB Daily Market Watch - EN.pptx"))]
+                      os.path.isfile(os.path.join(m, d, need))]
     return max(cands, key=os.path.basename) if cands else None
 
 
@@ -208,6 +219,26 @@ def kill_tree(pid):
         pass
 
 
+def allowed_tools(tools, python):
+    """stages.json lists Bash rules. On Windows, Claude Code's shell tool is PowerShell (no Git
+    Bash on the runner; replay pilot, 25 Nov 2026), and the prompts call python by its full path
+    ({PY}), which "python *" does not match. So every Bash(x) rule also goes in as PowerShell(x),
+    and the python rules also go in for the configured interpreter's path."""
+    out = []
+    for t in tools:
+        rules = [t]
+        m = t.startswith("Bash(") and t[5:-1]
+        if m:
+            rules.append(f"PowerShell({m})")
+            if m.split(" ")[0] in ("python", "python3", "py") and python:
+                for q in (python, f'"{python}"', f"& {python}", f'& "{python}"'):
+                    rules += [f"Bash({q} *)", f"PowerShell({q} *)"]
+        for r in rules:
+            if r not in out:
+                out.append(r)
+    return out
+
+
 def command(stage, ctx, cfg, stub, replay=False):
     """The argv and stdin for one stage attempt."""
     if stub:
@@ -217,7 +248,7 @@ def command(stage, ctx, cfg, stub, replay=False):
     prompt = fill("\n\n".join(open(os.path.join(pdir, f), encoding="utf-8").read() for f in parts), ctx)
     exe = shutil.which(cfg["claude"]) or cfg["claude"]
     argv = [exe, "-p", "--output-format", "json", "--permission-mode", "dontAsk",
-            "--allowedTools", ",".join(stage["tools"]), "--add-dir", ctx["RUN"]]
+            "--allowedTools", ",".join(allowed_tools(stage["tools"], cfg["python"])), "--add-dir", ctx["RUN"]]
     if os.path.isdir(ctx["DAY"]):
         argv += ["--add-dir", ctx["DAY"]]
     if cfg.get("model"):
@@ -262,7 +293,8 @@ class Runner:
                 "RUN": self.run, "DAY": self.day, "REPO": REPO, "MODE": self.st["mode"],
                 "STAGE": sid, "ROUND": rnd, "PY": self.cfg["python"],
                 "RESULT": self.result_path(sid, rnd), "REPLAY": "yes" if self.replay else "no",
-                "SRC_DAY": getattr(self, "src_day", self.day)}
+                "SRC_DAY": getattr(self, "src_day", self.day),
+                "PREV_EDITION": previous_edition(self.ed, self.cfg["holidays"]).isoformat()}
 
     def result_path(self, sid, rnd=0):
         return os.path.join(self.run, "stages", f"{sid}{'.r%d' % rnd if rnd else ''}.result.json")

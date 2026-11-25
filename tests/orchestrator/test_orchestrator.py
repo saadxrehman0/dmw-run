@@ -221,15 +221,27 @@ def test_replay_runs_unattended_on_a_jumping_clock(tmp_path):
     assert "DMW - Data.xlsx" in day and "Technicals-AR- 20261126.pptx" in day and "prev" in day
     assert not any(n.startswith(("ANB Daily", "EMAIL MB", "DMW - Results")) for n in day)
     assert sorted(os.listdir(os.path.join(r.day, "prev"))) == ["ANB Daily Market Watch - AR.pptx",
-                                                              "ANB Daily Market Watch - EN.pptx"]
+                                                              "ANB Daily Market Watch - EN.pptx",
+                                                              "DMW - Results.xlsx"]
     assert not os.path.exists(os.path.join(r.run, "mail"))
 
 
 def test_replay_prompt_has_the_cutoffs():
-    ctx = {"EDITION": "2026-11-24", "RUN": "R", "DAY": "D", "REPO": "X", "STAGE": "S1", "PY": "py",
+    ctx = {"EDITION": "2026-11-24", "PREV_EDITION": "2026-11-23", "RUN": "R", "DAY": "D", "REPO": "X", "STAGE": "S1", "PY": "py",
            "MODE": "practice", "RESULT": "r.json", "ROUND": 0}
     _, prompt = run_edition.command(run_edition.DEFAULTS and SPEC["stages"][1], ctx,
                                     dict(run_edition.DEFAULTS), stub=False, replay=True)
-    assert "Replay of a past edition" in prompt and "9:00 AM PKT on 2026-11-24" in prompt
+    assert "Replay of a past edition" in prompt and "9:00 AM PKT on 2026-11-24" in prompt and "{" not in prompt.split("Replay of a past edition")[1][:50]
     _, live = run_edition.command(SPEC["stages"][1], ctx, dict(run_edition.DEFAULTS), stub=False)
     assert "Replay" not in live
+
+
+def test_allowed_tools_cover_powershell_and_the_python_path():
+    t = run_edition.allowed_tools(["Read", "Bash(python *)", "Bash(powershell *)"], r"C:\Python315\python.exe")
+    assert "PowerShell(python *)" in t and "PowerShell(powershell *)" in t
+    assert r"PowerShell(C:\Python315\python.exe *)" in t and r'Bash("C:\Python315\python.exe" *)' in t
+    assert t[0] == "Read" and len(t) == len(set(t))
+
+
+def test_previous_edition_skips_the_weekend(tmp_path):
+    assert run_edition.previous_edition(date(2026, 11, 22), str(tmp_path / "none.json")) == date(2026, 11, 19)
