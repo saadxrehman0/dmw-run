@@ -25,10 +25,10 @@ import numpy as np
 from PIL import Image
 from pptx import Presentation
 from datetime import datetime
-import build_dmw as en
-import build_dmw_ar as ar
-from fill_commentary import find_shapes, render, numbers
-from build_dmw import SECTION_GAP, PAGE_BOTTOM
+import legacy_build_dmw_v1 as en   # v1 decks; v2 port pending
+import legacy_build_dmw_ar_v1 as ar
+from legacy_fill_commentary_v1 import find_shapes, render, numbers
+from dmw_common import SECTION_GAP, PAGE_BOTTOM
 
 EMU = 914400
 # Rows are scanned down to here when looking for the last ink on a page. It must sit below

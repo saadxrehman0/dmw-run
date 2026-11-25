@@ -25,7 +25,7 @@ import openpyxl
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from build_dmw import cal_sheet, cal_columns  # noqa: E402  (same header finding as the build)
+from dmw_common import cal_sheet, cal_columns  # noqa: E402  (same header finding as the build)
 import mapcols  # noqa: E402
 
 
