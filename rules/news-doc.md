@@ -42,3 +42,13 @@ written) on a missing Markets bullet, a picked item with no EN or AR, an unknown
 It flags (and carries on) a non-number Rank, a Pick cell that is neither In nor Out (read as Out),
 split paragraphs (joined), a short version with only one language, and an Economic count other
 than 2.
+
+## Headless access (tested 25 Nov 2026 on Saad's PC, DESKTOP-3S8HFHF, Windows)
+
+`claude -p` signed in with the claude.ai account sees the Claude Docs connector as
+`mcp__claude_ai_Claude_Docs__*` (`claude mcp list` shows "claude.ai Claude Docs ... Connected").
+A headless run created a Doc, exported it as markdown and returned its link, with
+`--allowedTools "mcp__claude_ai_Claude_Docs"`. Install notes for the server: PowerShell's script
+policy blocks `npm.ps1`, so install from cmd with
+`npm.cmd install -g --allow-scripts=@anthropic-ai/claude-code @anthropic-ai/claude-code` (without
+`--allow-scripts` the native binary is not fetched), then `claude auth login` once.
