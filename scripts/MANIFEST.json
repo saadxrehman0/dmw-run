@@ -1,12 +1,12 @@
 {
- "written": "2026-11-25 21:13 UTC",
+ "written": "2026-11-25 21:15 UTC",
  "files": {
   "scripts/argaam_fetch.py": "1e382115989f8260b23fae24554c963ce8ef3fba4608a6344defa5682d9a187c",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
   "scripts/build_dmu.py": "9182c233982d60badc71f68497bb43c03798cfb8a141f496b4be58b24b9e6ebd",
   "scripts/build_dmw.py": "4d0f993ef6adb4f2a2be9d9ee7c6b9c7df590b3a53e2e796631622705ef90eda",
   "scripts/build_dmw_ar.py": "7e61cc66e37eb94f90f34557d7e39cf076cb52a220d56fe8301743b65b08a013",
-  "scripts/build_email_mb.py": "d87d917835726e17cff0c2e1d7049c47bdbb26c5ef5a581f19456a50c48bd48e",
+  "scripts/build_email_mb.py": "600d592106f32d4623bf46c464aa3b19126abb4e911d7e3739eb7e82a6cd67d6",
   "scripts/check_ar_text.py": "1a50fc0b138319c0c8dc2dfdad99d76d7aa410ee77c73979e969a2941b71acfc",
   "scripts/check_dmu.py": "8fc21b2a0efd7d284f03a36b54f64e35f758005b03a22b5853206ec8803c4c33",
   "scripts/check_final.py": "d18bd0f048ac2872de3412a1512e3949b7e9177d4812bd37f7d8bedaf2ce70b6",
@@ -16,7 +16,7 @@
   "scripts/dmw_common_ar.py": "d5c64baca8c4361fac58a70ccfcadd0a7a91c1462b1eaec1c74c58a19935b0b0",
   "scripts/dmw_patch.py": "87b8f61557b451ce4e80988e9c27bcb4c65a8a1fb7f7a5992a2d877fc07069f2",
   "scripts/export_measure.py": "d2f961e572e043949ae8676d96139a75567c99df0d7ecee839e99b977c419e9c",
-  "scripts/fill_commentary.py": "f27b657d4dbc5c4996a41a66d906fd1544562025b6534e3e5135d1b67f72fa28",
+  "scripts/fill_commentary.py": "e3afb61f5c31f1a058e3f78fee2856d04ca8c631fe3a58170969f4b25af20314",
   "scripts/find_inputs.py": "0ede2dc5acff528ec1fb4f81ad3349a13ed5c971c19c1c91c1b95d5eef27458e",
   "scripts/fix_cal_ar_names.py": "e99f80de1a5975d30fedc2582031aadca6fa366567cdf7c2f27b452f4cfcbe8d",
   "scripts/gates.py": "d617b94d97fe07c26b8f4da3d4cf69bc16ae58724d7f7df4d1d99561b1b6ba50",

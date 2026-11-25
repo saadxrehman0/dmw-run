@@ -415,5 +415,9 @@ def build(day_dir, template, names_xlsx, out, dmu=None, deck_name='ANB Daily Mar
 
 if __name__ == '__main__':
     # optional 5th argument: the day's Daily Market Update pptx (coverage paragraphs + cross-check)
+    if len(sys.argv) < 5 or sys.argv[1] in ('-h', '--help'):
+        print(__doc__ or 'build_email_mb.py <args>: see build()')
+        print('usage: build_email_mb.py ' + ' '.join(build.__code__.co_varnames[:build.__code__.co_argcount]))
+        sys.exit(0 if len(sys.argv) > 1 and sys.argv[1] in ('-h', '--help') else 2)
     s, c = build(*sys.argv[1:6])
     print('\n'.join(c) or 'no checks')
