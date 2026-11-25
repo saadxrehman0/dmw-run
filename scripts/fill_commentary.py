@@ -151,7 +151,7 @@ class Results:
                     note("FLAG", f"Results: no Arabic name in Mapping.xlsx for {x['code']} {x['name']}; the English name used.")
                     cands = [x["name"].rstrip("*")]
                 for n in cands:
-                    w = text_width_in(n + star, 7.0, rtl=(lang == "ar"))
+                    w = text_width_in(n + star, 7.0, RV.NAME_FONT[lang], rtl=(lang == "ar"))
                     if w is not None and w <= room:
                         return n + star
                 note("FLAG", f"Results {lang.upper()}: '{cands[-1]}' wraps in the name column ({room:.2f} in).")

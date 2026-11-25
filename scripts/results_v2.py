@@ -20,7 +20,10 @@ A = B.A
 E = B.E
 NCOL = 9
 # logical (EN) widths in inches; sum = 7.70, the s2.flow width
-WIDTHS = (1.50, 0.60, 0.95, 0.72, 0.72, 0.72, 0.62, 0.92, 0.95)
+# Saad, 25 Nov 2026: names ran long, so Consensus and Variance give up width to Company.
+# Narrowest that still fits: "Consensus" 7 pt bold = 0.48 in, "Variance" = 0.39 in, plus margins.
+WIDTHS = (2.17, 0.60, 0.95, 0.72, 0.72, 0.72, 0.62, 0.60, 0.60)
+NAME_FONT = {"en": "segoeui.ttf", "ar": "anbApercu-Regular.otf"}   # the data cells' fonts
 ROW_IN = 0.15
 TITLE = {"en": "Results Announcements", "ar": "إعلانات النتائج"}
 # Saad, 25 Nov 2026: a second navy bar right under "Major Corporate News" reads as a new section.
@@ -188,7 +191,9 @@ def make_frame(flow, lang, rows, quarter, with_title, with_source, notes, names_
             out.append(_row(pr.title, [(0, NCOL, TITLE[lang])], lang, {}, pr, "title", 0.20))
         elif TITLE_STYLE == "rule":
             # white row, bold navy text, a navy rule under it (the v1 Results look)
-            tr = _row(pr.data, [(0, NCOL, TITLE[lang])], lang, {}, pr, "data", 0.20)
+            # nine unmerged cells (title in the Company cell): PowerPoint drew the rule of a
+            # merged title cell under its first grid column only (4 Nov mock-up)
+            tr = _row(pr.data, [(c, 1, TITLE[lang] if c == 0 else "") for c in range(NCOL)], lang, {}, pr, "data", 0.20)
             navy = pr.title.find(f".//{{{A}}}tcPr/{{{A}}}solidFill/{{{A}}}srgbClr")
             navy = navy.get("val") if navy is not None else "002060"
             for rpr in tr.iter(f"{{{A}}}rPr"):
@@ -211,6 +216,15 @@ def make_frame(flow, lang, rows, quarter, with_title, with_source, notes, names_
             out.append(tr)
     h1, h2 = heads(lang, quarter)
     out.append(_row(pr.head, h1, lang, numk, pr, "head"))
+    if with_title and TITLE_STYLE == "rule":
+        # PowerPoint draws a shared border from the lower cell's lnT when it has one (noFill
+        # here), so the navy rule showed under the first column only: repeat it as lnT below
+        rule = out[-2].find(f".//{{{A}}}lnB")
+        for tcpr in out[-1].iter(f"{{{A}}}tcPr"):
+            old = tcpr.find(f"{{{A}}}lnT")
+            new = copy.deepcopy(rule); new.tag = f"{{{A}}}lnT"
+            if old is not None:
+                old.addprevious(new); tcpr.remove(old)
     out.append(_row(pr.head, h2, lang, numk, pr, "head"))
     for x in rows:
         name = names_for(x)
