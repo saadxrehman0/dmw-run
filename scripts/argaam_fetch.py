@@ -16,8 +16,11 @@ JSON only (rules/argaam.md: never pull whole pages into a session).
         headline, publish time and body (first --max-body characters) of the given articles
 
 Article pages carry their publish time in Riyadh time (rules/argaam.md, quirks); output times are
-given both as "pub_ast" and "pub_pkt" (PKT = AST + 2 h). Rows flagged "special": true (Argaam
-Special, paywalled) are skipped by the run, like the lock rows on the list pages.
+given both as "pub_ast" and "pub_pkt" (PKT = AST + 2 h). Rows flagged "lock": true are paywalled
+(the article page shows a teaser and a subscribe box) and are skipped by the run, like the lock rows
+on the list pages. "special": true only means Argaam's own byline ("Argaam Special"); it is NOT a
+paywall flag (25 Nov 2026: 8 of 16 Argaam Special rows on the list page were free).
+Browser: Edge on Windows, Chrome on a Mac (no Edge there); --browser or DMW_BROWSER overrides.
 Exit 0 on success, 1 when the browser could not reach Argaam.
 """
 import argparse, json, os, re, sys
@@ -40,8 +43,11 @@ async ({ids, maxBody}) => {
     const pub = (h.match(/(\d{1,2}\/\d{1,2}\/\d{4} \d{1,2}:\d{2}:\d{2} [AP]M)/) || [])[1] || null;
     const art = d.querySelector('div.ck-editor.article');
     const head = clean((d.querySelector('h1')?.closest('section, article, div')?.textContent) || '').slice(0, 600);
+    // lock = paywalled for a free reader (the page swaps the body for a teaser and a subscribe box).
+    // "Argaam Special" is only Argaam's own byline: half of those rows are free (checked 25 Nov 2026).
     return {id, h: h1, pub, body: clean(art?.textContent).slice(0, maxBody),
-            special: /argaam special/i.test(head) || !!d.querySelector('.locked-article, .article-lock, .paywall')};
+            lock: !!d.querySelector('.restricted-article, .subscription-package-article, .locked-article'),
+            special: /argaam special/i.test(head)};
   };
   const out = [];
   for (let i = 0; i < ids.length; i += 25) out.push(...await Promise.all(ids.slice(i, i + 25).map(one)));
@@ -95,11 +101,16 @@ class Argaam:
 
     # ---- ID walk for a time window
     def _time_at(self, i, step=1, tries=12):
-        """Publish time (AST) of the first real article at or after id i (IDs have gaps)."""
-        rows = self.articles(range(i, i + step * tries, step), max_body=0)
-        for r in rows:
-            if r.get("pub_ast"):
-                return datetime.strptime(r["pub_ast"], "%Y-%m-%d %H:%M"), r["id"]
+        """Publish time (AST) of the first real article at or after id i (IDs have gaps).
+        English IDs can have gaps longer than 12 (IDs are shared with Arabic articles): a probe
+        that found nothing looks 60 IDs further before giving up. A None here used to be read as
+        "before the window" and the search then skipped the whole window (25 Nov 2026, Mac test:
+        0 items for 23-24 Nov)."""
+        for lo, n in ((i, tries), (i + step * tries, 60)):
+            rows = self.articles(range(lo, lo + step * n, step), max_body=0)
+            for r in rows:
+                if r.get("pub_ast"):
+                    return datetime.strptime(r["pub_ast"], "%Y-%m-%d %H:%M"), r["id"]
         return None, None
 
     def first_id_at_or_after(self, when_ast, hi):
@@ -148,7 +159,8 @@ def main(argv=None):
     ap.add_argument("--ids", default="")
     ap.add_argument("--start"); ap.add_argument("--end")
     ap.add_argument("--max-body", type=int, default=1500)
-    ap.add_argument("--browser", default=os.environ.get("DMW_BROWSER", "msedge"), help="msedge or chrome")
+    ap.add_argument("--browser", default=os.environ.get("DMW_BROWSER") or ("chrome" if sys.platform == "darwin" else "msedge"),
+                    help="msedge or chrome (default: Edge on Windows, Chrome on a Mac)")
     ap.add_argument("--headed", action="store_true")
     a = ap.parse_args(argv)
     try:

@@ -16,6 +16,13 @@ it. Bar-chart rows link to `financial-reports/...` pages, not `articledetail`, s
 reach `listOnly`. This overrides the earlier note that Argaam's monthly cement sales report is in
 scope: when it carries a lock (it did on 5 Nov 2026), it is skipped too.
 
+**Lock is not "Argaam Special" (checked 25 Nov 2026).** The lock icon (`i.ico.lock`, row class
+`locked-article`) marks paywalled rows; "Argaam Special" is only Argaam's byline. On the 25 Nov
+list page 16 rows were Argaam Special and 8 of them were locked. A locked article page shows a
+teaser of about 130 characters inside `.restricted-article` / `.subscription-package-article`;
+`argaam_fetch.py` flags those `lock`. Its old `special` flag was taken as a paywall flag and hid
+free items (24 Nov replay: foreign ownership, Arab Sea).
+
 ## How to run
 
 1. Open any `www.argaam.com` page in the built-in browser (it is signed in as the user).
@@ -48,12 +55,14 @@ scope: when it carries a lock (it did on 5 Nov 2026), it is skipped too.
   1.5 to 2 days. After a weekend, page 1 plus the disclosures feed reached back to Thursday.
 - Report links (dividends, the international market daily report) have no text in the feed.
 
-## Tadawul list endpoint (7 Nov 2026)
+## Tadawul list endpoint (updated 25 Nov 2026)
 
-The issuer-announcements list page's own AJAX call (`NJgetAnnouncementListData`) returned 404 in
-the built-in browser, so the list stayed empty. Walk the detail pages by `anId` instead (anCat=1,
-fetched in parallel batches of about 40 from a saudiexchange.sa tab; a missing ID returns no
-portlet). On 7 Nov 2026 Thursday's filings ran 99004 to 99086.
+The issuer-announcements list page's own AJAX call (`NJgetAnnouncementListData`, POST from the
+list page itself, `pageSize` up to 50) **works** again: it returns JSON with the anId, symbol,
+trading name, title and filing time (Riyadh time) for each row. `scripts/tadawul_fetch.py` calls
+it from a visible browser window and reads each detail page's Element/Explanation table. (On 7 Nov
+2026 it returned 404 and the detail pages were walked by `anId`; that is the fallback if it breaks
+again.) Hidden (headless) browsers get "Access Denied", and the site needs a Saudi route.
 
 ## Still to measure (deep analysis, fresh chat)
 
