@@ -183,7 +183,9 @@ def lead_rows(prs, lang=None, res=None, cont=True):
     The s2.flow Corporate band stays where it is: Results is its own section (25 Nov 2026)."""
     import copy
     trs = s2_protos(prs)
-    lead = [copy.deepcopy(tr) for tr in trs[0:2]]
+    # the band only: the table's light header sits right under the navy band, as in the calendars
+    # (Saad, 25 Nov 2026: no white gap between them)
+    lead = [copy.deepcopy(tr) for tr in trs[0:1]]
     if res is not None:
         res.RV.set_row_text(lead[0], res.RV.TITLE[lang] + (res.RV.CONT[lang] if cont else ""))
     return lead, trs[3:4]
@@ -192,7 +194,8 @@ def lead_rows(prs, lang=None, res=None, cont=True):
 def with_results(prs, lang, L, res, n1, has_news):
     """Slide bottoms once the Results table is in: n1 rows on slide 1, the rest on slide 2."""
     n = len(res.rows)
-    b1 = L["b1"] + res.h(n1, n1 == n, lang) if n1 else L["b1"]
+    # slide 1: the gap row under the band goes (no white gap above the table's header)
+    b1 = L["b1"] - L["h1"][NEWS_ROWS["co"] - 1] + res.h(n1, n1 == n, lang) if n1 else L["b1"]
     b2 = L["b2"]
     if n1 < n:
         lead, tail = lead_rows(prs)
@@ -215,6 +218,7 @@ def place_results(prs, lang, res, n1):
     tbl.remove(trs1[NEWS_ROWS["co"]])
     if n1:
         RV.set_row_text(trs1[NEWS_ROWS["co"] - 2], RV.TITLE[lang])
+        tbl.remove(trs1[NEWS_ROWS["co"] - 1])      # no white gap between the band and the table
     s1.height = sum(r.height for r in s1.table.rows)
     if n1:
         fr, h = RV.make_frame(s2, lang, res.rows[:n1], res.quarter, True, n1 == n,

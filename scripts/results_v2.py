@@ -27,10 +27,11 @@ NCOL = 9
 # Saad, 25 Nov 2026 (second pass): Change YoY gives 0.12 in to Consensus, so the two groups
 # do not run together; a dashed divider (v1 style) separates them.
 WIDTHS = (2.17, 0.60, 0.95, 0.72, 0.72, 0.64, 0.58, 0.72, 0.60)
-HEAD_RULE = "groups"           # thin line between the two header rows: "full", "groups" (under the
+# Saad, 25 Nov 2026 (evening): no line between the header rows and no dashed divider.
+HEAD_RULE = ""                 # thin line between the two header rows: "full", "groups" (under the
                              # spanned group headers only) or "" (none)
 HEAD_RULE_STYLE = os.environ.get("DMW_HEAD_RULE_STYLE", "row")   # "row" (the data-row line), "white", "navy"
-DIVIDER_AFTER = 6            # logical column: the dashed line sits between Change YoY % and Consensus
+DIVIDER_AFTER = None         # was 6 (the dashed line between Change YoY % and Consensus); None = off. logical column: the dashed line sits between Change YoY % and Consensus
 NAME_FONT = {"en": "segoeui.ttf", "ar": "anbApercu-Regular.otf"}   # the data cells' fonts
 ROW_IN = 0.15
 TITLE = {"en": "Results Announcements", "ar": "إعلانات النتائج"}
@@ -336,6 +337,8 @@ def _set_line(tc, tag, ln):
 
 def _dividers(rows, lang, skip_first, skip_last):
     """Dashed divider between logical DIVIDER_AFTER and the next column, on the header and data rows."""
+    if DIVIDER_AFTER is None:
+        return
     left_l, right_l = DIVIDER_AFTER, DIVIDER_AFTER + 1
     if lang == "ar":                       # physical order is mirrored
         left_p, right_p = NCOL - 1 - right_l, NCOL - 1 - left_l

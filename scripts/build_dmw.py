@@ -655,6 +655,8 @@ def build(a):
         ar_cal = dmw_ar().load_calendar_ar(a.calendar)
     fill_calendars(s2, lang, events, econ, names, tr, ar_cal or (None, None))
     fill_slide3(s3, lang, g, g_en, names, charts)
+    for sl in (prs.slides[1], prs.slides[2]):
+        drop_header_rule(sl)
     if tech is not None:
         append_technicals(prs, tech, lang, rd)
     else:
@@ -693,6 +695,21 @@ def parser(default_lang="en"):
     ap.add_argument("--chart-state", help="chart fingerprints from the last build (EN stale-chart check)")
     ap.add_argument("--out", required=True)
     return ap
+
+
+def drop_header_rule(slide):
+    """Slides 2-3: no navy rule under the logo header. The slide's first navy band sits right under
+    it, and the rule showed as a solid line over part of the band's top edge (Saad, 25 Nov 2026)."""
+    for sh in slide.shapes:
+        if not (sh.has_table and sh.name.endswith(".header")):
+            continue
+        for tcpr in sh.table._tbl.iter(qn("a:tcPr")):
+            for ln in tcpr:
+                if ln.tag in (qn("a:lnB"), qn("a:lnT")) and ln.find(qn("a:noFill")) is None:
+                    for x in list(ln):
+                        ln.remove(x)
+                    ln.set("w", "0")
+                    etree.SubElement(ln, qn("a:noFill"))
 
 
 def main(default_lang="en"):
