@@ -10,7 +10,7 @@ Exit 0 when everything --need asks for is there, 1 when something is missing (th
   `DMW - *.xlsx` other than `DMW - Results.xlsx` and anything with "format" in its name, whose
   sheets include Face, PPT-ENG and PPT-AR. Two matches: the newest wins and `note` says so.
 - Graphs: `DMW Graphs - EN.pptx` and `DMW Graphs - AR.pptx`.
-- Technicals: `Technicals -ENG-*.pptx` and `Technicals -AR-*.pptx`.
+- Technicals: `Technicals -ENG-*.pptx` and `Technicals -AR-*.pptx` (with or without the space).
 Lock files (`~$...`) and Drive temp files are skipped.
 """
 import argparse, glob, json, os, sys, zipfile
@@ -49,7 +49,9 @@ def find(day):
         if g:
             out["graphs"][lang.lower()] = g[0]
     for lang, tag in (("en", "ENG"), ("ar", "AR")):
-        t = sorted(_files(day, f"Technicals -{tag}-*.pptx"), key=os.path.getmtime, reverse=True)
+        # the space before the dash is not always there ("Technicals-AR- 20261125.pptx", 25 Nov 2026)
+        t = sorted(set(_files(day, f"Technicals -{tag}-*.pptx") + _files(day, f"Technicals-{tag}-*.pptx")),
+                   key=os.path.getmtime, reverse=True)
         if t:
             out["technicals"][lang] = t[0]
     return out
