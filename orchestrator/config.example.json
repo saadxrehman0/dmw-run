@@ -1,0 +1,11 @@
+{
+ "_doc": "Copy to orchestrator/config.local.json on the runner (not committed) and set the paths.",
+ "runs_root": "H:\\My Drive\\Claude Outputs\\DMW Tools\\runs",
+ "day_root": "G:\\.shortcut-targets-by-id\\18rkHxDXGFRnp_kbzgyFhbwCjVH4-XOpc\\2026\\03. Submission",
+ "claude": "claude",
+ "python": "C:\\Python315\\python.exe",
+ "model": null,
+ "alert_email": null,
+ "mail_after_min": 5,
+ "tick_seconds": 15
+}
