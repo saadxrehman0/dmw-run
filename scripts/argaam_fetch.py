@@ -16,8 +16,11 @@ JSON only (rules/argaam.md: never pull whole pages into a session).
         headline, publish time and body (first --max-body characters) of the given articles
 
 Article pages carry their publish time in Riyadh time (rules/argaam.md, quirks); output times are
-given both as "pub_ast" and "pub_pkt" (PKT = AST + 2 h). Rows flagged "special": true (Argaam
-Special, paywalled) are skipped by the run, like the lock rows on the list pages.
+given both as "pub_ast" and "pub_pkt" (PKT = AST + 2 h). Rows flagged "lock": true are paywalled
+(the article page shows a teaser and a subscribe box) and are skipped by the run, like the lock rows
+on the list pages. "special": true only means Argaam's own byline ("Argaam Special"); it is NOT a
+paywall flag (25 Nov 2026: 8 of 16 Argaam Special rows on the list page were free).
+Browser: Edge on Windows, Chrome on a Mac (no Edge there); --browser or DMW_BROWSER overrides.
 Exit 0 on success, 1 when the browser could not reach Argaam.
 """
 import argparse, json, os, re, sys
@@ -31,20 +34,24 @@ PAGE_JS = r"""
 async ({ids, maxBody}) => {
   const clean = s => (s || '').replace(/[‎‏]/g, '').replace(/\s+/g, ' ').trim();
   const one = async id => {
-    let h;
-    try { h = await (await fetch('/en/article/articledetail/id/' + id, {credentials: 'include'})).text(); }
+    let h, st;
+    try { const r = await fetch('/en/article/articledetail/id/' + id, {credentials: 'include'}); st = r.status; h = await r.text(); }
     catch (e) { return {id, err: String(e)}; }
     const d = new DOMParser().parseFromString(h, 'text/html');
     const h1 = clean(d.querySelector('h1')?.textContent);
-    if (!h1 || h1 === 'Page Not Found') return {id, missing: true};
+    if (h1 === 'Page Not Found' || st === 404) return {id, missing: true};
+    if (!h1) return {id, err: 'empty page ' + st + ' (throttled?)'};
     const pub = (h.match(/(\d{1,2}\/\d{1,2}\/\d{4} \d{1,2}:\d{2}:\d{2} [AP]M)/) || [])[1] || null;
     const art = d.querySelector('div.ck-editor.article');
     const head = clean((d.querySelector('h1')?.closest('section, article, div')?.textContent) || '').slice(0, 600);
+    // lock = paywalled for a free reader (the page swaps the body for a teaser and a subscribe box).
+    // "Argaam Special" is only Argaam's own byline: half of those rows are free (checked 25 Nov 2026).
     return {id, h: h1, pub, body: clean(art?.textContent).slice(0, maxBody),
-            special: /argaam special/i.test(head) || !!d.querySelector('.locked-article, .article-lock, .paywall')};
+            lock: !!d.querySelector('.restricted-article, .subscription-package-article, .locked-article'),
+            special: /argaam special/i.test(head)};
   };
   const out = [];
-  for (let i = 0; i < ids.length; i += 25) out.push(...await Promise.all(ids.slice(i, i + 25).map(one)));
+  for (let i = 0; i < ids.length; i += 10) out.push(...await Promise.all(ids.slice(i, i + 10).map(one)));
   return out;
 }
 """
@@ -67,16 +74,55 @@ class Argaam:
         from playwright.sync_api import sync_playwright
         self._p = sync_playwright().start()
         self.b = self._p.chromium.launch(channel=channel, headless=headless)
-        self.pg = self.b.new_page()
+        self._open()
+
+    def _open(self):
+        """A fresh context and tab on Argaam (also used to recover once Argaam throttles a session)."""
+        if getattr(self, "ctx", None):
+            self.ctx.close()
+        self.ctx = self.b.new_context()
+        self.pg = self.ctx.new_page()
         self.pg.goto("https://www.argaam.com/en", timeout=90000, wait_until="domcontentloaded")
         self.pg.wait_for_timeout(4000)
+        # The home page reloads itself every few minutes, which kills a long in-page fetch
+        # ("Execution context was destroyed", Mac test 25 Nov 2026). Park the tab on the RSS feed
+        # (same origin, no scripts) before running fetches there.
+        self.pg.goto("https://www.argaam.com/en/rss/ho-main-news?sectionid=1524", timeout=90000,
+                     wait_until="domcontentloaded")
+
+    def _eval(self, js, arg=None):
+        for attempt in range(3):
+            try:
+                return self.pg.evaluate(js, arg)
+            except Exception as e:  # noqa: BLE001
+                if "context was destroyed" not in str(e) or attempt == 2:
+                    raise
+                self.pg.wait_for_load_state("domcontentloaded")
 
     def close(self):
         self.b.close()
         self._p.stop()
 
     def articles(self, ids, max_body=1500):
-        rows = self.pg.evaluate(PAGE_JS, {"ids": [int(i) for i in ids], "maxBody": max_body})
+        ids = [int(i) for i in ids]
+        got = {}
+        # Argaam starts answering with empty pages after a few hundred quick fetches (Mac test,
+        # 25 Nov 2026: a 350-ID window lost its evening items, which a fresh session read fine).
+        # Retry the empty ones after a pause; a real missing ID ("Page Not Found") is final.
+        todo = ids
+        for wait in (0, 5000, 20000, "fresh", 5000):
+            if not todo:
+                break
+            if wait == "fresh":      # a fresh session read the same IDs fine (25 Nov 2026)
+                self._open()
+            elif wait:
+                self.pg.wait_for_timeout(wait)
+            for r in self._eval(PAGE_JS, {"ids": todo, "maxBody": max_body}):
+                got[r["id"]] = r
+            todo = [i for i in todo if got[i].get("err")]
+        if todo:
+            print(f"argaam: {len(todo)} IDs still unreadable after retries: {todo[:10]}", file=sys.stderr)
+        rows = [got[i] for i in ids]
         for r in rows:
             t = parse_pub(r.get("pub"))
             if t:
@@ -85,21 +131,26 @@ class Argaam:
         return rows
 
     def latest_id(self):
-        return self.pg.evaluate(FEED_RSS_JS)
+        return self._eval(FEED_RSS_JS)
 
     def feed(self, since_id=0, text=()):
         js = open(os.path.join(REPO, "browser", "argaam_news.js"), encoding="utf-8").read()
         js = js[: js.rfind("await argaamNews(CFG)")]   # define window.argaamNews only
-        self.pg.evaluate("async () => {" + js + "}")
-        return self.pg.evaluate("cfg => window.argaamNews(cfg)", {"sinceId": since_id, "text": list(text)})
+        self._eval("async () => {" + js + "}")
+        return self._eval("cfg => window.argaamNews(cfg)", {"sinceId": since_id, "text": list(text)})
 
     # ---- ID walk for a time window
     def _time_at(self, i, step=1, tries=12):
-        """Publish time (AST) of the first real article at or after id i (IDs have gaps)."""
-        rows = self.articles(range(i, i + step * tries, step), max_body=0)
-        for r in rows:
-            if r.get("pub_ast"):
-                return datetime.strptime(r["pub_ast"], "%Y-%m-%d %H:%M"), r["id"]
+        """Publish time (AST) of the first real article at or after id i (IDs have gaps).
+        English IDs can have gaps longer than 12 (IDs are shared with Arabic articles): a probe
+        that found nothing looks 60 IDs further before giving up. A None here used to be read as
+        "before the window" and the search then skipped the whole window (25 Nov 2026, Mac test:
+        0 items for 23-24 Nov)."""
+        for lo, n in ((i, tries), (i + step * tries, 60)):
+            rows = self.articles(range(lo, lo + step * n, step), max_body=0)
+            for r in rows:
+                if r.get("pub_ast"):
+                    return datetime.strptime(r["pub_ast"], "%Y-%m-%d %H:%M"), r["id"]
         return None, None
 
     def first_id_at_or_after(self, when_ast, hi):
@@ -119,6 +170,22 @@ class Argaam:
                 hi = mid
         return lo
 
+    def _widen(self, a, b, start_ast, end_ast, top, step=50, limit=12):
+        def inside(ids):
+            for r in self.articles(ids, max_body=0):
+                if r.get("pub_ast") and start_ast <= datetime.strptime(r["pub_ast"], "%Y-%m-%d %H:%M") < end_ast:
+                    return True
+            return False
+        for _ in range(limit):
+            if b >= top + 1 or not inside(range(b, min(b + step, top + 1))):
+                break
+            b += step
+        for _ in range(limit):
+            if a <= step or not inside(range(a - step, a)):
+                break
+            a -= step
+        return a, min(b + step, top + 1)
+
     def range(self, start_pkt, end_pkt, max_body=1500):
         start_ast, end_ast = start_pkt - PKT_MINUS_AST, end_pkt - PKT_MINUS_AST
         top = self.latest_id() or 0
@@ -126,6 +193,10 @@ class Argaam:
             raise RuntimeError("no article IDs in the Argaam feed")
         a = self.first_id_at_or_after(start_ast, top)
         b = self.first_id_at_or_after(end_ast, top) + 30
+        # Publish times are not strictly monotonic in ID, so the binary search can stop short
+        # (Mac test 25 Nov 2026: the 24 Nov window ended at 18:31 and lost 8 evening items).
+        # Widen each edge in steps of 50 IDs until a step holds nothing inside the window.
+        a, b = self._widen(a, b, start_ast, end_ast, top)
         rows = [r for r in self.articles(range(a, b), max_body) if r.get("pub_ast")]
         keep, seen = [], set()
         for r in rows:   # the same story can sit under two IDs (news and disclosures)
@@ -148,7 +219,8 @@ def main(argv=None):
     ap.add_argument("--ids", default="")
     ap.add_argument("--start"); ap.add_argument("--end")
     ap.add_argument("--max-body", type=int, default=1500)
-    ap.add_argument("--browser", default=os.environ.get("DMW_BROWSER", "msedge"), help="msedge or chrome")
+    ap.add_argument("--browser", default=os.environ.get("DMW_BROWSER") or ("chrome" if sys.platform == "darwin" else "msedge"),
+                    help="msedge or chrome (default: Edge on Windows, Chrome on a Mac)")
     ap.add_argument("--headed", action="store_true")
     a = ap.parse_args(argv)
     try:

@@ -109,8 +109,10 @@ def test_full_run_with_the_runs_own_pick(tmp_path):
     gate = json.load(open(os.path.join(r.run, "gates", "pick.json"), encoding="utf-8"))
     assert at("09:00") <= datetime.fromisoformat(gate["opened"]) < at("09:08")  # stage on the run's clock
     assert datetime.fromisoformat(st["S3"]["started"]) >= at("09:25")
-    assert st["S4"]["round"] == 2          # rounds at 9:00, 9:30 and 10:05 (Saad, 25 Nov 2026)
+    assert st["S4"]["round"] == 1          # rounds at 10:03 and 10:10 (26 Nov 2026)
+    assert datetime.fromisoformat(st["S4"]["started"]) >= at("10:10")
     assert datetime.fromisoformat(st["S5"]["started"]) >= at("10:10")
+    assert datetime.fromisoformat(st["S5"]["started"]) >= datetime.fromisoformat(st["S4"]["started"])  # after the 10:10 round
     assert datetime.fromisoformat(st["S6"]["started"]) >= at("10:20")
     names = outbox(r)
     assert names[:3] == ["001-pick-card.json", "002-pick-reminder.json", "003-pick-closed.json"]
@@ -216,6 +218,7 @@ def test_replay_runs_unattended_on_a_jumping_clock(tmp_path):
     assert datetime.fromisoformat(st["S3"]["started"]) >= at("09:25")
     assert st["S4"]["round"] == 0                # one round in a replay
     assert datetime.fromisoformat(st["S5"]["started"]) >= at("10:10")
+    assert datetime.fromisoformat(st["S5"]["started"]) >= datetime.fromisoformat(st["S4"]["started"])  # after the 10:10 round
     # the sandbox day folder has the inputs and the previous edition's decks, never this edition's finals
     day = sorted(os.listdir(r.day))
     assert "DMW - Data.xlsx" in day and "Technicals-AR- 20261126.pptx" in day and "prev" in day
