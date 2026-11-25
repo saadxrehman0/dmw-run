@@ -139,8 +139,10 @@ class Results:
             for r in it:
                 if r[ix["Code"]] is not None:
                     self.names[str(r[ix["Code"]]).strip()] = {
-                        "en": [str(r[ix[k]]).strip() for k in ("Long Name - English", "Short Name - English") if r[ix[k]]],
-                        "ar": [str(r[ix[k]]).strip() for k in ("Long Name - Arabic", "Short Name - Arabic") if r[ix[k]]]}
+                        # the Tadawul trading name only, as on slide 3 (Saad, 25 Nov 2026); long name
+                        # only if the short one is blank
+                        "en": [str(r[ix[k]]).strip() for k in ("Short Name - English", "Long Name - English") if r[ix[k]]][:1],
+                        "ar": [str(r[ix[k]]).strip() for k in ("Short Name - Arabic", "Long Name - Arabic") if r[ix[k]]][:1]}
         room = RV.WIDTHS[0] - 2 * 0.02 - 0.01
 
         def chooser(lang):

@@ -195,9 +195,9 @@ class Names:
         load = lambda p: json.loads(Path(p).read_text(encoding="utf-8")) if p and Path(p).exists() else {}
         self.ov_en, self.ov_ar = load(overrides_en), load(overrides_ar)
 
-    def choose(self, lang, rec, fallback, cell, room, where):
+    def choose(self, lang, rec, fallback, cell, room, where, short_only=False):
         long_, short = (rec["long_en"], rec["short_en"]) if lang == "en" else (rec["long_ar"], rec["short_ar"])
-        cands = [x for x in (long_, short) if x] or [fallback]
+        cands = [x for x in ((short,) if short_only and short else (long_, short)) if x] or [fallback]
         for name in cands:
             w = wraps(name, cell, room, lang)
             if w is None:
@@ -524,7 +524,9 @@ def company_label(lang, key, i, label, code, names, t, r, c):
     where = f"Slide 3 {TITLES['en'][key]} row {i+1}"
     rec = names.by_code.get(code) if code else None
     if rec:
-        return names.choose(lang, rec, label, t.cell(r, c), room, where)
+        # slide 3 company rows: the Tadawul trading name (Mapping "Short Name"), as in Tadawul's
+        # Detailed Daily Report, so slide 3 and the Results table read the same (Saad, 25 Nov 2026)
+        return names.choose(lang, rec, label, t.cell(r, c), room, where, short_only=True)
     name = names.ov_en.get(label, label) if lang == "en" else names.ov_ar.get(dmw_ar().ar_label(label), dmw_ar().ar_label(label))
     log("FLAG", f"{where}: '{label}' not matched to Mapping.xlsx by code; the data file's name used.")
     if wraps(name, t.cell(r, c), room, lang):
