@@ -142,12 +142,27 @@ def test_markdown_escapes_unescaped():
 
 # ------------------------------------------------------------------ stops
 
-def test_missing_arabic_stops():
+def test_missing_arabic_on_an_in_item_is_pending():
+    # Maybe items carry no Arabic until picked In (S1 time audit, 25 Nov 2026); S3 drafts it
     c = candidates("20261124")
     md = render(c, chips=False)
     md = edit(md, c["corporate"][1]["ar"] + "\n\n", "")
-    with pytest.raises(DocError, match="C2 is picked In but has no AR"):
-        parse(md)
+    news, info = parse(md)
+    assert info["pending"] == [{"id": "C2", "headline": c["corporate"][1]["headline"], "rank": 2.0, "need": "AR"}]
+    assert "C2" not in info["order"]["corporate"]
+
+
+def test_maybe_item_without_arabic_renders_and_goes_pending_when_picked(tmp_path):
+    c = candidates("20261124")
+    c["corporate"][8]["ar"] = ""          # C9, Maybe
+    assert write_news_doc.validate(c) == []
+    md = render(c, chips=False)
+    parse(md)                              # Out: fine
+    md = edit(md, row(md, "C9"), row(md, "C9").replace("| Out |", "| In |"))
+    _, info = parse(md)
+    assert [p["id"] for p in info["pending"]] == ["C9"]
+    c["corporate"][0]["ar"] = ""          # an Include item still needs its Arabic up front
+    assert "C1: ar missing" in write_news_doc.validate(c)
 
 
 def test_missing_arabic_on_an_out_item_is_fine():

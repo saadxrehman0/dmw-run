@@ -107,7 +107,9 @@ def render(cand, chips=True):
     for sec, head in (("economic", "Economic"), ("corporate", "Corporate")):
         md.append(f"## {head}")
         for it in cand[sec]:
-            md += [f"### {it['id']}{DOT}{it['headline']}", it["en"], it["ar"], _source_line(it)]
+            # Maybe items carry no Arabic until picked In (S1 time audit, 25 Nov 2026)
+            md += [f"### {it['id']}{DOT}{it['headline']}", it["en"]] + ([it["ar"]] if it.get("ar") else []) + \
+                [_source_line(it)]
             if it.get("short_en") or it.get("short_ar"):
                 md += [SHORT_MARK, it.get("short_en", ""), it.get("short_ar", "")]
     md.append("## Left out")
@@ -327,9 +329,12 @@ def parse(md):
                 info["out"].append(r["id"])
                 continue
             it = bodies[r["id"]]
-            missing = [k.upper() for k in ("en", "ar") if not it[k]]
-            if missing:
-                raise DocError(f"{r['id']} is picked In but has no {' or '.join(missing)} text.")
+            if not it["en"]:
+                raise DocError(f"{r['id']} is picked In but has no EN text.")
+            if not it["ar"]:   # a Maybe item picked In: S3 drafts its Arabic, then reads again
+                info["pending"].append({"id": r["id"], "headline": it["headline"], "rank": r["rank"],
+                                        "need": "AR"})
+                continue
             entry = {"en": it["en"], "ar": it["ar"]}
             if sec == "economic":
                 for k in ("short_en", "short_ar"):

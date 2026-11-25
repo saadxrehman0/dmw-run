@@ -109,7 +109,7 @@ def test_full_run_with_the_runs_own_pick(tmp_path):
     gate = json.load(open(os.path.join(r.run, "gates", "pick.json"), encoding="utf-8"))
     assert at("09:00") <= datetime.fromisoformat(gate["opened"]) < at("09:08")  # stage on the run's clock
     assert datetime.fromisoformat(st["S3"]["started"]) >= at("09:25")
-    assert st["S4"]["round"] >= 5          # rounds every 10 min from 9:00 until 10:10
+    assert st["S4"]["round"] == 2          # rounds at 9:00, 9:30 and 10:05 (Saad, 25 Nov 2026)
     assert datetime.fromisoformat(st["S5"]["started"]) >= at("10:10")
     assert datetime.fromisoformat(st["S6"]["started"]) >= at("10:20")
     names = outbox(r)
@@ -181,3 +181,84 @@ def test_find_inputs_by_contents(tmp_path):
     assert find_inputs.missing(f, "data") == []
     assert find_inputs.missing(f, "technicals") == ["Technicals EN", "Technicals AR"]
     assert find_inputs.main(["--day", str(tmp_path), "--need", "all"]) == 1
+
+
+# ---------------------------------------------------------------- replay (build step 5)
+
+def _day(root, ymd, published=True):
+    d = root / "11. Nov" / ymd
+    d.mkdir(parents=True)
+    _xlsx(d / "DMW - Data.xlsx", ["Face", "PPT-ENG", "PPT-AR"])
+    for n in ("DMW Graphs - EN.pptx", "DMW Graphs - AR.pptx", f"Technicals -ENG-{ymd}.pptx",
+              f"Technicals-AR- {ymd}.pptx", "Manual File-Calendar.xlsx", "DMW - Results.xlsx"):
+        (d / n).write_text("x")
+    if published:
+        for n in ("ANB Daily Market Watch - EN.pptx", "ANB Daily Market Watch - AR.pptx",
+                  f"EMAIL MB {ymd}.docx", "ANB Daily Market Watch - EN.pdf"):
+            (d / n).write_text("published")
+    return d
+
+
+def test_replay_runs_unattended_on_a_jumping_clock(tmp_path):
+    _day(tmp_path / "day", "20261125")
+    _day(tmp_path / "day", "20261126")
+    c = cfg(tmp_path)
+    r = run_edition.Runner(ED, c, SPEC, run_edition.Clock(ED, "08:55", 1), stub=True,
+                           out=lambda *_: None, replay=True)
+    t0 = time.monotonic()
+    assert r.loop(max_minutes=1) == 0
+    assert time.monotonic() - t0 < 30            # real time is only the stages' own time
+    st = r.st["stages"]
+    assert {k: v["status"] for k, v in st.items()} == {k: "done" for k in st}
+    assert r.run == os.path.join(str(tmp_path), "replay", "2026-11-26")
+    assert r.st["mode"] == "practice"
+    assert "answered by run" in st["S3"]["note"]
+    assert datetime.fromisoformat(st["S3"]["started"]) >= at("09:25")
+    assert st["S4"]["round"] == 0                # one round in a replay
+    assert datetime.fromisoformat(st["S5"]["started"]) >= at("10:10")
+    # the sandbox day folder has the inputs and the previous edition's decks, never this edition's finals
+    day = sorted(os.listdir(r.day))
+    assert "DMW - Data.xlsx" in day and "Technicals-AR- 20261126.pptx" in day and "prev" in day
+    assert not any(n.startswith(("ANB Daily", "EMAIL MB", "DMW - Results")) for n in day)
+    assert sorted(os.listdir(os.path.join(r.day, "prev"))) == ["ANB Daily Market Watch - AR.pptx",
+                                                              "ANB Daily Market Watch - EN.pptx",
+                                                              "DMW - Results.xlsx"]
+    assert not os.path.exists(os.path.join(r.run, "mail"))
+
+
+def test_replay_prompt_has_the_cutoffs():
+    ctx = {"EDITION": "2026-11-24", "PREV_EDITION": "2026-11-23", "RUN": "R", "DAY": "D", "REPO": "X", "STAGE": "S1", "PY": "py",
+           "MODE": "practice", "RESULT": "r.json", "ROUND": 0}
+    _, prompt = run_edition.command(run_edition.DEFAULTS and SPEC["stages"][1], ctx,
+                                    dict(run_edition.DEFAULTS), stub=False, replay=True)
+    assert "Replay of a past edition" in prompt and "9:00 AM PKT on 2026-11-24" in prompt and "{" not in prompt.split("Replay of a past edition")[1][:50]
+    _, live = run_edition.command(SPEC["stages"][1], ctx, dict(run_edition.DEFAULTS), stub=False)
+    assert "Replay of a past edition" not in live
+
+
+def test_allowed_tools_cover_powershell_and_the_python_path():
+    t = run_edition.allowed_tools(["Read", "Bash(python *)", "Bash(powershell *)"], r"C:\Python315\python.exe")
+    assert "PowerShell(python *)" in t and "PowerShell(powershell *)" in t
+    assert r"PowerShell(C:\Python315\python.exe *)" in t and r'Bash("C:\Python315\python.exe" *)' in t
+    assert t[0] == "Read" and len(t) == len(set(t))
+
+
+def test_previous_edition_skips_the_weekend(tmp_path):
+    assert run_edition.previous_edition(date(2026, 11, 22), str(tmp_path / "none.json")) == date(2026, 11, 19)
+
+
+def test_deny_list_policy_gives_the_shell_and_blocks_deletes():
+    allow, deny = run_edition.stage_tools(["Read", "Bash(python *)", "WebSearch"], r"C:\Python315\python.exe", "deny_list")
+    assert allow == ["Read", "WebSearch", "PowerShell", "Bash"]
+    assert "PowerShell(Remove-Item *)" in deny and "Bash(git push *)" in deny and "PowerShell(pip *)" in deny
+    allow2, deny2 = run_edition.stage_tools(["Bash(python *)"], "python", "allow_list")
+    assert deny2 == [] and "PowerShell(python *)" in allow2
+
+
+def test_rerun_resets_failed_and_blocked(tmp_path):
+    r = run(tmp_path)
+    r.st["stages"]["S3"].update(status="failed", attempts=2)
+    r.st["stages"]["S5"].update(status="blocked")
+    r.rerun(["S3"])
+    assert r.st["stages"]["S3"]["status"] == "waiting" and r.st["stages"]["S3"]["attempts"] == 0
+    assert r.st["stages"]["S5"]["status"] == "waiting" and r.st["stages"]["S2"]["status"] == "done"
