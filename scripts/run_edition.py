@@ -87,7 +87,7 @@ class Clock:
 def load_config(path):
     cfg = dict(DEFAULTS)
     if path and os.path.exists(path):
-        cfg.update(json.load(open(path, encoding="utf-8")))
+        cfg.update(json.load(open(path, encoding="utf-8-sig")))  # Notepad and PowerShell 5 add a BOM
     return cfg
 
 
