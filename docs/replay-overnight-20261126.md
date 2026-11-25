@@ -11,7 +11,7 @@ Drive, no gate was answered, and nothing was sent.
 
 | Edition | Economic news | Corporate news | Results rows | TASI bullet | PDFs | Next-day calendar |
 |---|---|---|---|---|---|---|
-| 4 Nov (results day) | 2 of 2 | 2 of 6 | 16 of 20 | match | 5 + 5 pages | same events; AR date format differed (fixed) |
+| 4 Nov (results day) | 2 of 2 | 2 of 6 | 16 of 20 | match | 5 + 5 pages | same events; Arabic dates written in a different format |
 | 5 Nov (results day) | 1 of 2 (matcher shows 0) | 2 of 5 | 17 of 18 | match | 5 + 5 | 9 Nov rows only; team also listed 8 Nov items |
 | 18 Nov | 1 of 2 | 6 of 8 | none due | identical | 5 + 5 | same events and US rows |
 | 23 Nov | 2 of 2 | 6 of 8 | none due | match | 5 + 5 | same event and US rows; 8 of 56 cells differ |
