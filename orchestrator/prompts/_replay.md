@@ -19,3 +19,8 @@ The edition's own published files are not available and must not be looked for.
 Gates: nobody answers in a replay. The pick gate takes the run's own pick at 9:25; a conflict gate
 stays open and its cell stays a yellow TK. Name the news Doc "REPLAY · DMW news · <edition date>".
 Every output goes under {RUN}/practice/ (practice mode).
+- Shared state is read-only in a replay. Never write to the DMW Tools state/ folder
+  (chart_state.json, name overrides, Results, schedule): copy what a step needs into
+  {RUN}/practice/state/ and point the step there (for build_dmw.py:
+  --chart-state {RUN}/practice/state/chart_state.json). A 5 Nov replay overwrote the live
+  chart_state on 26 Nov 2026, which the next live build would have read as a stale-chart baseline.
