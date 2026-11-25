@@ -252,6 +252,8 @@ def checks(news):
         for lang, t in (("en", en), ("ar", ar)):
             # a TK left by the news stage (no source for a figure) must not reach the deck unseen
             # (4 Nov replay: Global bullet TKs went to the PDF and email unflagged, 26 Nov 2026)
+            if re.search(r"\[[^\]]{12,}\]", t):   # a working note in brackets (5 Nov replay)
+                note("FLAG", f"{lang} {sec} {i + 1}: bracketed working note in the text: {t[:60]}")
             if re.search(r"(?<![A-Za-z])TK(?![A-Za-z])", t):
                 note("FLAG", f"{lang} {sec} {i + 1}: TK left in the text: {t[:60]}")
             if not re.search(r"\)\s*\.?$", t.strip()):

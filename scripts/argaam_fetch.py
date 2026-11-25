@@ -155,12 +155,15 @@ class Argaam:
 
     def first_id_at_or_after(self, when_ast, hi):
         """Binary search on article IDs for the first one published at or after when_ast."""
-        lo = hi - 400
-        while True:                     # widen until lo is before the window
+        # widen until lo is before the window, doubling the step: a fixed 800-ID step took ~15 min
+        # to reach a 3-week-old window on the replays (5 Nov replay, 26 Nov 2026)
+        step, lo = 400, hi - 400
+        while True:
             t, _ = self._time_at(lo)
             if t is None or t < when_ast or lo < 1000:
                 break
-            lo -= 800
+            hi, step = lo, step * 2
+            lo = max(lo - step, 999)
         while hi - lo > 15:
             mid = (lo + hi) // 2
             t, _ = self._time_at(mid)
@@ -191,8 +194,8 @@ class Argaam:
         top = self.latest_id() or 0
         if not top:
             raise RuntimeError("no article IDs in the Argaam feed")
-        a = self.first_id_at_or_after(start_ast, top)
         b = self.first_id_at_or_after(end_ast, top) + 30
+        a = self.first_id_at_or_after(start_ast, min(b, top))   # the start lies below the end
         # Publish times are not strictly monotonic in ID, so the binary search can stop short
         # (Mac test 25 Nov 2026: the 24 Nov window ended at 18:31 and lost 8 evening items).
         # Widen each edge in steps of 50 IDs until a step holds nothing inside the window.

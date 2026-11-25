@@ -1,7 +1,7 @@
 {
- "written": "2026-11-25 21:15 UTC",
+ "written": "2026-11-25 21:18 UTC",
  "files": {
-  "scripts/argaam_fetch.py": "1e382115989f8260b23fae24554c963ce8ef3fba4608a6344defa5682d9a187c",
+  "scripts/argaam_fetch.py": "cc7adad71aaea66d2085cf73e6cec40e2e932b2b6e39b1994d14b320e895106f",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
   "scripts/build_dmu.py": "9182c233982d60badc71f68497bb43c03798cfb8a141f496b4be58b24b9e6ebd",
   "scripts/build_dmw.py": "4d0f993ef6adb4f2a2be9d9ee7c6b9c7df590b3a53e2e796631622705ef90eda",
@@ -16,7 +16,7 @@
   "scripts/dmw_common_ar.py": "d5c64baca8c4361fac58a70ccfcadd0a7a91c1462b1eaec1c74c58a19935b0b0",
   "scripts/dmw_patch.py": "87b8f61557b451ce4e80988e9c27bcb4c65a8a1fb7f7a5992a2d877fc07069f2",
   "scripts/export_measure.py": "d2f961e572e043949ae8676d96139a75567c99df0d7ecee839e99b977c419e9c",
-  "scripts/fill_commentary.py": "e3afb61f5c31f1a058e3f78fee2856d04ca8c631fe3a58170969f4b25af20314",
+  "scripts/fill_commentary.py": "a2005dddb2444e6c62e656ad41761b597488a776c3ccbbbab6c7a02a8b57bd27",
   "scripts/find_inputs.py": "0ede2dc5acff528ec1fb4f81ad3349a13ed5c971c19c1c91c1b95d5eef27458e",
   "scripts/fix_cal_ar_names.py": "e99f80de1a5975d30fedc2582031aadca6fa366567cdf7c2f27b452f4cfcbe8d",
   "scripts/gates.py": "d617b94d97fe07c26b8f4da3d4cf69bc16ae58724d7f7df4d1d99561b1b6ba50",
@@ -50,7 +50,7 @@
   "browser/sx_names.js": "f6478c843afbb355b6875e878cc3420dd651fec109093ad4427bfff951aa1fb8",
   "orchestrator/stages.json": "8965f6296f6cd16b8f1b52e6ecda14a5efc806cee1b3796845246b3a45beeeee",
   "orchestrator/prompts/S0.md": "261839c130a0a9dbfff3979bcb9751fae28469c98dcf7767d1975179506c1c73",
-  "orchestrator/prompts/S1.md": "f3ccb7ab0cd6de0f969eeb4b341f94e2d8c4a09fa86fe8afc38c81482148dc50",
+  "orchestrator/prompts/S1.md": "084bf1e23013e1c9176ed83f2f0bd301c3a01a00e74fdf9e708fcdbe404fd2a8",
   "orchestrator/prompts/S2.md": "0476546970f67fe28a917d5c1c301a397fa852d590ff9a360dc95eadb4bfc041",
   "orchestrator/prompts/S3.md": "bc697bb1f0ada3fa6d046871de862eeea4d54f07648173669c06fa8393a29aea",
   "orchestrator/prompts/S4.md": "fcc2b1585f886f4a13d676c83d5cb2b203145c5997f067fe223475b0e1a65fa5",
