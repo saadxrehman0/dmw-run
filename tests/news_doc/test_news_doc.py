@@ -236,3 +236,23 @@ def test_card_fits_limits():
     assert len(b[0]["text"]) <= 60 and len(b[1]["text"]) <= 1000
     assert table["rows"][0][0] == "E1, E2" and table["rows"][1][0] == "C1"
     assert table["rows"][-1] == ["C9, C10", "Meyar; Arab Sea", "Out (Maybe)"]
+
+
+def test_numbers_ignore_period_labels():
+    # EN "Q3"/"9M" vs AR in words gave a false CONFLICT on the 4 Nov replay (26 Nov 2026)
+    import news_text as N
+    en = "In Q3 and 9M 2026 the deficit was SAR 84.3bn, up 3% (3Q26)."
+    ar = "في الربع الثالث والتسعة أشهر من 2026 بلغ العجز 84.3 مليار، بارتفاع 3% (الربع الثالث 2026)."
+    assert N.numbers(en, "en") == N.numbers(ar, "ar") == ["3", "84.3", "2026"]
+
+
+def test_third_economic_include_starts_out():
+    # 4 Nov replay: S1 marked 3 Economic items Include; the deck runs two (26 Nov 2026)
+    cand = {"edition": "2026-11-04", "markets": {"global": {"en": "g", "ar": "غ"}, "tasi": {"en": "t", "ar": "ت"}},
+            "economic": [{"id": f"E{i}", "headline": f"h{i}", "en": "x (Argaam).", "ar": "س (أرقام).",
+                          "source": "Argaam", "tier": "Include"} for i in (1, 2, 3)],
+            "corporate": [], "left_out": []}
+    md = render(cand, chips=False)
+    rows = [l for l in md.splitlines() if l.startswith("| ") and "E" in l.split("|")[2]]
+    picks = [l.split("|")[3].strip() for l in rows[:3]]
+    assert picks == ["In", "In", "Out"]

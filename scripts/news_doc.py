@@ -54,6 +54,9 @@ def title(day):
     return f"DMW news{DOT}{d.strftime('%a')} {d.day} {d.strftime('%b %Y')}"
 
 
+ECON_MAX = 2   # Economic items in the deck
+
+
 def default_pick(item):
     """The run's own pick: Include goes in, Maybe and anything else stays out."""
     return "In" if item.get("tier", "Include") == "Include" else "Out"
@@ -95,9 +98,17 @@ def render(cand, chips=True):
     for sec in SECTIONS:
         md.append(INTRO[sec])
         rows = ["| Rank | Item | Pick | Run says | Why |", "| --- | --- | --- | --- | --- |"]
+        n_in = 0
         for r, it in enumerate(cand[sec], 1):
+            dp = it.get('pick') or default_pick(it)
+            # the house runs exactly two Economic items (news-selection.md): a third Include starts
+            # Out (4 Nov replay, 26 Nov 2026)
+            if sec == "economic" and dp == "In":
+                n_in += 1
+                if n_in > ECON_MAX and not it.get('pick'):
+                    dp = "Out"
             rows.append(f"| {r} | {it['id']}{DOT}{_cell(it['headline'])} | "
-                        f"{pick('p' + it['id'].lower(), it.get('pick') or default_pick(it))} | "
+                        f"{pick('p' + it['id'].lower(), dp)} | "
                         f"{_cell(it.get('tier', 'Include'))} | {_cell(it.get('why', ''))} |")
         md.append("\n".join(rows))
     md.append("## Markets")

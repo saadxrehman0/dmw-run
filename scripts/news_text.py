@@ -111,6 +111,9 @@ def _run(p, text, rpr, lang):
 # ---------------------------------------------------------------- parity checks (from v1)
 def numbers(s, lang):
     s = re.sub(r"(?<![A-Za-z0-9])(\d)[QHM](\d\d)(?![0-9])", lambda m: "20" + m.group(2), s)
+    # period labels (Q3, 3Q, H1, 9M) carry no figure: AR usually writes them as words, so drop them
+    # in both languages (false CONFLICT on the 4 Nov replay, 26 Nov 2026)
+    s = re.sub(r"(?<![A-Za-z0-9])(?:Q[1-4]|[1-4]Q|H[12]|[12]H|(?:3|6|9|12)M)(?![A-Za-z0-9])", " ", s)
     if lang == "en":
         s = re.sub(r"(?:\$|USD\s?)(\d)\b(?![.,]\d)", r"\1", s)
     else:

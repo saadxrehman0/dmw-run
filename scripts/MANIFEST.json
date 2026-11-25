@@ -1,5 +1,5 @@
 {
- "written": "2026-11-25 20:41 UTC",
+ "written": "2026-11-25 21:00 UTC",
  "files": {
   "scripts/argaam_fetch.py": "1e382115989f8260b23fae24554c963ce8ef3fba4608a6344defa5682d9a187c",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
@@ -30,8 +30,8 @@
   "scripts/make_measure_font.py": "36407ab5d8ccc575b789a9e0119a7b16cf0a64a88a42b1a5d804ad5d0c7c04fc",
   "scripts/manifest.py": "57f0f3e6a312d97a104d331a55c5b9dac7b00dd04ff8c0451050491da1bd6e35",
   "scripts/mapcols.py": "b0e8411cf1dd1525278aca9cc42369b4047f83146ca17a27d4ed82e35ccd17c3",
-  "scripts/news_doc.py": "9faed686379e79b62493ba67ce7929319965a8eb8648cb26e5c95cd522d11ade",
-  "scripts/news_text.py": "d810c2b1f365a27d30b2b7f40c7e162734d0d24f86f907f5ea98bc224926d9a5",
+  "scripts/news_doc.py": "0c6e892922dcae83b80c8ec1233d81cc96e09d763092fad8e8ad62bf89318c9a",
+  "scripts/news_text.py": "465809839cd43b7ce2f02df05ef41bfec42061fa6aa7d4a17e7a5f51e059ccbc",
   "scripts/pick_card.py": "baffe4115db52ddfe74796349a1421d12d81796c699e5b012bc56bf4d41af148",
   "scripts/place_results.py": "4d3a1fc02c5889d60a99b2a06f5f413da02947a3c6028513c2744f918c400155",
   "scripts/read_news_doc.py": "a91c81695bf08d923a8df95312a5174639031c2a763760750f247a486e52ca1e",
@@ -50,13 +50,13 @@
   "browser/sx_names.js": "f6478c843afbb355b6875e878cc3420dd651fec109093ad4427bfff951aa1fb8",
   "orchestrator/stages.json": "8965f6296f6cd16b8f1b52e6ecda14a5efc806cee1b3796845246b3a45beeeee",
   "orchestrator/prompts/S0.md": "261839c130a0a9dbfff3979bcb9751fae28469c98dcf7767d1975179506c1c73",
-  "orchestrator/prompts/S1.md": "2ac69e2662b460d306979d3d14a7f67d3abbf99185bad2022cca5ea397ab9ab5",
+  "orchestrator/prompts/S1.md": "f3ccb7ab0cd6de0f969eeb4b341f94e2d8c4a09fa86fe8afc38c81482148dc50",
   "orchestrator/prompts/S2.md": "0476546970f67fe28a917d5c1c301a397fa852d590ff9a360dc95eadb4bfc041",
   "orchestrator/prompts/S3.md": "bc697bb1f0ada3fa6d046871de862eeea4d54f07648173669c06fa8393a29aea",
   "orchestrator/prompts/S4.md": "fcc2b1585f886f4a13d676c83d5cb2b203145c5997f067fe223475b0e1a65fa5",
   "orchestrator/prompts/S5.md": "8061a8c92eb825921ced3f6cc73f8edafffaae17d0d0e034a5cb92af1c12a910",
   "orchestrator/prompts/S6.md": "7f424a99237d10ace55e228f85c17b34809029c4c1e5ceedc26aff245d55ddb8",
   "orchestrator/prompts/_common.md": "b8588bc5d2a1a0eae2fe8fd8026d6a0a97c227909ea9570eaaa28c7479de5d9b",
-  "orchestrator/prompts/_replay.md": "1f419d55065de3918d6d325c5133db9ab3c389bcf710604731c8e1d214c2d505"
+  "orchestrator/prompts/_replay.md": "ae5c985df97b910e3cfe18dfd3e5aa859787f968825fc40fd3ae4a415465cece"
  }
 }
