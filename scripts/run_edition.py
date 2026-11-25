@@ -325,6 +325,19 @@ class Runner:
         self.st["ended"] = None
         save(self.run, self.st)
 
+    def write_prompts(self):
+        """Each stage's prompt exactly as a headless session would get it on stdin, plus the
+        tool rules, in RUN/prompts/ (--prompts-only)."""
+        d = os.path.join(self.run, "prompts")
+        os.makedirs(d, exist_ok=True)
+        for spec in self.spec["stages"]:
+            argv, prompt = command(spec, self.ctx(spec["id"]), self.cfg, False, self.replay)
+            with open(os.path.join(d, f"{spec['id']}.md"), "w", encoding="utf-8") as fh:
+                fh.write(prompt)
+            _write(os.path.join(d, f"{spec['id']}.argv.json"), argv)
+            self.out(os.path.join(d, f"{spec['id']}.md"))
+        return 0
+
     # A restart finds stages marked running whose process belongs to the old orchestrator: count
     # that attempt as failed (kill it if it is still there) and let the retry rule decide.
     def _resume(self):
@@ -606,6 +619,9 @@ def main(argv=None):
     ap.add_argument("--speed", type=float, default=1.0)
     ap.add_argument("--max-minutes", type=float)
     ap.add_argument("--replay", action="store_true", help="replay a past edition (see the module doc)")
+    ap.add_argument("--prompts-only", action="store_true",
+                    help="set up the run folder and write each stage's full prompt to RUN/prompts/<id>.md, "
+                         "then stop (stages run by hand or by another driver; Mac replays, 26 Nov 2026)")
     ap.add_argument("--rerun", help="stage ids to run again in an existing run folder, e.g. S3,S5 "
                                     "(their failed or blocked dependents go back to waiting too)")
     a = ap.parse_args(argv)
@@ -623,6 +639,8 @@ def main(argv=None):
     if a.rerun:
         r.rerun(a.rerun.split(","))
     print(f"run {ed} mode={r.st['mode']} RUN={r.run} DAY={r.day}{' (stub stages)' if a.stub else ''}")
+    if a.prompts_only:
+        return r.write_prompts()
     return r.loop(a.max_minutes)
 
 
