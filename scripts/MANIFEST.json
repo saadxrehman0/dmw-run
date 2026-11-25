@@ -1,5 +1,5 @@
 {
- "written": "2026-11-25 21:36 UTC",
+ "written": "2026-11-25 21:41 UTC",
  "files": {
   "scripts/argaam_fetch.py": "2ed1b77d58358bddee092f7419a04623f0b2c0a767605e414283f57d05a95b75",
   "scripts/build_cal.py": "a6bf06079f3e01595847e2b40ef2a9d791f22c9da00e9bdfadcb4901b39368f5",
@@ -7,7 +7,7 @@
   "scripts/build_dmw.py": "4d0f993ef6adb4f2a2be9d9ee7c6b9c7df590b3a53e2e796631622705ef90eda",
   "scripts/build_dmw_ar.py": "7e61cc66e37eb94f90f34557d7e39cf076cb52a220d56fe8301743b65b08a013",
   "scripts/build_email_mb.py": "517ee23128efaeec405bc332e49019faa004ba77074f8f183f072cc1bd018fe7",
-  "scripts/check_ar_text.py": "1a50fc0b138319c0c8dc2dfdad99d76d7aa410ee77c73979e969a2941b71acfc",
+  "scripts/check_ar_text.py": "11fa160f44a0588266665bc7a6e4f5c55e202f46c48b16ffce0b951f3dcb00bd",
   "scripts/check_dmu.py": "8fc21b2a0efd7d284f03a36b54f64e35f758005b03a22b5853206ec8803c4c33",
   "scripts/check_final.py": "9fbee146ed9a98f4d1ba0445cc7302b1c3db0a4714bf98188c6da3f68b8cabad",
   "scripts/check_mapping.py": "bae46b642eb35457cd85f6b2dca24144bc174cf9b6f8f124e0f9760d8cb02a4a",
@@ -42,7 +42,7 @@
   "scripts/snap_spec.py": "753e3a25d0917a974a00ee505adc44e78f3d84f22d12385fe2b8e926b98030d1",
   "scripts/stub_stage.py": "f911670894b5315e69f01e1f77d19e217c190ff2cb32f41419d99d021658d821",
   "scripts/tadawul_fetch.py": "9209baff3ca2e8003d72cd6a13cc2ec56042e6b0b9ae5b00e609eaec701621a0",
-  "scripts/triage.py": "c5259c72b4f36fd16d2c1dad0815fb1ba682c1c359ee8acde5d4d23d8cf8ac46",
+  "scripts/triage.py": "7ea46a62147a04c3226cfb3bcc570a7e94619b3eda8a60f5afc5714310c414dd",
   "scripts/write_news_doc.py": "d7574b8672d57f71e473f49ca9f239da693181a7f48027a1fdf93e172ccd5cdf",
   "scripts/export_measure.ps1": "bd9245032f7d37f68e9ba2a9e18234fd44a252d5797ca00755fdcd5af20f40e0",
   "scripts/export_pdf.ps1": "3879fa1dcc1e8c2a572e5ecda87df3593cb84ace9a2bf0077f40855372352a5f",
