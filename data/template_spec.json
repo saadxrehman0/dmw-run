@@ -1,0 +1,552 @@
+{
+ "EN": {
+  "s1 TXT DAILY REPORT   |   SAUDI ARABIA R": {
+   "left": 4.7,
+   "top": 0.33,
+   "width": 3.4,
+   "height": 0.3
+  },
+  "s1 SHP Shape 1 L": {
+   "left": 0.4,
+   "top": 0.684,
+   "width": 7.7,
+   "height": 0.0
+  },
+  "s1 TXT Daily Market Watch L": {
+   "left": 0.8,
+   "top": 0.765,
+   "width": 5.4,
+   "height": 0.46
+  },
+  "s1 DATE": {
+   "left": 5.5,
+   "top": 0.715,
+   "width": 2.6,
+   "height": 0.4
+  },
+  "s1 TXT Index Performance L": {
+   "left": 0.4,
+   "top": 2.427,
+   "width": 7.7,
+   "height": 0.24
+  },
+  "s1 SHP Shape 17 L": {
+   "left": 0.4,
+   "top": 2.687,
+   "width": 7.7,
+   "height": 0.0
+  },
+  "s1 TXT TASI Performance L": {
+   "left": 0.4,
+   "top": 3.597,
+   "width": 3.701,
+   "height": 0.24
+  },
+  "s1 SHP Shape 19 L": {
+   "left": 0.4,
+   "top": 3.857,
+   "width": 3.701,
+   "height": 0.0
+  },
+  "s1 TXT Historical Tadawul P/E & DY R": {
+   "left": 4.399,
+   "top": 3.597,
+   "width": 3.701,
+   "height": 0.24
+  },
+  "s1 SHP Shape 19 R": {
+   "left": 4.399,
+   "top": 3.857,
+   "width": 3.701,
+   "height": 0.0
+  },
+  "s1 TXT MARKETS PERFORMANCE & NEWS L": {
+   "left": 0.4,
+   "top": 6.29,
+   "width": 7.7,
+   "height": 0.175
+  },
+  "s1 TABLE Main Market – TASI|18c": {
+   "left": 0.4,
+   "top": 2.722,
+   "width": 7.7,
+   "height": 0.663
+  },
+  "s1 SHP Shape 6 L": {
+   "left": 0.418,
+   "top": 1.364,
+   "width": 3.71,
+   "height": 1.01
+  },
+  "s1 TXT Main Market - TASI L": {
+   "left": 0.518,
+   "top": 1.338,
+   "width": 3.51,
+   "height": 0.24
+  },
+  "s1 CARD L close": {
+   "left": 0.518,
+   "top": 1.578,
+   "width": 3.51,
+   "height": 0.34
+  },
+  "s1 CARD L vt": {
+   "left": 0.518,
+   "top": 1.91,
+   "width": 3.51,
+   "height": 0.2
+  },
+  "s1 CARD L ytd": {
+   "left": 0.518,
+   "top": 2.11,
+   "width": 3.51,
+   "height": 0.2
+  },
+  "s1 CARD L dod": {
+   "left": 1.439,
+   "top": 1.67,
+   "width": 0.515,
+   "height": 0.236
+  },
+  "s1 SHP Shape 6 R": {
+   "left": 4.386,
+   "top": 1.364,
+   "width": 3.71,
+   "height": 1.01
+  },
+  "s1 TXT Parallel Market - NOMU R": {
+   "left": 4.486,
+   "top": 1.338,
+   "width": 3.51,
+   "height": 0.24
+  },
+  "s1 CARD R close": {
+   "left": 4.486,
+   "top": 1.578,
+   "width": 3.51,
+   "height": 0.34
+  },
+  "s1 CARD R vt": {
+   "left": 4.486,
+   "top": 1.91,
+   "width": 3.51,
+   "height": 0.2
+  },
+  "s1 CARD R ytd": {
+   "left": 4.486,
+   "top": 2.11,
+   "width": 3.51,
+   "height": 0.2
+  },
+  "s1 CARD R dod": {
+   "left": 5.428,
+   "top": 1.67,
+   "width": 0.529,
+   "height": 0.236
+  },
+  "s1 PAGENO": {
+   "left": 7.6,
+   "top": 10.66,
+   "width": 0.5,
+   "height": 0.24
+  },
+  "s1 SHP object 24 L": {
+   "left": 0.423,
+   "top": 0.861,
+   "width": 0.26,
+   "height": 0.287
+  },
+  "s1 PIC L y4": {
+   "left": 0.4,
+   "top": 3.893,
+   "width": 3.68,
+   "height": 2.341
+  },
+  "s1 PIC R y4": {
+   "left": 4.42,
+   "top": 3.893,
+   "width": 3.68,
+   "height": 2.341
+  },
+  "s2 TXT DAILY REPORT   |   SAUDI ARABIA R": {
+   "left": 4.7,
+   "top": 0.33,
+   "width": 3.4,
+   "height": 0.3
+  },
+  "s2 PAGENO": {
+   "left": 7.6,
+   "top": 10.66,
+   "width": 0.5,
+   "height": 0.24
+  },
+  "s2 TXT MAJOR CORPORATE NEWS L": {
+   "left": 0.4,
+   "top": 0.734,
+   "width": 7.7,
+   "height": 0.157
+  },
+  "s3 TXT DAILY REPORT   |   SAUDI ARABIA R": {
+   "left": 4.7,
+   "top": 0.33,
+   "width": 3.4,
+   "height": 0.3
+  },
+  "s3 PAGENO": {
+   "left": 7.6,
+   "top": 10.66,
+   "width": 0.5,
+   "height": 0.24
+  },
+  "s3 TXT Source: Bloomberg R": {
+   "left": 4.4,
+   "top": 10.78,
+   "width": 1.137,
+   "height": 0.18
+  },
+  "s3 TXT SECTOR PERFORMANCE YTD – TOP PERFORMERS & LAG L": {
+   "left": 0.4,
+   "top": 3.678,
+   "width": 3.7,
+   "height": 0.157
+  },
+  "s3 TXT TASI PERFORMANCE L": {
+   "left": 0.4,
+   "top": 0.703,
+   "width": 7.7,
+   "height": 0.157
+  },
+  "s3 TXT GLOBAL DATA SNAPSHOT L": {
+   "left": 0.4,
+   "top": 6.312,
+   "width": 7.7,
+   "height": 0.157
+  },
+  "s3 TABLE TOP PERFORMERS — SECTORS|5c": {
+   "left": 0.4,
+   "top": 0.863,
+   "width": 3.7,
+   "height": 2.755
+  },
+  "s3 TABLE TOP PERFORMERS — COMPANIES|5c": {
+   "left": 4.4,
+   "top": 0.863,
+   "width": 3.7,
+   "height": 2.76
+  },
+  "s3 TABLE VALUE LEADERS — COMPANIES|5c": {
+   "left": 4.4,
+   "top": 3.682,
+   "width": 3.7,
+   "height": 2.598
+  },
+  "s3 TABLE INTERNATIONAL MARKETS|5c": {
+   "left": 0.4,
+   "top": 6.47,
+   "width": 3.7,
+   "height": 2.281
+  },
+  "s3 TABLE REGIONAL MARKETS|5c": {
+   "left": 0.4,
+   "top": 8.744,
+   "width": 3.7,
+   "height": 2.162
+  },
+  "s3 TABLE COMMODITY PRICES|5c": {
+   "left": 4.4,
+   "top": 6.47,
+   "width": 3.7,
+   "height": 2.48
+  },
+  "s3 TABLE INTEREST RATES|5c": {
+   "left": 4.4,
+   "top": 9.11,
+   "width": 3.7,
+   "height": 1.024
+  },
+  "s3 PIC L y4": {
+   "left": 0.4,
+   "top": 3.902,
+   "width": 3.7,
+   "height": 2.3
+  }
+ },
+ "AR": {
+  "s1 TABLE السوق الموازية (نمو)|18c": {
+   "left": 0.47,
+   "top": 2.675,
+   "width": 7.56,
+   "height": 0.885
+  },
+  "s1 TABLE المتابعة اليومية للسوق|1c": {
+   "left": 2.36,
+   "top": 0.637,
+   "width": 5.508,
+   "height": 0.5
+  },
+  "s1 DATE": {
+   "left": 0.364,
+   "top": 0.705,
+   "width": 2.153,
+   "height": 0.303
+  },
+  "s1 SHP Straight Connector 32 L": {
+   "left": 0.47,
+   "top": 0.657,
+   "width": 7.559,
+   "height": 0.0
+  },
+  "s1 TXT المملكة العربية السعودية   |   التقرير اليومي L": {
+   "left": 0.468,
+   "top": 0.342,
+   "width": 1.55,
+   "height": 0.3
+  },
+  "s1 TXT أداء المؤشرات R": {
+   "left": 6.0,
+   "top": 2.402,
+   "width": 2.087,
+   "height": 0.286
+  },
+  "s1 TXT السوق الرئيسية — تاسي R": {
+   "left": 5.313,
+   "top": 1.326,
+   "width": 2.677,
+   "height": 0.252
+  },
+  "s1 CARD R close": {
+   "left": 6.731,
+   "top": 1.57,
+   "width": 1.26,
+   "height": 0.37
+  },
+  "s1 CARD R dod": {
+   "left": 6.517,
+   "top": 1.67,
+   "width": 0.489,
+   "height": 0.236
+  },
+  "s1 CARD R vt": {
+   "left": 4.402,
+   "top": 1.878,
+   "width": 3.51,
+   "height": 0.2
+  },
+  "s1 CARD R ytd": {
+   "left": 6.406,
+   "top": 2.071,
+   "width": 1.5,
+   "height": 0.2
+  },
+  "s1 SHP Shape 19 L": {
+   "left": 0.456,
+   "top": 3.983,
+   "width": 3.6,
+   "height": 0.0
+  },
+  "s1 SHP Shape 19 R": {
+   "left": 4.399,
+   "top": 3.984,
+   "width": 3.6,
+   "height": 0.0
+  },
+  "s1 TXT أداء الأسواق/الأخبار L": {
+   "left": 0.4,
+   "top": 6.347,
+   "width": 7.7,
+   "height": 0.23
+  },
+  "s1 PAGENO": {
+   "left": 0.475,
+   "top": 10.658,
+   "width": 0.5,
+   "height": 0.24
+  },
+  "s1 CARD R dod #2": {
+   "left": 6.6,
+   "top": 2.083,
+   "width": 0.827,
+   "height": 0.219
+  },
+  "s1 TXT السوق الموازية — نمو L": {
+   "left": 1.504,
+   "top": 1.33,
+   "width": 2.677,
+   "height": 0.252
+  },
+  "s1 CARD L close": {
+   "left": 2.922,
+   "top": 1.567,
+   "width": 1.26,
+   "height": 0.37
+  },
+  "s1 CARD L dod": {
+   "left": 2.738,
+   "top": 1.67,
+   "width": 0.51,
+   "height": 0.236
+  },
+  "s1 CARD L vt": {
+   "left": 0.593,
+   "top": 1.882,
+   "width": 3.51,
+   "height": 0.2
+  },
+  "s1 CARD L ytd": {
+   "left": 2.597,
+   "top": 2.07,
+   "width": 1.5,
+   "height": 0.2
+  },
+  "s1 CARD L dod #2": {
+   "left": 2.8,
+   "top": 2.08,
+   "width": 0.827,
+   "height": 0.219
+  },
+  "s1 TXT أداء مؤشر السوق الرئيسي — تاسي R": {
+   "left": 4.4,
+   "top": 3.689,
+   "width": 3.69,
+   "height": 0.286
+  },
+  "s1 TXT مكرر الأرباح والعائد على التوزيع التاريخي لتد L": {
+   "left": 0.48,
+   "top": 3.689,
+   "width": 3.67,
+   "height": 0.286
+  },
+  "s1 SHP object 24 R": {
+   "left": 7.863,
+   "top": 0.787,
+   "width": 0.18,
+   "height": 0.2
+  },
+  "s1 PIC L y4": {
+   "left": 0.48,
+   "top": 4.046,
+   "width": 3.58,
+   "height": 2.3
+  },
+  "s1 PIC R y4": {
+   "left": 4.4,
+   "top": 4.046,
+   "width": 3.6,
+   "height": 2.3
+  },
+  "s2 TXT المملكة العربية السعودية   |   التقرير اليومي L": {
+   "left": 0.456,
+   "top": 0.342,
+   "width": 1.55,
+   "height": 0.3
+  },
+  "s2 PAGENO": {
+   "left": 0.475,
+   "top": 10.658,
+   "width": 0.5,
+   "height": 0.24
+  },
+  "s2 TXT أهم أخبار الشركات L": {
+   "left": 0.4,
+   "top": 0.846,
+   "width": 7.7,
+   "height": 0.23
+  },
+  "s3 TABLE أفضل القطاعات أداءً|5c": {
+   "left": 4.4,
+   "top": 0.873,
+   "width": 3.7,
+   "height": 1.422
+  },
+  "s3 TABLE أضعف القطاعات أداءً|5c": {
+   "left": 4.4,
+   "top": 2.294,
+   "width": 3.7,
+   "height": 1.421
+  },
+  "s3 TABLE قادة الحجم – الشركات|5c": {
+   "left": 0.4,
+   "top": 5.045,
+   "width": 3.7,
+   "height": 1.295
+  },
+  "s3 TABLE أفضل الشركات أداءً|5c": {
+   "left": 0.4,
+   "top": 0.887,
+   "width": 3.7,
+   "height": 1.411
+  },
+  "s3 TABLE أضعف الشركات أداءً|5c": {
+   "left": 0.4,
+   "top": 2.294,
+   "width": 3.7,
+   "height": 1.417
+  },
+  "s3 TABLE قادة القيمة – الشركات|5c": {
+   "left": 0.4,
+   "top": 3.711,
+   "width": 3.7,
+   "height": 1.315
+  },
+  "s3 TXT المملكة العربية السعودية   |   التقرير اليومي L": {
+   "left": 0.426,
+   "top": 0.33,
+   "width": 1.55,
+   "height": 0.3
+  },
+  "s3 TXT أداء مؤشر تاسي L": {
+   "left": 0.4,
+   "top": 0.724,
+   "width": 7.7,
+   "height": 0.165
+  },
+  "s3 TXT أداء القطاعات منذ بداية العام – أبرز الرابحين R": {
+   "left": 4.4,
+   "top": 3.711,
+   "width": 3.7,
+   "height": 0.157
+  },
+  "s3 TABLE الأسواق العالمية|5c": {
+   "left": 4.4,
+   "top": 6.524,
+   "width": 3.7,
+   "height": 2.217
+  },
+  "s3 TABLE |5c": {
+   "left": 4.4,
+   "top": 8.756,
+   "width": 3.7,
+   "height": 2.099
+  },
+  "s3 TABLE أسعار السلع الأساسية|5c": {
+   "left": 0.4,
+   "top": 6.524,
+   "width": 3.7,
+   "height": 2.54
+  },
+  "s3 TABLE أسعار الفائدة|5c": {
+   "left": 0.4,
+   "top": 9.045,
+   "width": 3.7,
+   "height": 1.062
+  },
+  "s3 TXT لمحة موجزة عن البيانات العالمية L": {
+   "left": 0.4,
+   "top": 6.374,
+   "width": 7.7,
+   "height": 0.152
+  },
+  "s3 TXT المصدر: بلومبرغ L": {
+   "left": 2.933,
+   "top": 10.4,
+   "width": 1.137,
+   "height": 0.18
+  },
+  "s3 PIC R y4": {
+   "left": 4.4,
+   "top": 3.923,
+   "width": 3.7,
+   "height": 2.3
+  }
+ }
+}
