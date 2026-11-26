@@ -1,5 +1,5 @@
 {
- "written": "2026-11-25 22:10 UTC",
+ "written": "2026-11-26 05:57 UTC",
  "files": {
   "scripts/argaam_fetch.py": "dfdc90370120350834e87d5991b09a34de922f4d0984f880d64907a589d94f02",
   "scripts/build_cal.py": "c1441a6aefde4ffc70112796751216cf725595940c86f488bfdb947bfefaa8cd",
@@ -17,7 +17,7 @@
   "scripts/dmw_common_ar.py": "d5c64baca8c4361fac58a70ccfcadd0a7a91c1462b1eaec1c74c58a19935b0b0",
   "scripts/dmw_patch.py": "87b8f61557b451ce4e80988e9c27bcb4c65a8a1fb7f7a5992a2d877fc07069f2",
   "scripts/export_measure.py": "d2f961e572e043949ae8676d96139a75567c99df0d7ecee839e99b977c419e9c",
-  "scripts/fill_commentary.py": "a2005dddb2444e6c62e656ad41761b597488a776c3ccbbbab6c7a02a8b57bd27",
+  "scripts/fill_commentary.py": "f864afe0e1ae0285e4c5f49c096862225158b6e5930d86b1b846fa4e5c77752d",
   "scripts/find_inputs.py": "0ede2dc5acff528ec1fb4f81ad3349a13ed5c971c19c1c91c1b95d5eef27458e",
   "scripts/fix_cal_ar_names.py": "e99f80de1a5975d30fedc2582031aadca6fa366567cdf7c2f27b452f4cfcbe8d",
   "scripts/gates.py": "d617b94d97fe07c26b8f4da3d4cf69bc16ae58724d7f7df4d1d99561b1b6ba50",
@@ -31,9 +31,9 @@
   "scripts/make_measure_font.py": "36407ab5d8ccc575b789a9e0119a7b16cf0a64a88a42b1a5d804ad5d0c7c04fc",
   "scripts/manifest.py": "57f0f3e6a312d97a104d331a55c5b9dac7b00dd04ff8c0451050491da1bd6e35",
   "scripts/mapcols.py": "b0e8411cf1dd1525278aca9cc42369b4047f83146ca17a27d4ed82e35ccd17c3",
-  "scripts/news_doc.py": "0c6e892922dcae83b80c8ec1233d81cc96e09d763092fad8e8ad62bf89318c9a",
+  "scripts/news_doc.py": "a09319e14dd3b2ff1c775663efb55fa259a9c037c0561bc6e1396041e905250a",
   "scripts/news_text.py": "465809839cd43b7ce2f02df05ef41bfec42061fa6aa7d4a17e7a5f51e059ccbc",
-  "scripts/pick_card.py": "baffe4115db52ddfe74796349a1421d12d81796c699e5b012bc56bf4d41af148",
+  "scripts/pick_card.py": "a8b8802ff192f7bf6faa6ad98ce4115d21c8ee51a639da3fa50fa2cf1f451748",
   "scripts/place_results.py": "a09b083b2eaf4c0d50f2862d8432c9a8ea4520d7ec732c6c93f78d15612f3671",
   "scripts/read_news_doc.py": "a91c81695bf08d923a8df95312a5174639031c2a763760750f247a486e52ca1e",
   "scripts/refresh_mapping.py": "5f075fc84b33eb1621e9bd5a1cc69034dde72818cc2e723e9c92136df673b701",
