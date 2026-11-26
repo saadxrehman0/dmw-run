@@ -16,8 +16,9 @@ v2 rules (Template v2, approved 25 Nov 2026):
   - s1.news: Markets (Global then TASI), Economic items, and ONE Corporate bullet (the top-ranked
     item). On a results day (--results-day) the slide 1 Corporate band becomes the "Results
     Announcements" band over the Results table and every Corporate item goes to slide 2.
-  - s2.flow: at most 7 Corporate items at the top; the calendars follow in the same table, so they
-    move down with the news. Items past 7 are left out of both decks and reported.
+  - s2.flow: every remaining Corporate item at the top, in rank order; the calendars follow in the
+    same table, so they move down with the news. There is no fixed item count (Saad, 26 Nov 2026):
+    slide 2 takes items until it reaches PAGE_BOTTOM, then the lowest-ranked items are cut.
   - Nothing may end below 10.60 in on either slide (PAGE_BOTTOM).
   - Slide 1 overflow fallback: use the shorter version of the LAST Economic item; if still over,
     the shorter versions of both. Without the needed short text the script stops and says how many
@@ -37,7 +38,6 @@ import news_text as N                              # noqa: E402
 from dmw_common import PAGE_BOTTOM                 # noqa: E402
 
 E = 914400
-S2_MAX = 7
 NEWS_ROWS = {"mk": 2, "ec": 6, "co": 10}           # s1.news text rows (0-based)
 S2_ROWS = (0, 1, 2, 3)                              # s2.flow: Corporate header, gap, text, gap
 log = []
@@ -298,10 +298,6 @@ def main():
     corp = list(news["corporate"])
     k1 = 0 if a.results_day else min(1, len(corp))
     s1_items, rest = corp[:k1], corp[k1:]
-    if len(rest) > S2_MAX:
-        for it in rest[S2_MAX:]:
-            note("FLAG", f"Corporate item left out (slide 2 holds {S2_MAX}): {it['en'][:70]}")
-        rest = rest[:S2_MAX]
 
     # slide 1: overflow fallback on the Economic items
     n_ec = len(news["economic"])

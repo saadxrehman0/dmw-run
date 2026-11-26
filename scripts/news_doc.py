@@ -37,8 +37,8 @@ LEAD = ("Pick by 9:25 AM PKT: set each item to In or Out and change Rank to reor
         "follow these tables; after 9:25 the run goes with its own In items in this order. Edits "
         "you make to any item's text below also win over the run's.")
 INTRO = {"economic": "Economic: the deck runs the top 2; short versions are ready if slide 1 overflows.",
-         "corporate": "Corporate: rank 1 goes on slide 1, ranks 2 to 8 on slide 2; lower ranks are "
-                      "cut first if slide 2 overflows."}
+         "corporate": "Corporate: rank 1 goes on slide 1, the rest on slide 2 in rank order; if slide 2 "
+                      "runs out of room, the lowest ranks are cut first."}
 LEFT_INTRO = ("Switch an item to In to bring it back: the run drafts its EN and AR text and adds it "
               "to Corporate at the bottom, or at the rank you type.")
 ARABIC = re.compile(r"[؀-ۿ]")
