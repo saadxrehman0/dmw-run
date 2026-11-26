@@ -31,6 +31,7 @@ SECS = ("markets", "economic", "corporate")
 HEADS = {"markets performance & news": "markets", "major economic/sector news": "economic",
          "major corporate news": "corporate", "أداء الأسواق/الأخبار": "markets",
          "أخبار اقتصادية/قطاعية رئيسية": "economic", "أهم أخبار الشركات": "corporate"}
+RESULTS_HEADS = {"results announcements", "result announcements", "إعلانات النتائج"}
 CAL = {"event calendar": "ev", "economic calendar": "ec", "تقويم الأحداث": "ev", "التقويم الاقتصادي": "ec"}
 AI = str.maketrans("٠١٢٣٤٥٦٧٨٩٫٬", "0123456789.,")
 
@@ -62,6 +63,8 @@ def read(path):
                         sec = HEADS.get(key) or HEADS[first]; continue
                     if key in CAL or first in CAL:
                         sec = CAL.get(key) or CAL[first]; continue
+                    if key in RESULTS_HEADS or first in RESULTS_HEADS:   # results days (5 Nov replay)
+                        sec = None; continue
                     if sec in news:
                         cell = r.cells[0]
                         news[sec] += [p.text.strip() for p in cell.text_frame.paragraphs if p.text.strip()]
@@ -153,6 +156,11 @@ def leftovers(prs, lang):
                 for c in row.cells:
                     if N.PLACEHOLDER.search(c.text):
                         note("FLAG", f"{lang} slide {si + 1} {sh.name}: placeholder left '{c.text.strip()[:40]}'.")
+                    # a TK or a bracketed note reached the PDFs and the email (5 Nov replay)
+                    if re.search(r"(?<![A-Za-z])TK(?![A-Za-z])", c.text):
+                        note("FLAG", f"{lang} slide {si + 1} {sh.name}: TK left '{c.text.strip()[:40]}'.")
+                    if re.search(r"\[[^\]]{12,}\]", c.text) and not N.PLACEHOLDER.search(c.text):
+                        note("FLAG", f"{lang} slide {si + 1} {sh.name}: bracketed note left '{c.text.strip()[:40]}'.")
                     if c._tc.find(f".//{{{N.A}}}highlight") is not None and c.text.strip():
                         note("FLAG", f"{lang} slide {si + 1} {sh.name}: yellow highlight left on '{c.text.strip()[:40]}'.")
 

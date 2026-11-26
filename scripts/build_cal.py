@@ -4,8 +4,8 @@ images, charts and web extensions survive (saving through openpyxl drops them).
 Handles both layouts seen in 2026:
   - old: sheet 'Calender', headers in row 3, data rows 4-26
   - new (from 10 Oct 2026): one sheet (e.g. 'Sheet1'), headers in row 2, data from row 3
-The header row is found by looking for 'Date' in column B; up to 23 data rows below it are cleared
-and rewritten. Columns: events EN B date, C company, D event; AR G event, H company, I date.
+The header row is found by looking for 'Date' in column B; each block's dated rows below it (at
+most 23) are cleared and rewritten, and anything below them (the team's wording list) is kept. Columns: events EN B date, C company, D event; AR G event, H company, I date.
 Economic EN N date, O event, P prior, Q estimate; AR S estimate, T prior, U event, V date.
 
 Usage: python build_cal.py <previous Manual File-Calendar.xlsx> <output .xlsx> <rows.json>
@@ -127,7 +127,9 @@ class Sheet:
         c = self.cell(ref)
         for ch in list(c): c.remove(ch)
         if "t" in c.attrib: del c.attrib["t"]
-        if style and not c.get("s"): c.set("s", style)
+        # a number (a date serial) takes the first data row's style even where the cell has its
+        # own, or a new row below the previous file's last one shows 46345 (General); 18 Nov replay
+        if style and (not c.get("s") or isinstance(val, (int, float))): c.set("s", style)
         if val is None: return
         if isinstance(val, (int, float)):
             etree.SubElement(c, "{%s}v" % NS).text = str(val)
@@ -154,9 +156,22 @@ def main(src, out, rows_path):
     ar_ev_text = sh.is_text(f"I{first}") if sh.value(f"I{first}") not in (None, "") else True
     ar_eco_text = sh.is_text(f"V{first}") if sh.value(f"V{first}") not in (None, "") else True
     styles = {c: sh.style(f"{c}{first}") for c in EVENT_COLS + ECO_COLS}
-    for r in range(first, first + CAPACITY):
-        for c in EVENT_COLS + ECO_COLS:
-            if sh.cell(f"{c}{r}", create=False) is not None: sh.set(f"{c}{r}", None)
+    # Clear each block only down to its last dated row: the team keeps a wording list below the
+    # events (D14:G21 in Nov 2026) that a blanket 23-row clear wiped (18 Nov replay, 26 Nov 2026).
+    def extent(date_col):
+        r = first
+        while r < first + CAPACITY and sh.value(f"{date_col}{r}") not in (None, ""):
+            r += 1
+        return r
+    for cols, date_col, text_col, n in ((EVENT_COLS, "B", "D", len(ev)), (ECO_COLS, "N", "O", len(eco))):
+        end = extent(date_col)
+        for r in range(end, first + n):
+            if sh.value(f"{text_col}{r}") not in (None, ""):
+                raise SystemExit(f"{n} rows would overwrite {text_col}{r} ('{sh.value(f'{text_col}{r}')}'), "
+                                 "which is not a dated calendar row: stop and ask")
+        for r in range(first, end):
+            for c in cols:
+                if sh.cell(f"{c}{r}", create=False) is not None: sh.set(f"{c}{r}", None)
     for i, e in enumerate(ev):
         r = first + i; d = serial(e["date"])
         vals = dict(B=d, C=e["company_en"], D=e["event_en"], G=e["event_ar"], H=e["company_ar"],

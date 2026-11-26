@@ -101,6 +101,11 @@ Then `fc-cache -f` and confirm with `fc-match -f "%{file}\n" "Arial Nova Cond"` 
 measuring copy is the one in use. If the fonts cannot be staged, say the layout cannot be measured
 and stop before any step that relies on it.
 
+The measuring copy is only for LibreOffice renders (v1, Task 8 on the cloud). The v2 scripts
+(`news_text.py`, `build_dmw.text_width_in`) shape with HarfBuzz on the **plain** `ArialNovaCond.ttf`,
+kerning on: the v2 height model was fitted that way (25 Nov 2026, 16 of 16 cells), so do not point
+them at the measuring copy. On a Mac they find the plain file in `~/Library/Fonts` (26 Nov 2026).
+
 ## Approvals
 
 Nothing goes into the ANB Rough doc, the day folder or an email without the user's approval of the

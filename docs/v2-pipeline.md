@@ -11,7 +11,7 @@ as `scripts/legacy_*` for the old decks only.
 | 1. Build EN and AR | `build_dmw.py --lang en ...` and `build_dmw_ar.py ...` (same flags plus `--ar-names`, `--glossary`) | build_dmw.py, build_dmw_ar.py |
 | 2. News, and Results on results days | `fill_commentary.py --news NEWS.json --en EN --ar AR --outdir OUT [--results "DMW - Results.xlsx" --quarter 3Q26 --mapping Mapping.xlsx --universe ... --skip ...]` | fill_commentary.py, place_results.py, insert_ar_news.py, dmw_patch.py arfill |
 | 3. Final check | `check_final.py --en --ar --calendar --date [--results --quarter] [--layout ppt_layout.csv] --outdir` | check_final.py, check_results.py |
-| 4. PDFs and real layout | `powershell -ExecutionPolicy Bypass -File export_measure.ps1 -Folder <day folder>` | export_pdf.ps1 (still works) |
+| 4. PDFs and real layout | `python export_measure.py --folder <day folder>` (Windows: runs export_measure.ps1; Mac: PowerPoint for Mac through AppleScript, 26 Nov 2026) | export_pdf.ps1 (still works) |
 | 5. Sales email | `build_email_mb.py DAY TEMPLATE Mapping.xlsx OUT [DMU]` (reads v2 decks automatically) | same |
 
 Technicals are appended as slides 4-5 by step 1; `dmw_patch.py tech` is no longer needed for a

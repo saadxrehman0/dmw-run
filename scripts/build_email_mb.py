@@ -47,6 +47,10 @@ def read_deck_v2(prs):
                         sec = V2_HEADS[t.lower()]; continue
                     if t.lower() in ('event calendar', 'economic calendar'):
                         sec = t.lower(); continue
+                    # results days: the Results header (s1.news row 8) ends the Economic band; it
+                    # was read as an Economic bullet (5 Nov replay, 26 Nov 2026)
+                    if t.lower() in ('results announcements', 'result announcements', 'results'):
+                        sec = None; continue
                     if sec in news and t:
                         news[sec] += [clean(p.text) for p in r.cells[0].text_frame.paragraphs if clean(p.text)]
                     elif sec == 'event calendar':
@@ -410,10 +414,20 @@ def build(day_dir, template, names_xlsx, out, dmu=None, deck_name='ANB Daily Mar
     for h in EMAIL_HEADS[:3]:
         if not sections[h]: checks.append(f'Section empty: {h}')
     if not cal: checks.append('No event calendar rows left after dropping EGMs: Corporate Calendar section omitted')
+    # a TK or a bracketed note left in a deck bullet would go to clients as written (23 Nov replay)
+    for h, items in sections.items():
+        for it in items:
+            t = it if isinstance(it, str) else ' '.join(map(str, it)) if isinstance(it, (list, tuple)) else str(it)
+            if re.search(r'(?<![A-Za-z])TK(?![A-Za-z])', t) or re.search(r'\[[^\]]{12,}\]', t):
+                checks.append(f'FLAG {h}: unfinished text (TK or a bracketed note): {t[:80]}')
     write_email(template, sections, out)
     return sections, checks
 
 if __name__ == '__main__':
     # optional 5th argument: the day's Daily Market Update pptx (coverage paragraphs + cross-check)
+    if len(sys.argv) < 5 or sys.argv[1] in ('-h', '--help'):
+        print(__doc__ or 'build_email_mb.py <args>: see build()')
+        print('usage: build_email_mb.py ' + ' '.join(build.__code__.co_varnames[:build.__code__.co_argcount]))
+        sys.exit(0 if len(sys.argv) > 1 and sys.argv[1] in ('-h', '--help') else 2)
     s, c = build(*sys.argv[1:6])
     print('\n'.join(c) or 'no checks')

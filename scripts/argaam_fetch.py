@@ -23,7 +23,7 @@ paywall flag (25 Nov 2026: 8 of 16 Argaam Special rows on the list page were fre
 Browser: Edge on Windows, Chrome on a Mac (no Edge there); --browser or DMW_BROWSER overrides.
 Exit 0 on success, 1 when the browser could not reach Argaam.
 """
-import argparse, json, os, re, sys
+import argparse, json, os, re, sys, time
 from datetime import datetime, timedelta
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -155,20 +155,40 @@ class Argaam:
 
     def first_id_at_or_after(self, when_ast, hi):
         """Binary search on article IDs for the first one published at or after when_ast."""
-        lo = hi - 400
-        while True:                     # widen until lo is before the window
-            t, _ = self._time_at(lo)
-            if t is None or t < when_ast or lo < 1000:
+        # widen until lo is before the window, doubling the step: a fixed 800-ID step took ~15 min
+        # to reach a 3-week-old window on the replays (5 Nov replay, 26 Nov 2026)
+        # A probe that reads nothing (t None) says nothing about the window: never take it as
+        # "before the window". On the 5 Nov replay one unreadable probe put the window three
+        # weeks early and the fetch returned 0 items twice (26 Nov 2026).
+        step, lo = 400, hi - 400
+        while lo >= 1000:
+            t = self._time_near(lo)
+            if t is not None and t < when_ast:
                 break
-            lo -= 800
+            if t is not None:
+                hi = lo
+            step *= 2
+            lo = max(lo - step, 999)
         while hi - lo > 15:
             mid = (lo + hi) // 2
-            t, _ = self._time_at(mid)
-            if t is None or t < when_ast:
+            t = self._time_near(mid, floor=lo)
+            if t is None:
+                raise RuntimeError(f"Argaam: no readable article near ID {mid}; window not found")
+            if t < when_ast:
                 lo = mid
             else:
                 hi = mid
         return lo
+
+    def _time_near(self, i, floor=0):
+        """_time_at(i), or failing that the time a little below i (still above floor)."""
+        for j in (i, i - 150, i - 300):
+            if j <= floor:
+                break
+            t, _ = self._time_at(j)
+            if t is not None:
+                return t
+        return None
 
     def _widen(self, a, b, start_ast, end_ast, top, step=50, limit=12):
         def inside(ids):
@@ -186,27 +206,42 @@ class Argaam:
             a -= step
         return a, min(b + step, top + 1)
 
-    def range(self, start_pkt, end_pkt, max_body=1500):
+    def range(self, start_pkt, end_pkt, max_body=1500, reuse=None):
+        t0 = time.time()
         start_ast, end_ast = start_pkt - PKT_MINUS_AST, end_pkt - PKT_MINUS_AST
         top = self.latest_id() or 0
         if not top:
             raise RuntimeError("no article IDs in the Argaam feed")
-        a = self.first_id_at_or_after(start_ast, top)
         b = self.first_id_at_or_after(end_ast, top) + 30
+        a = self.first_id_at_or_after(start_ast, min(b, top))   # the start lies below the end
         # Publish times are not strictly monotonic in ID, so the binary search can stop short
         # (Mac test 25 Nov 2026: the 24 Nov window ended at 18:31 and lost 8 evening items).
         # Widen each edge in steps of 50 IDs until a step holds nothing inside the window.
+        t1 = time.time()
         a, b = self._widen(a, b, start_ast, end_ast, top)
-        rows = [r for r in self.articles(range(a, b), max_body) if r.get("pub_ast")]
+        t2 = time.time()
+        # IDs an earlier fetch already read (S1's news/argaam.json for an S4 round) are taken from
+        # it, not fetched again: S4 round 0 took 508 s re-reading S1's window (18 Nov replay)
+        reuse = reuse or {}
+        old = {int(r["id"]): r for r in reuse.get("items", []) if r.get("pub_ast") and r.get("id") is not None}
+        skip = set(old) | {int(i) for i in reuse.get("no_article", [])}
+        new = self.articles([i for i in range(a, b) if i not in skip], max_body) if b > a else []
+        no_article = sorted({int(r["id"]) for r in new if not r.get("pub_ast") and not r.get("err")}
+                            | (skip - set(old)))
+        rows = [r for r in new if r.get("pub_ast")] + [old[i] for i in range(a, b) if i in old]
+        print(f"argaam range: search {t1 - t0:.0f}s, widen {t2 - t1:.0f}s, bodies {time.time() - t2:.0f}s "
+              f"({len(new)} fetched, {sum(1 for i in range(a, b) if i in skip)} reused)", file=sys.stderr)
         keep, seen = [], set()
         for r in rows:   # the same story can sit under two IDs (news and disclosures)
             if start_pkt.strftime("%Y-%m-%d %H:%M") <= r["pub_pkt"] < end_pkt.strftime("%Y-%m-%d %H:%M") \
                     and (r["h"], r["pub_pkt"]) not in seen:
                 seen.add((r["h"], r["pub_pkt"]))
+                r.setdefault("url", f"https://www.argaam.com/en/article/articledetail/id/{r['id']}")
                 keep.append(r)
         return {"window_pkt": [f"{start_pkt:%Y-%m-%d %H:%M}", f"{end_pkt:%Y-%m-%d %H:%M}"],
                 "ids": [a, b], "checked": b - a,
                 "maxId": max([int(r["id"]) for r in keep], default=a), "count": len(keep),
+                "no_article": no_article,
                 "items": sorted(keep, key=lambda r: r["pub_pkt"])}
 
 
@@ -219,6 +254,7 @@ def main(argv=None):
     ap.add_argument("--ids", default="")
     ap.add_argument("--start"); ap.add_argument("--end")
     ap.add_argument("--max-body", type=int, default=1500)
+    ap.add_argument("--reuse", default="", help="range: an earlier argaam JSON whose items are not fetched again")
     ap.add_argument("--browser", default=os.environ.get("DMW_BROWSER") or ("chrome" if sys.platform == "darwin" else "msedge"),
                     help="msedge or chrome (default: Edge on Windows, Chrome on a Mac)")
     ap.add_argument("--headed", action="store_true")
@@ -235,7 +271,8 @@ def main(argv=None):
             out = {"items": g.articles([x for x in a.ids.split(",") if x], a.max_body)}
         else:
             f = "%Y-%m-%d %H:%M"
-            out = g.range(datetime.strptime(a.start, f), datetime.strptime(a.end, f), a.max_body)
+            reuse = json.load(open(a.reuse, encoding="utf-8")) if a.reuse and os.path.exists(a.reuse) else None
+            out = g.range(datetime.strptime(a.start, f), datetime.strptime(a.end, f), a.max_body, reuse)
     finally:
         g.close()
     with open(a.out, "w", encoding="utf-8") as fh:

@@ -23,6 +23,8 @@ def period_ar(m):
     if m.group(3):
         return f"{H_AR[m.group(3)]} 20{m.group(4)}"
     return f"التسعة أشهر الأولى 20{m.group(5)}"
+TK = re.compile(r"(?<![A-Za-z])TK(?![A-Za-z])")
+RATING = re.compile(r"(?<![A-Za-z0-9])(?:Aaa|Aa[1-3]|A[1-3]|Baa[1-3]|Ba[1-3]|B[1-3]|Caa[1-3]|AAA|AA[+-]?|A[+-]|BBB[+-]?|BB[+-]?|B[+-]|CCC[+-]?)(?![A-Za-z0-9])")
 ALLOWED_LATIN = ["CSI 300", "MSCI", "S&P Global", "PMI", "ISM", "API", "EIA", "ADP", "JOLTS", "FTSE Russell"]
 NO_LAM_CLOSE = re.compile(r"(?<![ء-ي])يغلق عند")
 TICKER_PAREN = re.compile(r"\([A-Z0-9&]{1,}(?: [A-Z0-9&]+)? " + EXCH + r"\)")
@@ -38,6 +40,10 @@ def normalise_spaces(text):
 def latin_flags(text):
     t = TICKER.sub(" ", text)
     t = PERIOD.sub(" ", t)  # reported separately by check_paragraphs
+    # a bare TK (figure still to come) is flagged by fill_commentary/check_final, and credit
+    # ratings stay in Latin in the AR deck (Ba1, BBB+): 23 Nov replay, 26 Nov 2026
+    t = TK.sub(" ", t)
+    t = RATING.sub(" ", t)
     for a in ALLOWED_LATIN:
         t = t.replace(a, " ")
     return [m.group().strip() for m in LATIN_WORD.finditer(t) if m.group().strip()]

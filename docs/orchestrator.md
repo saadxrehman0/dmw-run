@@ -37,6 +37,26 @@ the run emails it to `alert_email` with the Gmail connector (Saad, 25 Nov 2026).
 2. `python scripts/manifest.py --write` after each merge; S0 checks it.
 3. `powershell -ExecutionPolicy Bypass -File orchestrator\install_task.ps1` as the DMW user.
 
+## Running on a Mac (26 Nov 2026)
+
+The same scripts run on Saad's Mac; the Windows runner and the office server are unchanged.
+
+- `orchestrator/config.local.json` on the Mac: `runs_root` =
+  `~/Library/CloudStorage/GoogleDrive-<personal>/My Drive/Claude Outputs/DMW Tools/runs`,
+  `day_root` = `~/Library/CloudStorage/GoogleDrive-<work>/.shortcut-targets-by-id/18rkHxDXGFRnp_kbzgyFhbwCjVH4-XOpc/2026/03. Submission`
+  (read only: outputs never go to the work drive in practice or replay), `python` = the
+  python.org 3.15 interpreter, `claude` = `/opt/homebrew/bin/claude`.
+- Fetchers use Chrome on a Mac by default (`--browser` or `DMW_BROWSER` override). Saudi Exchange
+  needs the home router's Saudi route.
+- PDFs and PowerPoint's layout: `scripts/export_measure.py` runs export_measure.ps1 on Windows and
+  PowerPoint for Mac through AppleScript on a Mac, staging each deck in Office's group container so
+  PowerPoint never asks for file access. Same `ppt_layout.csv` columns.
+- Python packages the scripts need: python-pptx, openpyxl, playwright, python-docx, fonttools,
+  uharfbuzz, numpy, pypdf (pytest for the tests).
+- The headless stages need the `claude` CLI signed in (`claude` then `/login` in a terminal). When it
+  is not, `run_edition.py --replay --edition <date> --prompts-only` sets up the run folder and writes
+  each stage's exact prompt to `RUN/prompts/<id>.md`, so the stages can be run by another driver.
+
 ## Tests
 
 - `python3 -m pytest tests/orchestrator -q` runs the gate clock, retries, blocking, restart,

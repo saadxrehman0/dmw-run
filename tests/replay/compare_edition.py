@@ -66,7 +66,9 @@ def deck_news(path):
 
 
 def run_news(run):
-    p = newest([os.path.join(run, "news", "NEWS.json"), os.path.join(run, "practice", "**", "NEWS.json")])
+    # NEWS.late.json is NEWS.json plus S4's late items, and is what S5 put in the decks
+    p = newest([os.path.join(run, "news", "NEWS.late.json")]) or \
+        newest([os.path.join(run, "news", "NEWS.json"), os.path.join(run, "practice", "**", "NEWS.json")])
     if not p:
         return None, None
     j = json.load(open(p, encoding="utf-8"))
@@ -84,7 +86,7 @@ def table_numbers(path, skip_news=True):
         if si > 3:
             break
         for sh in s.shapes:
-            if not sh.has_table or sh.name in news_names or "result" in sh.name.lower():
+            if not sh.has_table or sh.name in news_names or is_results(sh):
                 continue
             for r in sh.table.rows:
                 for c in r.cells:
@@ -94,6 +96,15 @@ def table_numbers(path, skip_news=True):
                     for x in numbers(t, "en"):
                         nums[x.replace(",", "")] += 1
     return nums
+
+
+def is_results(sh):
+    """A Results table: v2 names it s1/s2.results; v1 heads it "Result Announcements"."""
+    if "result" in sh.name.lower():
+        return True
+    rows = [[c.text.strip() for c in r.cells] for r in list(sh.table.rows)[:2]]
+    head = " ".join(" ".join(r) for r in rows)
+    return "result" in head.lower() or "النتائج" in head   # AR: "إعلانات النتائج"
 
 
 def results_rows(path):
@@ -107,13 +118,17 @@ def results_rows(path):
         for sh in s.shapes:
             if not sh.has_table:
                 continue
-            rows = [[c.text.strip() for c in r.cells] for r in sh.table.rows]
-            head = " ".join(" ".join(r) for r in rows[:2]).lower()
-            if "result" not in sh.name.lower() and "results" not in head:
+            if not is_results(sh):
                 continue
+            rows = [[c.text.strip() for c in r.cells] for r in sh.table.rows]
             for r in rows:
-                nums = [x for c in r[1:] for x in numbers(c, "en")]
-                if r and r[0] and len(nums) >= 3 and not re.search(r"(?i)results|company", r[0]):
+                # key on the TASI code: the run and the published deck spell names differently
+                # (published v1 "Result Announcements" tables were missed, 4 Nov replay, 26 Nov 2026)
+                code = next((c for c in r[1:3] if re.fullmatch(r"\d{4}", c)), None)
+                nums = [x for c in r[3:] for x in numbers(c, "en")]
+                if code and len(nums) >= 2:
+                    out[code] = nums
+                elif r and r[0] and len(nums) >= 3 and not re.search(r"(?i)result|company", r[0]):
                     out[re.sub(r"\s+", " ", r[0])] = nums
     return out
 
