@@ -116,6 +116,15 @@ def previous_edition(ed, holidays_file):
     return d
 
 
+def next_edition(ed, holidays_file):
+    """The edition after ed (S6 builds its calendar): the next day that is not a Friday, Saturday or
+    listed holiday."""
+    d = ed + timedelta(days=1)
+    while edition_day(d, holidays_file):
+        d += timedelta(days=1)
+    return d
+
+
 def read_mode(path):
     m = (_read(path) or {}).get("mode", "practice")
     return m if m in ("practice", "live") else "practice"
@@ -353,7 +362,8 @@ class Runner:
                 "STAGE": sid, "ROUND": rnd, "PY": self.cfg["python"],
                 "RESULT": self.result_path(sid, rnd), "REPLAY": "yes" if self.replay else "no",
                 "SRC_DAY": getattr(self, "src_day", self.day),
-                "PREV_EDITION": previous_edition(self.ed, self.cfg["holidays"]).isoformat()}
+                "PREV_EDITION": previous_edition(self.ed, self.cfg["holidays"]).isoformat(),
+                "NEXT_EDITION": next_edition(self.ed, self.cfg["holidays"]).isoformat()}
 
     def result_path(self, sid, rnd=0):
         return os.path.join(self.run, "stages", f"{sid}{'.r%d' % rnd if rnd else ''}.result.json")

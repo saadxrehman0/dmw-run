@@ -1,5 +1,5 @@
 {
- "written": "2026-11-25 21:54 UTC",
+ "written": "2026-11-25 22:10 UTC",
  "files": {
   "scripts/argaam_fetch.py": "dfdc90370120350834e87d5991b09a34de922f4d0984f880d64907a589d94f02",
   "scripts/build_cal.py": "c1441a6aefde4ffc70112796751216cf725595940c86f488bfdb947bfefaa8cd",
@@ -7,6 +7,7 @@
   "scripts/build_dmw.py": "4d0f993ef6adb4f2a2be9d9ee7c6b9c7df590b3a53e2e796631622705ef90eda",
   "scripts/build_dmw_ar.py": "7e61cc66e37eb94f90f34557d7e39cf076cb52a220d56fe8301743b65b08a013",
   "scripts/build_email_mb.py": "f426a66ec8c1a1a81c216a225f31b8c7288da237e62dddfff399c945b6e8d39c",
+  "scripts/cal_fetch.py": "5024c6c5d26b982f3de57dc163277599d58c93243839b144e70d033aac37f456",
   "scripts/check_ar_text.py": "11fa160f44a0588266665bc7a6e4f5c55e202f46c48b16ffce0b951f3dcb00bd",
   "scripts/check_dmu.py": "8fc21b2a0efd7d284f03a36b54f64e35f758005b03a22b5853206ec8803c4c33",
   "scripts/check_final.py": "9fbee146ed9a98f4d1ba0445cc7302b1c3db0a4714bf98188c6da3f68b8cabad",
@@ -38,7 +39,7 @@
   "scripts/refresh_mapping.py": "5f075fc84b33eb1621e9bd5a1cc69034dde72818cc2e723e9c92136df673b701",
   "scripts/results_v2.py": "ee0559f259c183d9d445a5bb257662e6e0e0f6c6e480070db2637357a54f55b8",
   "scripts/rough_map.py": "26ca6c5b7b17ddb9a202c206d2d478bc4480b853805eee9bb5e3d911289cb04f",
-  "scripts/run_edition.py": "3a9a252c10e4699038b760aa089a96818bef8894cb3251e977c2b0e0801a832a",
+  "scripts/run_edition.py": "568b8ebe14affe34c5ff9120eff4d91d578f4b53db00e1e9e67769d730e66f68",
   "scripts/snap_spec.py": "753e3a25d0917a974a00ee505adc44e78f3d84f22d12385fe2b8e926b98030d1",
   "scripts/stub_stage.py": "f911670894b5315e69f01e1f77d19e217c190ff2cb32f41419d99d021658d821",
   "scripts/tadawul_fetch.py": "9209baff3ca2e8003d72cd6a13cc2ec56042e6b0b9ae5b00e609eaec701621a0",
@@ -55,7 +56,7 @@
   "orchestrator/prompts/S3.md": "bc697bb1f0ada3fa6d046871de862eeea4d54f07648173669c06fa8393a29aea",
   "orchestrator/prompts/S4.md": "bedb44e9c26fed84ff78e328eb811609d67e3c27d50b190080d216f9f359b2a3",
   "orchestrator/prompts/S5.md": "26e1a01d4a80cd7f599c085acf466b5896ddfd860c463ef4762521b26528b126",
-  "orchestrator/prompts/S6.md": "7f424a99237d10ace55e228f85c17b34809029c4c1e5ceedc26aff245d55ddb8",
+  "orchestrator/prompts/S6.md": "2e9946c346fadc359d047debff57d1c676cee31b9cb3e7e540f3408e49af7024",
   "orchestrator/prompts/_common.md": "b8588bc5d2a1a0eae2fe8fd8026d6a0a97c227909ea9570eaaa28c7479de5d9b",
   "orchestrator/prompts/_replay.md": "ae5c985df97b910e3cfe18dfd3e5aa859787f968825fc40fd3ae4a415465cece"
  }

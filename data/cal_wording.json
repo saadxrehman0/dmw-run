@@ -1,0 +1,14 @@
+{
+ "_doc": "House wording for economic calendar rows, keyed by investing.com's English event name without the trailing period (e.g. '(Oct)'). Read by scripts/cal_fetch.py. Sources: the rows the S6 stage wrote in the 24 Nov 2026 replay (calendar.md forms: EN country prefix, AR country first with an en dash), calendar.md's fixed crude rows, and ar_glossary.json for the client-mandated API row. 'nofig': true writes Prior and Estimation as the blank marker (crude rows, user 21 Oct 2026). Add a row here when a new event first appears; the latest final decks decide the wording.",
+ "economic": {
+  "Initial Jobless Claims": {"en": "US Initial Jobless Claims", "ar": "الولايات المتحدة – طلبات إعانة البطالة الأولية"},
+  "Core PCE Price Index (MoM)": {"en": "US Core PCE Price Index (MoM)", "ar": "الولايات المتحدة – مؤشر أسعار نفقات الاستهلاك الشخصي الأساسي (على أساس شهري)"},
+  "Core PCE Price Index (YoY)": {"en": "US Core PCE Price Index (YoY)", "ar": "الولايات المتحدة – مؤشر أسعار نفقات الاستهلاك الشخصي الأساسي (على أساس سنوي)"},
+  "GDP (QoQ)": {"en": "US GDP (QoQ)", "ar": "الولايات المتحدة – الناتج المحلي الإجمالي (على أساس ربعي)"},
+  "Durable Goods Orders (MoM)": {"en": "US Durable Goods Orders (MoM)", "ar": "الولايات المتحدة – طلبيات السلع المعمرة (على أساس شهري)"},
+  "New Home Sales": {"en": "US New Home Sales", "ar": "الولايات المتحدة – مبيعات المنازل الجديدة"},
+  "Existing Home Sales": {"en": "US Existing Home Sales", "ar": "الولايات المتحدة – مبيعات المنازل القائمة"},
+  "Crude Oil Inventories": {"en": "US Weekly EIA Report on Crude Oil Inventories", "ar": "الولايات المتحدة – مخزونات النفط الخام الصادرة عن إدارة معلومات الطاقة (EIA) (أسبوعي)", "nofig": true},
+  "API Weekly Crude Oil Stock": {"en": "US API Weekly Report on Crude Oil Inventories", "ar": "تقرير معهد البترول الأمريكي (API) الأسبوعي عن مخزونات النفط الخام", "nofig": true}
+ }
+}

@@ -1,0 +1,1889 @@
+{
+ "_doc": "Saudi Exchange rows read in the 4 Nov 2026 Mac replay's S6 (edition 5 Nov): dividend rows dated 25 Oct to 12 Nov; the assemblies and corporate-actions reads returned Nomu rows for both boards (the board switch did not take that day). Economic rows from the investing.com data service HTML in inv_service_20261105.html. Source: Claude Outputs/DMW Tools/runs/replay/2026-11-04 (sx.json, inv_raw.json).",
+ "sx": {
+  "dividends": {
+   "M": {
+    "head": [
+     "Symbol",
+     "Company Name",
+     "Announcement Date",
+     "Eligibility Date",
+     "Distribution Method",
+     "Distribution Date",
+     "Dividend Amount"
+    ],
+    "rows": [
+     {
+      "c": [
+       "1323",
+       "United Carton Industries Co.",
+       "2026-11-11",
+       "2026-11-19",
+       "Account Transfer",
+       "2026-12-02",
+       "^1.75"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4161",
+       "BinDawood Holding Co.",
+       "2026-11-10",
+       "2026-12-03",
+       "Account Transfer",
+       "2026-12-17",
+       "^0.04"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4007",
+       "Al Hammadi Holding",
+       "2026-11-10",
+       "2026-11-15",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.20"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "1301",
+       "United Wire Factories Co.",
+       "2026-11-10",
+       "2026-11-15",
+       "Account Transfer",
+       "2026-11-30",
+       "^1.00"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "7200",
+       "Al Moammar Information Systems Co.",
+       "2026-11-09",
+       "2026-11-12",
+       "Account Transfer",
+       "2026-11-22",
+       "^1.00"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4190",
+       "Jarir Marketing Co.",
+       "2026-11-08",
+       "2026-11-16",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.30"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "2320",
+       "Al-Babtain Power and Telecommunication Co.",
+       "2026-11-08",
+       "2026-11-15",
+       "Account Transfer",
+       "",
+       "^0.50"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "3040",
+       "Qassim Cement Co.",
+       "2026-11-05",
+       "2027-01-12",
+       "Account Transfer",
+       "2027-01-27",
+       "^0.80"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4018",
+       "Almoosa Health Co.",
+       "2026-11-05",
+       "2026-11-12",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.25"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "2050",
+       "Savola Group",
+       "2026-11-05",
+       "2026-11-10",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.70"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "2288",
+       "Nofoth Food Products Co.",
+       "2026-11-04",
+       "2026-12-02",
+       "Account Transfer",
+       "2026-12-15",
+       "^0.05"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "6014",
+       "Alamar Foods Co.",
+       "2026-11-04",
+       "2026-11-25",
+       "Account Transfer",
+       "2026-12-09",
+       "^0.60"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4163",
+       "Aldawaa Medical Services Co.",
+       "2026-11-04",
+       "2026-11-10",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.63"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "2222",
+       "Saudi Arabian Oil Co.",
+       "2026-11-03",
+       "2026-11-16",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.3393"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4004",
+       "Dallah Healthcare Co.",
+       "2026-11-03",
+       "2026-11-09",
+       "Account Transfer",
+       "2026-11-29",
+       "^0.50"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4263",
+       "SAL Saudi Logistics Services Co.",
+       "2026-11-03",
+       "2026-11-09",
+       "Account Transfer",
+       "2026-11-24",
+       "^2.17"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4703",
+       "SEDCO Capital Multi Asset Traded Fund",
+       "2026-11-02",
+       "2026-11-10",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.12"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "1830",
+       "Leejam Sports Co.",
+       "2026-11-02",
+       "2026-11-03",
+       "Account Transfer",
+       "2026-11-15",
+       "^0.89"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "1325",
+       "Watani Iron Steel Co.",
+       "2026-11-01",
+       "2026-12-09",
+       "Account Transfer",
+       "",
+       "^0.05"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4348",
+       "Alkhabeer REIT Fund",
+       "2026-10-29",
+       "2026-11-11",
+       "Account Transfer",
+       "2027-01-07",
+       "^0.105"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "7010",
+       "Saudi Telecom Co.",
+       "2026-10-28",
+       "2026-11-02",
+       "Account Transfer",
+       "2026-11-19",
+       "^0.55"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4333",
+       "Taleem REIT Fund",
+       "2026-10-27",
+       "2026-11-02",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.18"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4291",
+       "National Company for Learning and Education",
+       "2026-10-26",
+       "",
+       "Account Transfer",
+       "",
+       "^2.50"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4336",
+       "Mulkia Gulf Real Estate REIT",
+       "2026-10-26",
+       "2026-10-29",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.08"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4013",
+       "Dr. Sulaiman Al Habib Medical Services Group",
+       "2026-10-25",
+       "2026-10-29",
+       "Account Transfer",
+       "2026-11-16",
+       "^1.37"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "1150",
+       "Alinma Bank",
+       "2026-10-21",
+       "2026-11-04",
+       "Account Transfer",
+       "2026-11-18",
+       "^0.25"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "1321",
+       "East Pipes Integrated Company for Industry",
+       "2026-10-21",
+       "2026-10-22",
+       "Account Transfer",
+       "2026-11-05",
+       "^2.00"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4339",
+       "Derayah REIT Fund",
+       "2026-10-18",
+       "2026-10-25",
+       "Account Transfer",
+       "2026-11-12",
+       "^0.10"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "1182",
+       "Amlak International Finance Co.",
+       "2026-10-11",
+       "2026-10-18",
+       "Account Transfer",
+       "2026-11-01",
+       "^0.30"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4002",
+       "Mouwasat Medical Services Co.",
+       "2026-10-05",
+       "2026-10-15",
+       "Account Transfer",
+       "2026-10-29",
+       "^1.00"
+      ],
+      "a": []
+     }
+    ],
+    "market_ok": true
+   },
+   "S": {
+    "head": [
+     "Symbol",
+     "Company Name",
+     "Announcement Date",
+     "Eligibility Date",
+     "Distribution Method",
+     "Distribution Date",
+     "Dividend Amount"
+    ],
+    "rows": [
+     {
+      "c": [
+       "9517",
+       "MOBI Industry Co.",
+       "2026-11-10",
+       "2026-11-22",
+       "Account Transfer",
+       "2026-12-06",
+       "^0.15"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9607",
+       "ASG Plastic Factory Co.",
+       "2026-11-10",
+       "2026-11-17",
+       "Account Transfer",
+       "2026-11-30",
+       "^0.50"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9611",
+       "Arabian United Float Glass Co.",
+       "2026-11-03",
+       "2026-11-05",
+       "Account Transfer",
+       "2026-11-16",
+       "^1.00"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9622",
+       "Shmoh Almadi Co.",
+       "2026-11-01",
+       "2026-11-15",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.60"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9604",
+       "Miral Dental Clinics Co.",
+       "2026-11-01",
+       "2026-11-05",
+       "Account Transfer",
+       "2026-11-19",
+       "^2.00"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9598",
+       "Al Mohafaza Company for Education",
+       "2026-10-26",
+       "",
+       "Account Transfer",
+       "",
+       "^0.60"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9594",
+       "Al-Modawat Specialized Medical Co.",
+       "2026-09-03",
+       "2026-10-18",
+       "Account Transfer",
+       "2026-11-01",
+       "^0.02"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9648",
+       "Hamad Mohammed Bin Saedan Real Estate Co.",
+       "2026-07-13",
+       "2026-10-22",
+       "Account Transfer",
+       "2026-11-12",
+       "^0.25"
+      ],
+      "a": []
+     }
+    ],
+    "market_ok": true
+   }
+  },
+  "assemblies": {
+   "M": {
+    "head": [
+     "Symbol",
+     "Company Name",
+     "Type Of Assembly",
+     "Holding",
+     "Status",
+     "Date",
+     "Time",
+     "Site"
+    ],
+    "rows": [
+     {
+      "c": [
+       "9557",
+       "Edarat Communication and Information Technology Co.",
+       "Ordinary",
+       "2026-12-17",
+       "19:00",
+       "Via modern technology means, at the Company's principal headquarters in Riyadh, Al Yasmin District, King Abdulaziz Road (through the Tadawulaty platform only).",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99424&anCat=52&cs=9557&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9568",
+       "Mayar Holding Co.",
+       "Extraordinary",
+       "2026-12-16",
+       "19:30",
+       "The meeting will be held remotely via modern technology means using the Tadawulaty platform from the Company’s headquarters in Riyadh.",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99413&anCat=52&cs=9568&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9587",
+       "Lana Medical Co.",
+       "Extraordinary",
+       "2026-12-15",
+       "20:30",
+       "Via modern technological means at the Lana Company headquarters in Riyadh, using the Tadawulati system",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99304&anCat=52&cs=9587&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9541",
+       "Academy of Learning Co.",
+       "Extraordinary - Corporate Actions",
+       "2026-12-14",
+       "18:30",
+       "Dammam City – Head Office – where the Meeting will be held remotely through modern technology means. Shareholders may join and participate in the Meeting through the Tadawulaty platform via the following link: https://www.tadawulaty.com.sa",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99326&anCat=53&cs=9541&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9570",
+       "Tam Development Co.",
+       "Ordinary",
+       "2026-12-02",
+       "20:00",
+       "At the company's main headquarters located on Prince Mohammed bin Saad bin Abdulaziz Road, Hittin District, Riyadh 13516",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=98914&anCat=52&cs=9570&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9536",
+       "Arabian Food and Dairy Factories Co.",
+       "Ordinary",
+       "2026-11-26",
+       "19:00",
+       "At the company’s main headquarters located in Dammam, First Industrial City, Street 11, Intersection 4 - using modern technology",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99086&anCat=52&cs=9536&locale=en"
+      ]
+     }
+    ],
+    "market_ok": false
+   },
+   "S": {
+    "head": [
+     "Symbol",
+     "Company Name",
+     "Type Of Assembly",
+     "Holding",
+     "Status",
+     "Date",
+     "Time",
+     "Site"
+    ],
+    "rows": [
+     {
+      "c": [
+       "9557",
+       "Edarat Communication and Information Technology Co.",
+       "Ordinary",
+       "2026-12-17",
+       "19:00",
+       "Via modern technology means, at the Company's principal headquarters in Riyadh, Al Yasmin District, King Abdulaziz Road (through the Tadawulaty platform only).",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99424&anCat=52&cs=9557&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9568",
+       "Mayar Holding Co.",
+       "Extraordinary",
+       "2026-12-16",
+       "19:30",
+       "The meeting will be held remotely via modern technology means using the Tadawulaty platform from the Company’s headquarters in Riyadh.",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99413&anCat=52&cs=9568&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9587",
+       "Lana Medical Co.",
+       "Extraordinary",
+       "2026-12-15",
+       "20:30",
+       "Via modern technological means at the Lana Company headquarters in Riyadh, using the Tadawulati system",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99304&anCat=52&cs=9587&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9541",
+       "Academy of Learning Co.",
+       "Extraordinary - Corporate Actions",
+       "2026-12-14",
+       "18:30",
+       "Dammam City – Head Office – where the Meeting will be held remotely through modern technology means. Shareholders may join and participate in the Meeting through the Tadawulaty platform via the following link: https://www.tadawulaty.com.sa",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99326&anCat=53&cs=9541&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9570",
+       "Tam Development Co.",
+       "Ordinary",
+       "2026-12-02",
+       "20:00",
+       "At the company's main headquarters located on Prince Mohammed bin Saad bin Abdulaziz Road, Hittin District, Riyadh 13516",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=98914&anCat=52&cs=9570&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9536",
+       "Arabian Food and Dairy Factories Co.",
+       "Ordinary",
+       "2026-11-26",
+       "19:00",
+       "At the company’s main headquarters located in Dammam, First Industrial City, Street 11, Intersection 4 - using modern technology",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99086&anCat=52&cs=9536&locale=en"
+      ]
+     }
+    ],
+    "market_ok": true
+   }
+  },
+  "actions": {
+   "M": {
+    "head": [
+     "Symbol",
+     "Company Name",
+     "Recommendation Announcement Date",
+     "Issue Type",
+     "Eligibility Date",
+     "New Capital",
+     "Previous Capital"
+    ],
+    "rows": [
+     {
+      "c": [
+       "9577",
+       "DAR ALMARKABAH",
+       "29/09/2026",
+       "Reverse Shares Split",
+       "11/11/2026",
+       "^25,000,000",
+       "^25,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9553",
+       "MOLAN",
+       "06/09/2026",
+       "Reverse Shares Split",
+       "02/11/2026",
+       "^26,600,000",
+       "^26,600,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9637",
+       "AXELERATED SOLUTIONS",
+       "07/05/2026",
+       "Bonus Shares",
+       "13/10/2026",
+       "^56,000,000",
+       "^28,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9614",
+       "PURITY",
+       "04/11/2025",
+       "Bonus Shares",
+       "22/09/2026",
+       "^20,000,000",
+       "^15,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9548",
+       "APICO",
+       "16/03/2026",
+       "Bonus Shares",
+       "03/09/2026",
+       "^102,000,000",
+       "^75,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9607",
+       "ASG",
+       "01/04/2026",
+       "Bonus Shares",
+       "09/08/2026",
+       "^141,000,000",
+       "^70,500,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9514",
+       "ALNAQOOL",
+       "28/04/2026",
+       "Bonus Shares",
+       "27/07/2026",
+       "^58,000,000",
+       "^29,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9585",
+       "MULKIA",
+       "24/03/2026",
+       "Bonus Shares",
+       "15/07/2026",
+       "^90,000,000",
+       "^78,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9569",
+       "ALMUNEEF",
+       "30/04/2026",
+       "Bonus Shares",
+       "29/06/2026",
+       "^57,000,000",
+       "^38,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9621",
+       "DRC",
+       "21/04/2026",
+       "Bonus Shares",
+       "28/06/2026",
+       "^29,531,250",
+       "^16,875,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9619",
+       "MULTI BUSINESS",
+       "12/02/2026",
+       "Bonus Shares",
+       "25/06/2026",
+       "^45,000,000",
+       "^15,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9644",
+       "NAF",
+       "08/03/2026",
+       "Forward Shares Split",
+       "24/06/2026",
+       "^20,000,000",
+       "^20,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9578",
+       "ATLAS ELEVATORS",
+       "10/03/2026",
+       "Bonus Shares",
+       "18/06/2026",
+       "^90,000,000",
+       "^60,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9632",
+       "FUTURE VISION",
+       "26/08/2025",
+       "Bonus Shares",
+       "17/06/2026",
+       "^20,000,000",
+       "^10,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9580",
+       "ALRASHID INDUSTRIAL",
+       "23/12/2025",
+       "Bonus Shares",
+       "17/06/2026",
+       "^120,000,000",
+       "^80,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9610",
+       "FIRST AVENUE",
+       "15/10/2025",
+       "Bonus Shares",
+       "15/06/2026",
+       "^300,000,000",
+       "^205,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9557",
+       "EDARAT",
+       "13/04/2026",
+       "Bonus Shares",
+       "14/06/2026",
+       "^75,600,000",
+       "^50,400,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9515",
+       "FESH FASH",
+       "12/01/2026",
+       "Bonus Shares",
+       "07/06/2026",
+       "^19,775,000",
+       "^11,300,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9546",
+       "NABA ALSAHA",
+       "13/08/2025",
+       "Bonus Shares",
+       "03/06/2026",
+       "^210,000,000",
+       "^105,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9640",
+       "ASAS MAKEEN",
+       "30/10/2025",
+       "Bonus Shares",
+       "21/05/2026",
+       "^300,000,000",
+       "^100,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9538",
+       "NASEEJ TECH",
+       "05/11/2025",
+       "Bonus Shares",
+       "18/05/2026",
+       "^77,250,000",
+       "^50,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9561",
+       "KNOWLEDGENET",
+       "11/06/2025",
+       "Bonus Shares",
+       "11/05/2026",
+       "^52,500,000",
+       "^35,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9543",
+       "NETWORKERS",
+       "08/09/2025",
+       "Bonus Shares",
+       "08/03/2026",
+       "^75,000,000",
+       "^60,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9541",
+       "ACADEMY OF LEARNING",
+       "21/09/2025",
+       "Bonus Shares",
+       "01/01/2026",
+       "^135,000,000",
+       "^90,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9620",
+       "BALSM MEDICAL",
+       "22/10/2025",
+       "Bonus Shares",
+       "21/12/2025",
+       "^25,000,000",
+       "^12,500,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9595",
+       "WSM",
+       "30/10/2025",
+       "Bonus Shares",
+       "17/12/2025",
+       "^28,600,000",
+       "^21,450,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9591",
+       "VIEW",
+       "10/09/2025",
+       "Bonus Shares",
+       "09/12/2025",
+       "^66,000,000",
+       "^33,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9601",
+       "ALRASHEED",
+       "29/09/2025",
+       "Bonus Shares",
+       "04/12/2025",
+       "^180,000,000",
+       "^120,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9575",
+       "MARBLE DESIGN",
+       "29/09/2025",
+       "Bonus Shares",
+       "02/12/2025",
+       "^75,000,000",
+       "^60,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9587",
+       "LANA",
+       "21/10/2025",
+       "Forward Shares Split",
+       "12/11/2025",
+       "^54,000,000",
+       "^54,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9571",
+       "MUNAWLA",
+       "04/09/2025",
+       "Bonus Shares",
+       "05/11/2025",
+       "^30,000,000",
+       "^20,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9540",
+       "TADWEEER",
+       "26/08/2025",
+       "Bonus Shares",
+       "02/11/2025",
+       "^232,320,000",
+       "^116,160,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9594",
+       "ALMODAWAT",
+       "28/04/2025",
+       "Bonus Shares",
+       "26/10/2025",
+       "^71,250,000",
+       "^23,750,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9608",
+       "ALASHGHAL ALMOYSRA",
+       "15/05/2025",
+       "Bonus Shares",
+       "24/09/2025",
+       "^48,000,000",
+       "^24,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9576",
+       "PAPER HOME",
+       "28/04/2025",
+       "Bonus Shares",
+       "22/07/2025",
+       "^60,000,000",
+       "^20,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9585",
+       "MULKIA",
+       "13/03/2025",
+       "Bonus Shares",
+       "15/07/2025",
+       "^78,000,000",
+       "^65,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9566",
+       "LIME INDUSTRIES",
+       "26/03/2025",
+       "Bonus Shares",
+       "14/07/2025",
+       "^231,000,000",
+       "^220,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9300",
+       "ALWAHA REIT",
+       "27/06/2025",
+       "Increase of The Total Value of The Fund Assets",
+       "08/07/2025",
+       "^197,909,540",
+       "^150,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9562",
+       "FOODS GATE",
+       "03/03/2025",
+       "Bonus Shares",
+       "24/06/2025",
+       "^31,500,000",
+       "^21,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9548",
+       "APICO",
+       "06/11/2024",
+       "Bonus Shares",
+       "19/06/2025",
+       "^75,000,000",
+       "^50,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9575",
+       "MARBLE DESIGN",
+       "20/04/2025",
+       "Forward Shares Split",
+       "02/06/2025",
+       "^60,000,000",
+       "^60,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9557",
+       "EDARAT",
+       "08/12/2024",
+       "Bonus Shares",
+       "28/05/2025",
+       "^50,400,000",
+       "^25,200,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9602",
+       "YAQEEN",
+       "18/12/2024",
+       "Bonus Shares",
+       "14/05/2025",
+       "^255,000,000",
+       "^150,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9600",
+       "QOMEL",
+       "11/09/2024",
+       "Bonus Shares",
+       "20/04/2025",
+       "^70,000,000",
+       "^35,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9595",
+       "WSM",
+       "10/02/2025",
+       "Capital Increase",
+       "17/04/2025",
+       "^21,450,000",
+       "^19,500,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9587",
+       "LANA",
+       "22/07/2024",
+       "Bonus Shares",
+       "25/03/2025",
+       "^54,000,000",
+       "^36,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9532",
+       "HILWA",
+       "16/01/2025",
+       "Forward Shares Split",
+       "03/03/2025",
+       "^46,875,000",
+       "^46,875,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9577",
+       "DAR ALMARKABAH",
+       "22/12/2024",
+       "Forward Shares Split",
+       "12/02/2025",
+       "^25,000,000",
+       "^25,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9540",
+       "TADWEEER",
+       "29/08/2024",
+       "Bonus Shares",
+       "18/12/2024",
+       "^116,160,000",
+       "^58,080,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9591",
+       "VIEW",
+       "10/10/2024",
+       "Forward Shares Split",
+       "17/12/2024",
+       "^33,000,000",
+       "^33,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9539",
+       "AQASEEM",
+       "18/11/2024",
+       "Forward Shares Split",
+       "15/12/2024",
+       "^25,000,000",
+       "^25,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9569",
+       "ALMUNEEF",
+       "13/10/2024",
+       "Forward Shares Split",
+       "25/11/2024",
+       "^38,000,000",
+       "^38,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9576",
+       "PAPER HOME",
+       "30/07/2024",
+       "Bonus Shares",
+       "25/11/2024",
+       "^20,000,000",
+       "^15,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9571",
+       "MUNAWLA",
+       "17/07/2024",
+       "Bonus Shares",
+       "23/10/2024",
+       "^20,000,000",
+       "^10,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9588",
+       "RIYADH STEEL",
+       "26/12/2023",
+       "Forward Shares Split",
+       "24/09/2024",
+       "^70,000,000",
+       "^70,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9563",
+       "BENA",
+       "29/11/2023",
+       "Bonus Shares",
+       "17/09/2024",
+       "^60,000,000",
+       "^50,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9579",
+       "RIMATH",
+       "29/04/2024",
+       "Bonus Shares",
+       "15/08/2024",
+       "^19,500,000",
+       "^16,250,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9588",
+       "RIYADH STEEL",
+       "26/12/2023",
+       "Bonus Shares",
+       "30/06/2024",
+       "^70,000,000",
+       "^50,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9541",
+       "ACADEMY OF LEARNING",
+       "06/05/2024",
+       "Bonus Shares",
+       "25/06/2024",
+       "^90,000,000",
+       "^60,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9593",
+       "PAN GULF",
+       "14/03/2024",
+       "Bonus Shares",
+       "25/06/2024",
+       "^75,000,000",
+       "^50,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9594",
+       "ALMODAWAT",
+       "09/05/2024",
+       "Forward Shares Split",
+       "09/06/2024",
+       "^23,750,000",
+       "^23,750,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9557",
+       "EDARAT",
+       "13/12/2023",
+       "Bonus Shares",
+       "16/04/2024",
+       "^25,200,000",
+       "^12,600,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9546",
+       "NABA ALSAHA",
+       "29/03/2023",
+       "Bonus Shares",
+       "19/11/2023",
+       "^105,000,000",
+       "^70,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9550",
+       "SURE",
+       "18/09/2023",
+       "Bonus Shares",
+       "13/11/2023",
+       "^76,946,250",
+       "^51,297,500"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9555",
+       "LEEN ALKHAIR",
+       "21/05/2023",
+       "Bonus Shares",
+       "25/10/2023",
+       "^81,595,600",
+       "^40,797,800"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9552",
+       "SAUDI TOP",
+       "30/08/2023",
+       "Forward Shares Split",
+       "08/10/2023",
+       "^40,000,000",
+       "^40,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9568",
+       "MAYAR",
+       "28/08/2023",
+       "Forward Shares Split",
+       "28/09/2023",
+       "^60,000,000",
+       "^60,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9524",
+       "AICTEC",
+       "09/04/2023",
+       "Forward Shares Split",
+       "25/09/2023",
+       "^32,000,000",
+       "^32,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9553",
+       "MOLAN",
+       "04/05/2023",
+       "Forward Shares Split",
+       "13/08/2023",
+       "^26,600,000",
+       "^26,600,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9551",
+       "KNOWLEDGE TOWER",
+       "12/04/2023",
+       "Forward Shares Split",
+       "05/07/2023",
+       "^17,500,000",
+       "^17,500,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9517",
+       "MOBI INDUSTRY",
+       "30/04/2023",
+       "Forward Shares Split",
+       "22/06/2023",
+       "^50,000,000",
+       "^50,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9515",
+       "FESH FASH",
+       "06/04/2023",
+       "Forward Shares Split",
+       "22/06/2023",
+       "^11,300,000",
+       "^11,300,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9524",
+       "AICTEC",
+       "09/04/2023",
+       "Bonus Shares",
+       "20/06/2023",
+       "^32,000,000",
+       "^25,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9542",
+       "KEIR",
+       "30/03/2023",
+       "Forward Shares Split",
+       "20/06/2023",
+       "^120,000,000",
+       "^120,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9560",
+       "WAJA",
+       "21/05/2023",
+       "Forward Shares Split",
+       "19/06/2023",
+       "^35,000,000",
+       "^35,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9541",
+       "ACADEMY OF LEARNING",
+       "03/04/2023",
+       "Forward Shares Split",
+       "14/06/2023",
+       "^60,000,000",
+       "^60,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9545",
+       "ALDAWLIAH",
+       "10/05/2023",
+       "Forward Shares Split",
+       "13/06/2023",
+       "^25,000,000",
+       "^25,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9547",
+       "RAWASI",
+       "30/03/2023",
+       "Forward Shares Split",
+       "12/06/2023",
+       "^55,000,000",
+       "^55,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9544",
+       "FUTURE CARE",
+       "12/04/2023",
+       "Forward Shares Split",
+       "11/06/2023",
+       "^500,000,000",
+       "^500,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9522",
+       "ALHASOOB",
+       "07/09/2022",
+       "Bonus Shares",
+       "07/06/2023",
+       "^28,000,000",
+       "^14,000,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9557",
+       "EDARAT",
+       "26/12/2022",
+       "Bonus Shares",
+       "14/05/2023",
+       "^12,600,000",
+       "^6,300,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9540",
+       "TADWEEER",
+       "26/02/2023",
+       "Forward Shares Split",
+       "05/04/2023",
+       "^58,080,000",
+       "^58,080,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9532",
+       "HILWA",
+       "19/06/2022",
+       "Bonus Shares",
+       "24/01/2023",
+       "^46,875,000",
+       "^31,250,000"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "9524",
+       "AICTEC",
+       "14/04/2022",
+       "Bonus Shares",
+       "18/08/2022",
+       "^25,000,000",
+       "^20,000,000"
+      ],
+      "a": []
+     }
+    ],
+    "market_ok": false
+   }
+  }
+ },
+ "announcements": {},
+ "inv": {
+  "via": "service",
+  "rows": [
+   {
+    "utc": "2026-11-04T22:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Total Vehicle Sales",
+    "raw_name": "Total Vehicle Sales (Oct)",
+    "actual": "15.50M",
+    "forecast": "15.80M",
+    "previous": "16.00M",
+    "revised_from": null,
+    "event_id": 85,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T09:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Challenger Job Cuts",
+    "raw_name": "Challenger Job Cuts (Oct)",
+    "actual": "43.994K",
+    "forecast": "",
+    "previous": "43.281K",
+    "revised_from": null,
+    "event_id": 888,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T10:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Challenger Job Cuts (YoY)",
+    "raw_name": "Challenger Job Cuts (YoY)",
+    "actual": "-71.3%",
+    "forecast": "",
+    "previous": "-19.9%",
+    "revised_from": null,
+    "event_id": 333,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Continuing Jobless Claims",
+    "raw_name": "Continuing Jobless Claims",
+    "actual": "1,718K",
+    "forecast": "1,710K",
+    "previous": "1,695K",
+    "revised_from": "1,701K",
+    "event_id": 522,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 3,
+    "name": "Initial Jobless Claims",
+    "raw_name": "Initial Jobless Claims",
+    "actual": "189K",
+    "forecast": "197K",
+    "previous": "195K",
+    "revised_from": "194K",
+    "event_id": 294,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Jobless Claims 4-Week Avg.",
+    "raw_name": "Jobless Claims 4-Week Avg.",
+    "actual": "194.75K",
+    "forecast": "",
+    "previous": "197.00K",
+    "revised_from": "196.75K",
+    "event_id": 1041,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Nonfarm Productivity (QoQ)",
+    "raw_name": "Nonfarm Productivity (QoQ) (Q3)",
+    "actual": "3.6%",
+    "forecast": "2.8%",
+    "previous": "2.1%",
+    "revised_from": "1.4%",
+    "event_id": 228,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Unit Labor Costs (QoQ)",
+    "raw_name": "Unit Labor Costs (QoQ) (Q3)",
+    "actual": "-0.7%",
+    "forecast": "0.3%",
+    "previous": "1.9%",
+    "revised_from": "1.2%",
+    "event_id": 303,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T14:10:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "FOMC Member Barkin Speaks",
+    "raw_name": "FOMC Member Barkin Speaks",
+    "actual": "",
+    "forecast": "",
+    "previous": "",
+    "revised_from": null,
+    "event_id": 1775,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Natural Gas Storage",
+    "raw_name": "Natural Gas Storage",
+    "actual": "77B",
+    "forecast": "81B",
+    "previous": "80B",
+    "revised_from": null,
+    "event_id": 386,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T16:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "4-Week Bill Auction",
+    "raw_name": "4-Week Bill Auction",
+    "actual": "3.890%",
+    "forecast": "",
+    "previous": "3.910%",
+    "revised_from": null,
+    "event_id": 567,
+    "src": "investing.com data service"
+   },
+   {
+    "utc": "2026-11-05T16:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "8-Week Bill Auction",
+    "raw_name": "8-Week Bill Auction",
+    "actual": "3.975%",
+    "forecast": "",
+    "previous": "4.020%",
+    "revised_from": null,
+    "event_id": 1801,
+    "src": "investing.com data service"
+   }
+  ]
+ }
+}

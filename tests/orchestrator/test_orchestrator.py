@@ -250,6 +250,11 @@ def test_previous_edition_skips_the_weekend(tmp_path):
     assert run_edition.previous_edition(date(2026, 11, 22), str(tmp_path / "none.json")) == date(2026, 11, 19)
 
 
+def test_next_edition_skips_the_weekend(tmp_path):
+    assert run_edition.next_edition(date(2026, 11, 26), str(tmp_path / "none.json")) == date(2026, 11, 29)
+    assert run_edition.next_edition(date(2026, 11, 24), str(tmp_path / "none.json")) == date(2026, 11, 25)
+
+
 def test_deny_list_policy_gives_the_shell_and_blocks_deletes():
     allow, deny = run_edition.stage_tools(["Read", "Bash(python *)", "WebSearch"], r"C:\Python315\python.exe", "deny_list")
     assert allow == ["Read", "WebSearch", "PowerShell", "Bash"]

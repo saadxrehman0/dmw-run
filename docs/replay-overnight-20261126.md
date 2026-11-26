@@ -82,7 +82,8 @@ drop further once S1 writes the new `no_article` list.
 
 ## Still open
 
-1. A calendar fetcher (`cal_fetch.py`): S6 agents wrote ad-hoc Playwright scripts each time.
+1. ~~A calendar fetcher (`cal_fetch.py`): S6 agents wrote ad-hoc Playwright scripts each time.~~
+   Built on branch `claude/project-thread-wd0e5o` (26 Nov 2026); needs its first live run on the Mac.
 2. A source for the Global bullet's Asia and Dow lines, and a consensus source for Results.
 3. Triage rules for the missed Tadawul filing types (contracts with government bodies, tax updates,
    branch closures).

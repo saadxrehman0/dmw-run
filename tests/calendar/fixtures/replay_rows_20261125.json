@@ -1,0 +1,112 @@
+{
+ "blank": "-",
+ "events": [
+  {
+   "date": "2026-11-25",
+   "company_en": "Derayah Financial Co.",
+   "event_en": "Cash Dividend Distribution (SAR 0.33/sh)",
+   "company_ar": "شركة دراية المالية",
+   "event_ar": "صرف أرباح نقدية (ريال سعودي 0.33/للسهم)"
+  },
+  {
+   "date": "2026-11-25",
+   "company_en": "Jarir Marketing Co.",
+   "event_en": "Cash Dividend Distribution (SAR 0.30/sh)",
+   "company_ar": "شركة جرير للتسويق",
+   "event_ar": "صرف أرباح نقدية (ريال سعودي 0.30/للسهم)"
+  },
+  {
+   "date": "2026-11-25",
+   "company_en": "Savola Group",
+   "event_en": "Cash Dividend Distribution (SAR 0.70/sh)",
+   "company_ar": "مجموعة صافولا",
+   "event_ar": "صرف أرباح نقدية (ريال سعودي 0.70/للسهم)"
+  },
+  {
+   "date": "2026-11-25",
+   "company_en": "Aldawaa Medical Services Co.",
+   "event_en": "Cash Dividend Distribution (SAR 0.63/sh)",
+   "company_ar": "شركة الدواء للخدمات الطبية",
+   "event_ar": "صرف أرباح نقدية (ريال سعودي 0.63/للسهم)"
+  },
+  {
+   "date": "2026-11-25",
+   "company_en": "Saudi Arabian Oil Co.",
+   "event_en": "Cash Dividend Distribution (SAR 0.34/sh)",
+   "company_ar": "شركة الزيت العربية السعودية",
+   "event_ar": "صرف أرباح نقدية (ريال سعودي 0.34/للسهم)"
+  },
+  {
+   "date": "2026-11-25",
+   "company_en": "Taleem REIT Fund",
+   "event_en": "Cash Dividend Distribution (SAR 0.18/sh)",
+   "company_ar": "صندوق تعليم ريت",
+   "event_ar": "صرف أرباح نقدية (ريال سعودي 0.18/للسهم)"
+  },
+  {
+   "date": "2026-11-25",
+   "company_en": "Alamar Foods Co.",
+   "event_en": "Eligibility for Cash Dividend (SAR 0.60/sh)",
+   "company_ar": "شركة الآمار الغذائية",
+   "event_ar": "أحقية أرباح نقدية (ريال سعودي 0.60/للسهم)"
+  },
+  {
+   "date": "2026-11-25",
+   "company_en": "Allied Cooperative Insurance Group",
+   "event_en": "Extraordinary General Meeting (Capital Hike to SAR 300.00 mn)",
+   "company_ar": "المجموعة المتحدة للتأمين التعاوني",
+   "event_ar": "جمعية عمومية غير عادية (زيادة رأس المال إلى 300.00 مليون ريال سعودي)"
+  }
+ ],
+ "economic": [
+  {
+   "date": "2026-11-25",
+   "event_en": "US Core PCE Price Index (MoM)",
+   "prior": "0.3%",
+   "estimate": "0.3%",
+   "event_ar": "الولايات المتحدة – مؤشر أسعار نفقات الاستهلاك الشخصي الأساسي (على أساس شهري)"
+  },
+  {
+   "date": "2026-11-25",
+   "event_en": "US Core PCE Price Index (YoY)",
+   "prior": "3.1%",
+   "estimate": "3.2%",
+   "event_ar": "الولايات المتحدة – مؤشر أسعار نفقات الاستهلاك الشخصي الأساسي (على أساس سنوي)"
+  },
+  {
+   "date": "2026-11-25",
+   "event_en": "US GDP (QoQ)",
+   "prior": "2.2%",
+   "estimate": "3.4%",
+   "event_ar": "الولايات المتحدة – الناتج المحلي الإجمالي (على أساس ربعي)"
+  },
+  {
+   "date": "2026-11-25",
+   "event_en": "US Durable Goods Orders (MoM)",
+   "prior": "1.8%",
+   "estimate": "0.7%",
+   "event_ar": "الولايات المتحدة – طلبيات السلع المعمرة (على أساس شهري)"
+  },
+  {
+   "date": "2026-11-25",
+   "event_en": "US Initial Jobless Claims",
+   "prior": "203K",
+   "estimate": "201K",
+   "event_ar": "الولايات المتحدة – طلبات إعانة البطالة الأولية"
+  },
+  {
+   "date": "2026-11-25",
+   "event_en": "US New Home Sales",
+   "prior": "676K",
+   "estimate": "650K",
+   "event_ar": "الولايات المتحدة – مبيعات المنازل الجديدة"
+  },
+  {
+   "date": "2026-11-25",
+   "event_en": "US Weekly EIA Report on Crude Oil Inventories",
+   "prior": null,
+   "estimate": null,
+   "event_ar": "الولايات المتحدة – مخزونات النفط الخام الصادرة عن إدارة معلومات الطاقة (EIA) (أسبوعي)"
+  }
+ ]
+}

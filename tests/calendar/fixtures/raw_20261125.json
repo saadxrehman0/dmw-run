@@ -1,0 +1,1091 @@
+{
+ "_doc": "Saudi Exchange rows and announcement text read in the 24 Nov 2026 Mac replay's S6 (edition 25 Nov), 'kept' rows only (dividend rows with a date near the edition, all upcoming assemblies); economic rows parsed from inv_next_20261125.json. Source files: Claude Outputs/DMW Tools/runs/replay/2026-11-24 (sx.json, sx2.json, inv_next_data.json).",
+ "sx": {
+  "dividends": {
+   "M": {
+    "head": [],
+    "rows": [
+     {
+      "c": [
+       "4191",
+       "Abdullah Saad Mohammed Abo Moati for Bookstores Co.",
+       "2026-11-25",
+       "2026-12-01",
+       "Account Transfer",
+       "2026-12-15",
+       "^0.50"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4007",
+       "Al Hammadi Holding",
+       "2026-11-10",
+       "2026-11-15",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.20"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4190",
+       "Jarir Marketing Co.",
+       "2026-11-08",
+       "2026-11-16",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.30"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4018",
+       "Almoosa Health Co.",
+       "2026-11-05",
+       "2026-11-12",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.25"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "2050",
+       "Savola Group",
+       "2026-11-05",
+       "2026-11-10",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.70"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "6014",
+       "Alamar Foods Co.",
+       "2026-11-04",
+       "2026-11-25",
+       "Account Transfer",
+       "2026-12-09",
+       "^0.60"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4163",
+       "Aldawaa Medical Services Co.",
+       "2026-11-04",
+       "2026-11-10",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.63"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "2222",
+       "Saudi Arabian Oil Co.",
+       "2026-11-03",
+       "2026-11-16",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.3393"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4004",
+       "Dallah Healthcare Co.",
+       "2026-11-03",
+       "2026-11-09",
+       "Account Transfer",
+       "2026-11-29",
+       "^0.50"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4263",
+       "SAL Saudi Logistics Services Co.",
+       "2026-11-03",
+       "2026-11-09",
+       "Account Transfer",
+       "2026-11-24",
+       "^2.17"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4703",
+       "SEDCO Capital Multi Asset Traded Fund",
+       "2026-11-02",
+       "2026-11-10",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.12"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4333",
+       "Taleem REIT Fund",
+       "2026-10-27",
+       "2026-11-02",
+       "Account Transfer",
+       "2026-11-25",
+       "^0.18"
+      ],
+      "a": []
+     },
+     {
+      "c": [
+       "4336",
+       "Mulkia Gulf Real Estate REIT",
+       "2026-10-26",
+       "2026-10-29",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.08"
+      ],
+      "a": []
+     }
+    ],
+    "market_ok": true
+   },
+   "S": {
+    "head": [],
+    "rows": [
+     {
+      "c": [
+       "9622",
+       "Shmoh Almadi Co.",
+       "2026-11-01",
+       "2026-11-15",
+       "Account Transfer",
+       "2026-11-26",
+       "^0.60"
+      ],
+      "a": []
+     }
+    ],
+    "market_ok": true
+   }
+  },
+  "assemblies": {
+   "M": {
+    "head": [],
+    "rows": [
+     {
+      "c": [
+       "4008",
+       "Saudi Company for Hardware",
+       "Ordinary",
+       "2026-12-16",
+       "20:30",
+       "The company's headquarters in Riyadh - through modern technology.",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99436&anCat=52&cs=4008&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "7204",
+       "Perfect Presentation for Commercial Services Co.",
+       "Ordinary",
+       "2026-12-16",
+       "19:00",
+       "Company Headquarters – Riyadh, Al-Qirawan District, Sheikh Abdullah bin Jibreen Street and via modern technology platforms, using the following meeting link: https://app.jameeah.com/meetings/",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99403&anCat=52&cs=7204&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "1325",
+       "Watani Iron Steel Co.",
+       "Ordinary",
+       "2026-12-09",
+       "18:30",
+       "Through modern technological means, using the 'Tadawulaty' system",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99316&anCat=52&cs=1325&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "4322",
+       "Retal Urban Development Co.",
+       "Extraordinary - Corporate Actions",
+       "2026-12-03",
+       "19:00",
+       "By Means of Modern Technology - Khobar - Retal Urban Development Company Head Office.",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99141&anCat=53&cs=4322&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "8150",
+       "Allied Cooperative Insurance Group",
+       "Extraordinary - Corporate Actions",
+       "2026-11-25",
+       "19:00",
+       "The company's head office in Riyadh - through modern technology",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=98897&anCat=53&cs=8150&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "4009",
+       "Middle East Healthcare Co.",
+       "Extraordinary",
+       "2026-11-24",
+       "19:30",
+       "The company's office in Jeddah, located in the King Road Tower, Floor No. (24), and by Using the Tadawulaty system.",
+       "Convening"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=98965&anCat=52&cs=4009&locale=en"
+      ]
+     }
+    ],
+    "market_ok": true
+   },
+   "S": {
+    "head": [],
+    "rows": [
+     {
+      "c": [
+       "9557",
+       "Edarat Communication and Information Technology Co.",
+       "Ordinary",
+       "2026-12-17",
+       "19:00",
+       "Via modern technology means, at the Company's principal headquarters in Riyadh, Al Yasmin District, King Abdulaziz Road (through the Tadawulaty platform only).",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99424&anCat=52&cs=9557&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9568",
+       "Mayar Holding Co.",
+       "Extraordinary",
+       "2026-12-16",
+       "19:30",
+       "The meeting will be held remotely via modern technology means using the Tadawulaty platform from the Company’s headquarters in Riyadh.",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99413&anCat=52&cs=9568&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9587",
+       "Lana Medical Co.",
+       "Extraordinary",
+       "2026-12-15",
+       "20:30",
+       "Via modern technological means at the Lana Company headquarters in Riyadh, using the Tadawulati system",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99304&anCat=52&cs=9587&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9541",
+       "Academy of Learning Co.",
+       "Extraordinary - Corporate Actions",
+       "2026-12-14",
+       "18:30",
+       "Dammam City – Head Office – where the Meeting will be held remotely through modern technology means. Shareholders may join and participate in the Meeting through the Tadawulaty platform via the following link: https://www.tadawulaty.com.sa",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99326&anCat=53&cs=9541&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9570",
+       "Tam Development Co.",
+       "Ordinary",
+       "2026-12-02",
+       "20:00",
+       "At the company's main headquarters located on Prince Mohammed bin Saad bin Abdulaziz Road, Hittin District, Riyadh 13516",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=98914&anCat=52&cs=9570&locale=en"
+      ]
+     },
+     {
+      "c": [
+       "9536",
+       "Arabian Food and Dairy Factories Co.",
+       "Ordinary",
+       "2026-11-26",
+       "19:00",
+       "At the company’s main headquarters located in Dammam, First Industrial City, Street 11, Intersection 4 - using modern technology",
+       "ConveningAnn"
+      ],
+      "a": [
+       "/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=99086&anCat=52&cs=9536&locale=en"
+      ]
+     }
+    ],
+    "market_ok": true
+   }
+  },
+  "actions": {
+   "M": {
+    "head": [],
+    "rows": [],
+    "market_ok": true
+   },
+   "S": {
+    "head": [],
+    "rows": [],
+    "market_ok": true
+   }
+  }
+ },
+ "announcements": {
+  "https://www.saudiexchange.sa/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/issuer-announcements-details/?anId=98897&anCat=53&cs=8150&locale=en": {
+   "text": "Element List Explanation\nIntroduction The Board of Directors of Allied Cooperative Insurance Group - ACIG is pleased to invite our valued shareholders to participate and vote in the Extraordinary General Assembly meeting, which includes the company's capital increase (the first meeting), scheduled to be held via modern technology using the Tadawulati system, God willing, on Wednesday, 15-06-1448 AH, corresponding to 25-11-2026 AD, at 7:00 PM.\nCity and Location of the Extraordinary General Assembly's Meeting The company's head office in Riyadh - through modern technology\nHyperlink of the Meeting Location Click Here\nDate of the General Assembly's Meeting 2026-11-25 Corresponding to 1448-06-15\nTime of the General Assembly’s Meeting 19:00\nMethodology of Convening the General Assembly’s Meeting Via modern technology means\nAttendance Eligibility, Registration Eligibility, and Voting End Shareholders who are registered in the issuers shareholders record at the Depositary Center by the end of the trade session prior to the general assembly meeting and in accordance with the laws and regulations. The shareholder has the right to delegate whomever other than the board of directors. The right to register a name to attend the general assembly meeting ends at the time of convening the general assembly meeting. The attendees right to vote on the items of the assembly’s agenda ends upon the end of screening the votes by the Screening Committee.\nQuorum for Convening the General Assembly's Meeting According to Article (33) of the company's Articles of Association, the quorum for holding an extraordinary General Assembly meeting for the bank is the presence of shareholders representing at least 50% of the capital. If the quorum is not completed at this meeting, a second meeting will be held one hour after the scheduled time of the first meeting, and the second meeting will be valid if attended by shareholders representing 25% of the capital.\nMeeting Agenda 1) Voting on the Board of Directors' recommendation to increase the company's capital by issuing 900,000 new ordinary shares with the suspension of pre-emptive rights as follows:\n• Method of increasing capital: increase the company's capital from SAR 291,000,000 divided into 29,100,000 equal ordinary shares, to SAR 300,000,000 divided into 30,000,000 equal ordinary shares with the suspension of pre-emptive rights, by issuing 900,000 new ordinary shares (representing approximately 3.09% of the company's current capital) with a nominal value of SAR 10 and an offering price of SAR 10 per share. Diyar Al-Arabiya Investment Company will subscribe to all the new shares, so its ownership will become 3% of the capital after the increase.\n• Total amount of capital increase: SAR 9,000,000\n• Capital before the increase: SAR 291,000,000\n• Capital after the increase: SAR 300,000,000\n• Number of shares before the increase: 29,100,000 shares\n• Number of shares after the increase: 30,000,000 shares\n• Percentage increase in capital: 3.09% of the current capital\n• Percentage decrease in current shareholders' ownership in the company due to the capital increase\n-Amendment of Article (7) of the company's Articles of Association related to capital. (Attached)\n- Amending Article (8) of the company's Articles of Association related to share subscription. (Attached).\n2) Voting on the Board of Directors' decision to appoint Mr. Rakan Nasr Abudef (Independent Member) to the Board, starting from his appointment date on 1 July 2026, to complete the Board's term until the end of the current term on 17 May 2029, replacing the former member Mr. Ali bin Yahya Al-Jaafari (Non-Executive Member). (Resume attached)\n3) Voting to authorize the Board of Directors with the powers of the General Assembly as stated in paragraph (1) of Article 27 of the Companies Law, for a period of one year from the date of the General Assembly's approval or until the end of the delegated Board of Directors' term, whichever comes first, according to the conditions set out in the executive regulations of the Companies Law for listed joint-stock companies.\nProxy Form \nThe shareholder right in discussing the assembly agenda topics, asking questions, and exercising the voting right Shareholders have the right to discuss the topics listed on the agenda of the assembly and ask questions, and registered shareholders in the Tadawulaty services can vote remotely on the meeting items through the Tadawulaty website at the link: (https://www.tadawulaty.com.sa) noting that registration on the Tadawulaty site and voting is free for all shareholders.\nDetails of the electronic voting on the Assembly’s agenda Esteemed shareholders can vote remotely on the agenda of the assembly through the electronic voting service, which will be available to registered shareholders on the Tadawulaty website starting from Saturday 11-06-1448 AH, corresponding to 21-11 -2026 at 1:00 AM, until the end of the assembly's meeting time. Registration and voting in Tadawulaty services will be available free of charge to all shareholders using the following link: www.tadawulaty.com.sa\nMethod of Communication in Case of Any Enquiries In case of any inquiries, please contact Mr. Muhannad Basilman\nphone number: 011-263 95 29,\nemail: m.basoliman@acig.com.sa\nAdditional Information It should be noted that Mr. Abdulilah Abdulaziz Rashid Al Huwaimel, the manager of Diyar Al-Arabiya Investment Company, which will subscribe for all the new shares, owns 1% of Masar Al Ruya International Trading Company, while members of the family of Mr. Yasser Mohammed Al Jarallah, the Company’s Vice Chairman, own the remaining 99% stake in Masar Al Ruya International Trading Company.\nIt should also be noted that Masar Al Ruya International Trading Company owns Private Tharawat Holding Company, which, in turn, owns a 15% stake in Allied Cooperative Insurance Group.\nAttached Documents   \nThe Capital Market Authority and Saudi Exchange take no responsibility for the contents of this disclosure, make no representations as to its accuracy or completeness, and expressly disclaim any liability whatsoever for any loss arising from, or incurred in reliance upon, any part of this disclosure, and the issuer accepts full responsibility for the accuracy of the information contained in it and confirms, having made all reasonable enquiries, that to the best of their knowledge and belief, there are no other facts or information the omission of which would make the disclosure misleading, incomplete or inaccurate.\nShare\nPrevious Announcements\nAllied Cooperative Insurance Group announces its Interim Financial Results for the period ending on 2026-09-30 ( Nine Months )\n8150\nACIG\n3.87 %\n1448/05/25     05/11/2026 08:51:41\nBoard of directors of the Allied Cooperative Insurance Group invites its shareholders to attend the extraordinary general assembly meeting which includes the increase of the company's capital (the first meeting) via modern technology.\n8150\nACIG\n3.87 %\n1448/05/22     02/11/2026 08:51:46\nAllied Cooperative Insurance Group (ACIG) announce receiving the decision from the Insurance Authority to stop the company from issuing comprehensive motor insurance policies while continuing to renew existing policies\n8150\nACIG\n3.87 %\n1448/04/16     27/09/2026 08:04:25\nView all announcements\nCompany Performance\nACIG\nAdd To Watchlist\nZoom\n1D\n1M\n3M\n1Y\n3Y\n5Y\nInception\n10:00\n12:00\n14:00\n6\n5.5\n5.75\n6.25\nZoom ▾\nNov 25, 2026\n→\nNov 25, 2026\nKey Parameters\nLast Price\n5.9\nNet Change\n0.22 (+3.87%)\nValue Traded (Sar)\n6,300,489.81\nVolume Traded\n1,076,541\nSee The Company Profile"
+  }
+ },
+ "inv": {
+  "via": "__NEXT_DATA__",
+  "rows": [
+   {
+    "utc": "2026-11-25T12:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "MBA Mortgage Applications (WoW)",
+    "raw_name": "MBA Mortgage Applications (WoW)",
+    "actual": "6.1%",
+    "forecast": "",
+    "previous": "-2.3%",
+    "revised_from": null,
+    "event_id": 380,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T12:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Mortgage Market Index",
+    "raw_name": "Mortgage Market Index",
+    "actual": "212.0",
+    "forecast": "",
+    "previous": "199.8",
+    "revised_from": null,
+    "event_id": 1427,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T12:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "MBA Purchase Index",
+    "raw_name": "MBA Purchase Index",
+    "actual": "151.6",
+    "forecast": "",
+    "previous": "137.6",
+    "revised_from": null,
+    "event_id": 1494,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T12:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Mortgage Refinance Index",
+    "raw_name": "Mortgage Refinance Index",
+    "actual": "535.5",
+    "forecast": "",
+    "previous": "532.8",
+    "revised_from": null,
+    "event_id": 1428,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T12:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "MBA 30-Year Mortgage Rate",
+    "raw_name": "MBA 30-Year Mortgage Rate",
+    "actual": "7.38%",
+    "forecast": "",
+    "previous": "7.35%",
+    "revised_from": null,
+    "event_id": 1042,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T12:25:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "FOMC Member Bowman Speaks",
+    "raw_name": "FOMC Member Bowman Speaks",
+    "actual": "",
+    "forecast": "",
+    "previous": "",
+    "revised_from": null,
+    "event_id": 1835,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 3,
+    "name": "Core PCE Price Index (MoM)",
+    "raw_name": "Core PCE Price Index (MoM) (Oct)",
+    "actual": "0.3%",
+    "forecast": "0.3%",
+    "previous": "0.3%",
+    "revised_from": null,
+    "event_id": 61,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 3,
+    "name": "Core PCE Price Index (YoY)",
+    "raw_name": "Core PCE Price Index (YoY) (Oct)",
+    "actual": "3.3%",
+    "forecast": "3.2%",
+    "previous": "3.1%",
+    "revised_from": null,
+    "event_id": 905,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 3,
+    "name": "GDP (QoQ)",
+    "raw_name": "GDP (QoQ) (Q3)",
+    "actual": "4.3%",
+    "forecast": "3.4%",
+    "previous": "2.2%",
+    "revised_from": null,
+    "event_id": 375,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 3,
+    "name": "Durable Goods Orders (MoM)",
+    "raw_name": "Durable Goods Orders (MoM) (Oct)",
+    "actual": "0.2%",
+    "forecast": "0.7%",
+    "previous": "2.0%",
+    "revised_from": "1.8%",
+    "event_id": 86,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 3,
+    "name": "Initial Jobless Claims",
+    "raw_name": "Initial Jobless Claims",
+    "actual": "189K",
+    "forecast": "201K",
+    "previous": "202K",
+    "revised_from": "203K",
+    "event_id": 294,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "PCE Price index (YoY)",
+    "raw_name": "PCE Price index (YoY) (Oct)",
+    "actual": "3.8%",
+    "forecast": "3.8%",
+    "previous": "3.7%",
+    "revised_from": "3.6%",
+    "event_id": 906,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Personal Spending (MoM)",
+    "raw_name": "Personal Spending (MoM) (Oct)",
+    "actual": "0.3%",
+    "forecast": "0.4%",
+    "previous": "0.6%",
+    "revised_from": "0.5%",
+    "event_id": 235,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "PCE price index (MoM)",
+    "raw_name": "PCE price index (MoM) (Oct)",
+    "actual": "0.3%",
+    "forecast": "0.3%",
+    "previous": "0.5%",
+    "revised_from": null,
+    "event_id": 904,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Core PCE Prices",
+    "raw_name": "Core PCE Prices (Q3)",
+    "actual": "2.50%",
+    "forecast": "2.50%",
+    "previous": "3.30%",
+    "revised_from": null,
+    "event_id": 1548,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "GDP Price Index (QoQ)",
+    "raw_name": "GDP Price Index (QoQ) (Q3)",
+    "actual": "1.8%",
+    "forecast": "2.2%",
+    "previous": "6.1%",
+    "revised_from": null,
+    "event_id": 343,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Core Durable Goods Orders (MoM)",
+    "raw_name": "Core Durable Goods Orders (MoM) (Oct)",
+    "actual": "0.5%",
+    "forecast": "0.5%",
+    "previous": "0.5%",
+    "revised_from": null,
+    "event_id": 59,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Continuing Jobless Claims",
+    "raw_name": "Continuing Jobless Claims",
+    "actual": "1,697K",
+    "forecast": "",
+    "previous": "1,792K",
+    "revised_from": "1,763K",
+    "event_id": 522,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Building Permits",
+    "raw_name": "Building Permits (Oct)",
+    "actual": "1.297M",
+    "forecast": "1.295M",
+    "previous": "1.398M",
+    "revised_from": null,
+    "event_id": 25,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Real Personal Consumption (MoM)",
+    "raw_name": "Real Personal Consumption (MoM) (Oct)",
+    "actual": "0.0%",
+    "forecast": "",
+    "previous": "0.1%",
+    "revised_from": "0.0%",
+    "event_id": 895,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Personal Income (MoM)",
+    "raw_name": "Personal Income (MoM) (Oct)",
+    "actual": "0.7%",
+    "forecast": "0.4%",
+    "previous": "0.3%",
+    "revised_from": "0.2%",
+    "event_id": 234,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Real Consumer Spending",
+    "raw_name": "Real Consumer Spending (Q3)",
+    "actual": "4.2%",
+    "forecast": "3.8%",
+    "previous": "3.8%",
+    "revised_from": null,
+    "event_id": 914,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "GDP Sales",
+    "raw_name": "GDP Sales (Q3)",
+    "actual": "2.6%",
+    "forecast": "1.7%",
+    "previous": "2.8%",
+    "revised_from": null,
+    "event_id": 1468,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "PCE Prices",
+    "raw_name": "PCE Prices (Q3)",
+    "actual": "2.1%",
+    "forecast": "2.1%",
+    "previous": "5.0%",
+    "revised_from": null,
+    "event_id": 1571,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Goods Orders Non Defense Ex Air (MoM)",
+    "raw_name": "Goods Orders Non Defense Ex Air (MoM) (Oct)",
+    "actual": "1.2%",
+    "forecast": "",
+    "previous": "0.8%",
+    "revised_from": "0.5%",
+    "event_id": 1047,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Durables Excluding Defense (MoM)",
+    "raw_name": "Durables Excluding Defense (MoM) (Oct)",
+    "actual": "0.4%",
+    "forecast": "",
+    "previous": "2.4%",
+    "revised_from": "2.3%",
+    "event_id": 1446,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Corporate Profits (QoQ)",
+    "raw_name": "Corporate Profits (QoQ) (Q3)",
+    "actual": "3.8%",
+    "forecast": "",
+    "previous": "7.7%",
+    "revised_from": null,
+    "event_id": 1315,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Jobless Claims 4-Week Avg.",
+    "raw_name": "Jobless Claims 4-Week Avg.",
+    "actual": "196.00K",
+    "forecast": "",
+    "previous": "197.50K",
+    "revised_from": "197.75K",
+    "event_id": 1041,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T13:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Building Permits (MoM)",
+    "raw_name": "Building Permits (MoM) (Oct)",
+    "actual": "-7.2%",
+    "forecast": "-7.4%",
+    "previous": "-0.4%",
+    "revised_from": null,
+    "event_id": 885,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 3,
+    "name": "New Home Sales",
+    "raw_name": "New Home Sales (Oct)",
+    "actual": "701K",
+    "forecast": "650K",
+    "previous": "614K",
+    "revised_from": "676K",
+    "event_id": 222,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "New Home Sales (MoM)",
+    "raw_name": "New Home Sales (MoM) (Oct)",
+    "actual": "14.2%",
+    "forecast": "-3.8%",
+    "previous": "-9.7%",
+    "revised_from": "-0.6%",
+    "event_id": 896,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Dallas Fed PCE",
+    "raw_name": "Dallas Fed PCE (Oct)",
+    "actual": "",
+    "forecast": "",
+    "previous": "2.80%",
+    "revised_from": null,
+    "event_id": 1550,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 3,
+    "name": "Crude Oil Inventories",
+    "raw_name": "Crude Oil Inventories",
+    "actual": "",
+    "forecast": "2.000M",
+    "previous": "3.380M",
+    "revised_from": null,
+    "event_id": 75,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Cushing Crude Oil Inventories",
+    "raw_name": "Cushing Crude Oil Inventories",
+    "actual": "",
+    "forecast": "",
+    "previous": "-1.209M",
+    "revised_from": null,
+    "event_id": 1657,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "EIA Refinery Crude Runs (WoW)",
+    "raw_name": "EIA Refinery Crude Runs  (WoW)",
+    "actual": "",
+    "forecast": "",
+    "previous": "-0.129M",
+    "revised_from": null,
+    "event_id": 1960,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Gasoline Production",
+    "raw_name": "Gasoline Production",
+    "actual": "",
+    "forecast": "",
+    "previous": "-0.202M",
+    "revised_from": null,
+    "event_id": 1661,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "EIA Weekly Refinery Utilization Rates (WoW)",
+    "raw_name": "EIA Weekly Refinery Utilization Rates (WoW)",
+    "actual": "",
+    "forecast": "",
+    "previous": "0.5%",
+    "revised_from": null,
+    "event_id": 1961,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Distillate Fuel Production",
+    "raw_name": "Distillate Fuel Production",
+    "actual": "",
+    "forecast": "",
+    "previous": "0.140M",
+    "revised_from": null,
+    "event_id": 1660,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Heating Oil Stockpiles",
+    "raw_name": "Heating Oil Stockpiles",
+    "actual": "",
+    "forecast": "",
+    "previous": "-0.775M",
+    "revised_from": null,
+    "event_id": 1659,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Crude Oil Imports",
+    "raw_name": "Crude Oil Imports",
+    "actual": "",
+    "forecast": "",
+    "previous": "-2.155M",
+    "revised_from": null,
+    "event_id": 1658,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Gasoline Inventories",
+    "raw_name": "Gasoline Inventories",
+    "actual": "",
+    "forecast": "",
+    "previous": "5.192M",
+    "revised_from": null,
+    "event_id": 485,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T15:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "EIA Weekly Distillates Stocks",
+    "raw_name": "EIA Weekly Distillates Stocks",
+    "actual": "",
+    "forecast": "",
+    "previous": "1.571M",
+    "revised_from": null,
+    "event_id": 917,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T16:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Atlanta Fed GDPNow",
+    "raw_name": "Atlanta Fed GDPNow (Q4)",
+    "actual": "",
+    "forecast": "3.2%",
+    "previous": "3.2%",
+    "revised_from": null,
+    "event_id": 2260,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T16:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "4-Week Bill Auction",
+    "raw_name": "4-Week Bill Auction",
+    "actual": "",
+    "forecast": "",
+    "previous": "4.050%",
+    "revised_from": null,
+    "event_id": 567,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T16:30:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "8-Week Bill Auction",
+    "raw_name": "8-Week Bill Auction",
+    "actual": "",
+    "forecast": "",
+    "previous": "4.110%",
+    "revised_from": null,
+    "event_id": 1801,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T17:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 1,
+    "name": "Natural Gas Storage",
+    "raw_name": "Natural Gas Storage",
+    "actual": "",
+    "forecast": "-19B",
+    "previous": "20B",
+    "revised_from": null,
+    "event_id": 386,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T18:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "7-Year Note Auction",
+    "raw_name": "7-Year Note Auction",
+    "actual": "",
+    "forecast": "",
+    "previous": "4.894%",
+    "revised_from": null,
+    "event_id": 682,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T18:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "U.S. Baker Hughes Oil Rig Count",
+    "raw_name": "U.S. Baker Hughes Oil Rig Count",
+    "actual": "",
+    "forecast": "",
+    "previous": "469",
+    "revised_from": null,
+    "event_id": 1652,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T18:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "U.S. Baker Hughes Total Rig Count",
+    "raw_name": "U.S. Baker Hughes Total Rig Count",
+    "actual": "",
+    "forecast": "",
+    "previous": "607",
+    "revised_from": null,
+    "event_id": 1810,
+    "src": "investing.com __NEXT_DATA__"
+   },
+   {
+    "utc": "2026-11-25T19:00:00+00:00",
+    "cur": "USD",
+    "country": "United States",
+    "stars": 2,
+    "name": "Beige Book",
+    "raw_name": "Beige Book",
+    "actual": "",
+    "forecast": "",
+    "previous": "",
+    "revised_from": null,
+    "event_id": 10,
+    "src": "investing.com __NEXT_DATA__"
+   }
+  ]
+ }
+}
