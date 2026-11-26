@@ -48,7 +48,7 @@ Tests: `python3 -m pytest tests/news_doc -q`.
 ## v2 layout rules the scripts enforce
 
 - Slide 1: Markets (Global, TASI), Economic items, ONE Corporate bullet.
-- Slide 2: at most 7 Corporate items at the top of `s2.flow`; the calendars follow in the same table.
+- Slide 2: every remaining Corporate item at the top of `s2.flow`, in rank order, with no fixed count; the lowest ranks are cut only if slide 2 overflows (Saad, 26 Nov 2026). The calendars follow in the same table.
 - Nothing below 10.60 in on slides 1-2. Slide 1 overflow: the short text of the last Economic item,
   then of both; `fill_commentary.py` exits 3 with the lines to cut when a short text is missing.
   Slide 2 overflow: the lowest-ranked Corporate items leave both decks.

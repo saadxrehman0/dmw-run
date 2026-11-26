@@ -65,10 +65,8 @@ def card(md, url, deadline="9:25 AM"):
     if co:
         rows.append([co[0], _names(heads, co[:1]), "In, slide 1"])
     if len(co) > 1:
-        s2 = co[1:8]
-        rows.append([_ids(s2), f"{len(s2)} items for slide 2", "In, slide 2"])
-    if len(co) > 8:
-        rows.append([_ids(co[8:]), "past slide 2's 7-item room, dropped", "In, no room"])
+        s2 = co[1:]
+        rows.append([_ids(s2), f"{len(s2)} items for slide 2 (lowest cut if it overflows)", "In, slide 2"])
     if out:
         rows.append([_ids(out), _names(heads, out), "Out (Maybe)"])
     summary = (f"Proposed: {len(o['economic'])} Economic and {len(co)} Corporate In, "
